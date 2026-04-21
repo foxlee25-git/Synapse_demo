@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Data Intake | 数据接入与企业喂养</title>
+    <meta
+      name="description"
+      content="Synapse 数据接入页，展示文件上传、邮箱授权、CRM 接入、广告平台同步和企业知识喂养流程。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="site-bg"></div>
+    <div class="page-shell app-page-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="brand-name">Synapse</p>
+            <p class="brand-tag">数据接入与企业喂养</p>
+          </div>
+        </a>
+        <nav class="site-nav">
+          <a href="app.html">产品总览</a>
+          <a href="data-intake.html" aria-current="page">Data Intake</a>
+          <a href="knowledge-feed.html">Knowledge Feed</a>
+          <a href="client-intelligence.html">Client</a>
+          <a href="task-center.html">Tasks</a>
+          <a href="approval-center.html">Approvals</a>
+          <a href="settings.html">Settings</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button button-secondary" href="contact.html">预约演示</a>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="page-hero app-subhero">
+          <p class="eyebrow">Data Intake</p>
+          <h1>让企业先把数据和知识喂给产品，AI 才有资格开始工作。</h1>
+          <p class="lead">
+            这里不是简单上传文件，而是把企业的业务数据、客户记录、邮件、广告账户和知识文档接进来，建立一层可持续更新的企业上下文。
+          </p>
+        </section>
+
+        <section class="section-block">
+          <div class="intake-shell" data-reveal>
+            <div class="intake-main">
+              <article class="workspace-card">
+                <div class="workspace-card-head">
+                  <div>
+                    <p class="card-label">Upload Hub</p>
+                    <h3>从 0 开始的企业数据接入</h3>
+                  </div>
+                  <span class="status-badge live">Ready</span>
+                </div>
+                <div class="upload-dropzone">
+                  <strong>拖拽 PDF、Excel、Word、CSV、图片到这里</strong>
+                  <p>或者从 Google Drive、Notion、飞书、OneDrive 导入企业资料。</p>
+                  <div class="upload-actions">
+                    <span class="mini-pill">上传文件</span>
+                    <span class="mini-pill">连接云盘</span>
+                    <span class="mini-pill">导入历史资料</span>
+                  </div>
+                </div>
+                <div class="source-grid">
+                  <div class="source-card">
+                    <strong>业务文档</strong>
+                    <p>产品说明、FAQ、SOP、销售话术、培训资料</p>
+                  </div>
+                  <div class="source-card">
+                    <strong>客户数据</strong>
+                    <p>CRM、订单、线索、会议纪要、聊天记录</p>
+                  </div>
+                  <div class="source-card">
+                    <strong>运营数据</strong>
+                    <p>广告账户、客服工单、退款记录、报表</p>
+                  </div>
+                </div>
+              </article>
+
+              <div class="connector-grid">
+                <article class="connector-card">
+                  <p class="card-label">Email Access</p>
+                  <h3>邮箱授权</h3>
+                  <p>支持 Gmail、Outlook、IMAP。企业可以让 Synapse 读取客户邮件线程、销售沟通和客服往来。</p>
+                  <div class="connector-actions">
+                    <span class="mini-pill">Gmail OAuth</span>
+                    <span class="mini-pill">Microsoft 365</span>
+                  </div>
+                </article>
+                <article class="connector-card">
+                  <p class="card-label">CRM</p>
+                  <h3>客户系统接入</h3>
+                  <p>连接 HubSpot、Salesforce、Pipedrive 或自定义 CRM，把客户状态与历史推进记录统一进来。</p>
+                </article>
+                <article class="connector-card">
+                  <p class="card-label">Ads & Support</p>
+                  <h3>广告与客服接入</h3>
+                  <p>Meta、Google、TikTok Ads 与客服工单系统同步，补齐增长与服务上下文。</p>
+                </article>
+                <article class="connector-card">
+                  <p class="card-label">Sync</p>
+                  <h3>增量同步与权限控制</h3>
+                  <p>支持定时同步、增量更新、断开授权和访问范围控制，不把接入做成一次性导入。</p>
+                </article>
+              </div>
+            </div>
+
+            <aside class="intake-side">
+              <article class="assignment-card">
+                <p class="card-label">Connected Sources</p>
+                <h3>当前已连接</h3>
+                <ul class="agent-list compact-list">
+                  <li>HubSpot CRM</li>
+                  <li>Gmail Sales Inbox</li>
+                  <li>Meta Ads</li>
+                  <li>Google Sheets 经营报表</li>
+                  <li>Notion SOP 库</li>
+                </ul>
+              </article>
+              <article class="assignment-card">
+                <p class="card-label">Feed Model</p>
+                <h3>企业如何持续喂给系统</h3>
+                <ul class="agent-list compact-list">
+                  <li>Knowledge Feed：制度、话术、FAQ、规则</li>
+                  <li>Business Feed：CRM、订单、广告、客服</li>
+                  <li>Feedback Feed：批准、驳回、改写、纠偏</li>
+                  <li>Memory Feed：沉淀客户画像与历史策略</li>
+                </ul>
+              </article>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Task Center | 任务中心</title>
+    <meta
+      name="description"
+      content="Synapse 任务中心页，展示人机混合任务、Agent 任务状态、优先级和任务流转。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="site-bg"></div>
+    <div class="page-shell app-page-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="brand-name">Synapse</p>
+            <p class="brand-tag">任务中心</p>
+          </div>
+        </a>
+        <nav class="site-nav">
+          <a href="app.html">产品总览</a>
+          <a href="data-intake.html">Data Intake</a>
+          <a href="knowledge-feed.html">Knowledge Feed</a>
+          <a href="client-intelligence.html">Client</a>
+          <a href="task-center.html" aria-current="page">Tasks</a>
+          <a href="approval-center.html">Approvals</a>
+          <a href="settings.html">Settings</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button button-secondary" href="contact.html">预约演示</a>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="page-hero app-subhero">
+          <p class="eyebrow">Task Center</p>
+          <h1>聊天里分出去的工作，最后都要回到任务系统里被管理。</h1>
+          <p class="lead">这里汇总人做的任务、Agent 做的任务、需要审批的任务和失败重试任务，让执行不是只停留在对话里。</p>
+        </section>
+
+        <section class="section-block">
+          <div class="task-board" data-reveal>
+            <article class="board-column">
+              <div class="workspace-card-head">
+                <div><p class="card-label">Queued</p><h3>待处理</h3></div>
+                <span class="mini-pill">5</span>
+              </div>
+              <div class="task-ticket">
+                <strong>整理本周 FAQ 更新点</strong>
+                <p>Knowledge Agent · High</p>
+              </div>
+              <div class="task-ticket">
+                <strong>拉取上周广告素材表现</strong>
+                <p>Growth Agent · Medium</p>
+              </div>
+            </article>
+
+            <article class="board-column">
+              <div class="workspace-card-head">
+                <div><p class="card-label">Running</p><h3>执行中</h3></div>
+                <span class="mini-pill live">3</span>
+              </div>
+              <div class="task-ticket live-ticket">
+                <strong>高意向线索排序</strong>
+                <p>Sales Agent 正在输出老板介入建议</p>
+              </div>
+              <div class="task-ticket live-ticket">
+                <strong>广告异常分析</strong>
+                <p>Growth Agent 正在比较 Meta / Google 账户变化</p>
+              </div>
+            </article>
+
+            <article class="board-column">
+              <div class="workspace-card-head">
+                <div><p class="card-label">Waiting</p><h3>待审批</h3></div>
+                <span class="mini-pill warn">2</span>
+              </div>
+              <div class="task-ticket warn-ticket">
+                <strong>发布退款 FAQ 新版本</strong>
+                <p>等待运营批准</p>
+              </div>
+              <div class="task-ticket warn-ticket">
+                <strong>暂停低效广告组</strong>
+                <p>等待老板确认预算变更</p>
+              </div>
+            </article>
+
+            <article class="board-column">
+              <div class="workspace-card-head">
+                <div><p class="card-label">Done</p><h3>已完成</h3></div>
+                <span class="mini-pill">8</span>
+              </div>
+              <div class="task-ticket">
+                <strong>周经营简报生成</strong>
+                <p>已回写到群聊与老板工作台</p>
+              </div>
+              <div class="task-ticket">
+                <strong>客户摘要同步 CRM</strong>
+                <p>Sales Agent 已完成更新</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

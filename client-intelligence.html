@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Client Intelligence | 客户理解详情</title>
+    <meta
+      name="description"
+      content="Synapse 客户理解页，展示客户画像、问题地图、机会点、已派出的 Agent 和执行状态。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="site-bg"></div>
+    <div class="page-shell app-page-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="brand-name">Synapse</p>
+            <p class="brand-tag">客户理解详情</p>
+          </div>
+        </a>
+        <nav class="site-nav">
+          <a href="app.html">产品总览</a>
+          <a href="data-intake.html">Data Intake</a>
+          <a href="knowledge-feed.html">Knowledge Feed</a>
+          <a href="client-intelligence.html" aria-current="page">Client</a>
+          <a href="task-center.html">Tasks</a>
+          <a href="approval-center.html">Approvals</a>
+          <a href="settings.html">Settings</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button button-secondary" href="contact.html">预约演示</a>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="page-hero app-subhero">
+          <p class="eyebrow">Client Intelligence</p>
+          <h1>系统先把客户当前情况讲清楚，再决定派谁去干活。</h1>
+          <p class="lead">这一页是 AI 对单个客户/企业的理解中枢：状态、问题、风险、机会、建议派单与最近进展都汇总在一起。</p>
+        </section>
+
+        <section class="section-block">
+          <div class="client-shell" data-reveal>
+            <article class="workspace-card wide-panel">
+              <div class="workspace-card-head">
+                <div>
+                  <p class="card-label">Client Snapshot</p>
+                  <h3>Retail Growth Co.</h3>
+                </div>
+                <span class="status-badge live">Health 74 / 100</span>
+              </div>
+              <div class="app-kpi-grid client-kpis">
+                <article class="app-kpi-card"><span>营收趋势</span><strong>+12.4%</strong><p>高客单产品增长明显</p></article>
+                <article class="app-kpi-card"><span>广告风险</span><strong>CPA +19%</strong><p>两组广告需要检查</p></article>
+                <article class="app-kpi-card"><span>客服压力</span><strong>退款问题上升</strong><p>FAQ 老化导致重复问答</p></article>
+                <article class="app-kpi-card"><span>销售机会</span><strong>4 high-intent</strong><p>48 小时未跟进</p></article>
+              </div>
+            </article>
+
+            <div class="card-grid halves">
+              <article class="workspace-card">
+                <div class="workspace-card-head">
+                  <div>
+                    <p class="card-label">Problem Map</p>
+                    <h3>当前关键问题</h3>
+                  </div>
+                </div>
+                <ul class="brief-list">
+                  <li>增长问题：广告成本抬升但素材方向仍有潜力。</li>
+                  <li>服务问题：退款 FAQ 过旧，客服知识不一致。</li>
+                  <li>销售问题：新增高意向线索推进节奏慢。</li>
+                </ul>
+              </article>
+              <article class="workspace-card">
+                <div class="workspace-card-head">
+                  <div>
+                    <p class="card-label">Suggested Agents</p>
+                    <h3>建议派出的 Agent</h3>
+                  </div>
+                </div>
+                <ul class="brief-list">
+                  <li>Growth Agent：先处理广告异常与预算建议。</li>
+                  <li>Knowledge Agent：更新 FAQ 和 SOP 草稿。</li>
+                  <li>Sales Agent：整理沉默高意向线索并安排跟进。</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

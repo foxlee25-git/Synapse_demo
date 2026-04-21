@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Product UI | 以客户数据驱动的 Agent 工作台</title>
+    <meta
+      name="description"
+      content="Synapse 产品端 UI 原型，展示如何先接入客户数据，让 AI 理解客户情况，再分化为不同 Agent 去解决、安排并执行工作。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="site-bg"></div>
+    <div class="page-shell app-page-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="brand-name">Synapse</p>
+            <p class="brand-tag">产品端 UI 原型</p>
+          </div>
+        </a>
+        <nav class="site-nav">
+          <a href="index.html">官网</a>
+          <a href="app.html" aria-current="page">产品 UI</a>
+          <a href="data-intake.html">Data Intake</a>
+          <a href="knowledge-feed.html">Knowledge</a>
+          <a href="client-intelligence.html">Client</a>
+          <a href="task-center.html">Tasks</a>
+          <a href="approval-center.html">Approvals</a>
+          <a href="settings.html">Settings</a>
+          <a href="#intake">客户理解</a>
+          <a href="#chat">群聊协作</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button button-secondary" href="contact.html">预约演示</a>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="app-hero">
+          <div class="app-hero-copy">
+            <p class="eyebrow">Customer-to-Agent System</p>
+            <h1>先拿客户数据，让 AI 理解客户，再化身不同 Agent 去解决、安排和执行工作。</h1>
+            <p class="lead">
+              Synapse 的产品端不是先从“空白聊天框”开始，而是先把客户的文档、CRM、聊天记录、订单、广告和服务数据接进来，形成客户理解层。系统再根据客户当前情况自动调用不同 Agent，去分析问题、安排动作、推动执行。
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#intake">看客户理解流程</a>
+              <a class="button button-primary" href="#chat">看群聊指派</a>
+              <a class="button button-primary" href="#workspace">看主工作台</a>
+              <a class="button button-secondary" href="#login">看登录入口</a>
+            </div>
+          </div>
+          <div class="app-hero-stack">
+            <article class="app-peek-card highlight-card" data-reveal>
+              <p class="card-label">Ingest</p>
+              <h3>先吃进客户数据</h3>
+              <p>CRM、广告、订单、客服、文档和 SOP 被统一接入，不让 Agent 在空上下文里工作。</p>
+            </article>
+            <article class="app-peek-card" data-reveal>
+              <p class="card-label">Understand</p>
+              <h3>先理解客户情况</h3>
+              <p>系统先生成客户画像、问题摘要、优先级和风险点，再决定由哪些 Agent 去接手。</p>
+            </article>
+            <article class="app-peek-card" data-reveal>
+              <p class="card-label">Execute</p>
+              <h3>再分化成不同 Agent</h3>
+              <p>Growth、Sales、Knowledge、Support 等 Agent 根据客户状态拆分执行，不同工作并行推进。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="intake">
+          <div class="section-heading">
+            <p class="eyebrow">Customer Understanding Layer</p>
+            <h2>产品的第一层不是 Agent，而是“客户理解层”</h2>
+            <p>只有先拿到客户的数据，并让 AI 理解客户的业务状态、问题和优先级，后面的 Agent 才能不是瞎干活，而是真的围绕客户情况去工作。</p>
+          </div>
+
+          <div class="card-grid halves">
+            <article class="info-card" data-reveal>
+              <p class="card-label">Step 01</p>
+              <h3>先接入客户数据</h3>
+              <p>导入客户的 CRM、订单、广告账户、客服记录、聊天记录、文档和 SOP，把原本分散的信息统一拉进来。</p>
+            </article>
+            <article class="info-card" data-reveal>
+              <p class="card-label">Step 02</p>
+              <h3>AI 先理解客户情况</h3>
+              <p>系统先形成客户画像、业务摘要、当前异常、潜在机会和优先级，而不是马上把任务丢给单个 Agent。</p>
+            </article>
+            <article class="info-card" data-reveal>
+              <p class="card-label">Step 03</p>
+              <h3>再化身不同 Agent</h3>
+              <p>根据客户当前状态，自动拆分成 Growth、Sales、Knowledge、Support 等不同角色的 Agent 去各自处理。</p>
+            </article>
+            <article class="info-card" data-reveal>
+              <p class="card-label">Step 04</p>
+              <h3>解决、安排、执行</h3>
+              <p>有的 Agent 负责分析问题，有的 Agent 负责安排流程，有的 Agent 负责直接执行动作，并在关键节点拉人确认。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading compact">
+            <p class="eyebrow">Product Map</p>
+            <h2>把完整功能表拆成真正的产品页面</h2>
+            <p>后续开发时可以按这些页面逐个落地，而不是把所有功能挤在一个工作台里。</p>
+          </div>
+          <div class="feature-page-grid">
+            <a class="page-link-card" href="data-intake.html" data-reveal>
+              <p class="card-label">01</p>
+              <h3>Data Intake</h3>
+              <p>文件上传、邮箱授权、CRM 接入、广告平台同步、增量更新。</p>
+            </a>
+            <a class="page-link-card" href="knowledge-feed.html" data-reveal>
+              <p class="card-label">02</p>
+              <h3>Knowledge Feed</h3>
+              <p>企业知识库、规则、边界、话术和企业记忆的沉淀入口。</p>
+            </a>
+            <a class="page-link-card" href="client-intelligence.html" data-reveal>
+              <p class="card-label">03</p>
+              <h3>Client Intelligence</h3>
+              <p>客户画像、问题地图、优先级、建议派单与健康度。</p>
+            </a>
+            <a class="page-link-card" href="task-center.html" data-reveal>
+              <p class="card-label">04</p>
+              <h3>Task Center</h3>
+              <p>人机混合任务、状态流转、失败重试与任务看板。</p>
+            </a>
+            <a class="page-link-card" href="approval-center.html" data-reveal>
+              <p class="card-label">05</p>
+              <h3>Approval Center</h3>
+              <p>高风险动作审批、操作留痕、审计与回滚。</p>
+            </a>
+            <a class="page-link-card" href="settings.html" data-reveal>
+              <p class="card-label">06</p>
+              <h3>Settings</h3>
+              <p>角色权限、模型路由、Token 预算、连接授权和 Agent 范围。</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="section-block" id="chat">
+          <div class="section-heading">
+            <p class="eyebrow">Group Chat + Agent Assignment</p>
+            <h2>支持在群聊里直接找 Agent，让他去工作</h2>
+            <p>当系统已经理解客户情况后，团队就可以在群聊里直接 `@Agent` 分配任务。Agent 不会从零开始理解，而是带着客户画像、当前问题和已有上下文去执行。</p>
+          </div>
+
+          <div class="chat-workspace" data-reveal>
+            <div class="chat-thread-card">
+              <div class="workspace-card-head">
+                <div>
+                  <p class="card-label">Team Thread</p>
+                  <h3># weekly-ops / 本周经营群</h3>
+                </div>
+                <span class="status-badge live">3 agents active</span>
+              </div>
+
+              <div class="chat-thread">
+                <article class="chat-bubble human">
+                  <div class="chat-meta">
+                    <strong>Amanda</strong>
+                    <span>运营负责人 · 09:12</span>
+                  </div>
+                  <p>@Growth Agent 看下这周广告为什么 CPA 突然涨了，顺便给我一个今天能执行的优化建议。</p>
+                </article>
+
+                <article class="chat-bubble agent">
+                  <div class="chat-meta">
+                    <strong>@Growth Agent</strong>
+                    <span>已接单 · 09:12</span>
+                  </div>
+                  <p>收到。我会基于当前客户画像检查 Meta、Google 两个账户的花费、素材和转化变化，10 分钟内给出异常摘要与建议动作。</p>
+                  <div class="chat-tags">
+                    <span class="mini-pill">Task created</span>
+                    <span class="mini-pill live">Analyzing</span>
+                  </div>
+                </article>
+
+                <article class="chat-bubble human">
+                  <div class="chat-meta">
+                    <strong>Leo</strong>
+                    <span>销售主管 · 09:14</span>
+                  </div>
+                  <p>@Sales Agent 把昨天进来的高意向线索按成交概率排一下，给我和老板各出一个跟进建议。</p>
+                </article>
+
+                <article class="chat-bubble agent">
+                  <div class="chat-meta">
+                    <strong>@Sales Agent</strong>
+                    <span>处理中 · 09:15</span>
+                  </div>
+                  <p>已结合 CRM、会话记录和客户历史状态提取 11 条新线索。预计输出一个销售版动作清单和一个老板介入建议版。</p>
+                </article>
+
+                <article class="chat-bubble agent decision">
+                  <div class="chat-meta">
+                    <strong>@Knowledge Agent</strong>
+                    <span>需要确认 · 09:19</span>
+                  </div>
+                  <p>我发现退款 FAQ 的旧版本正在影响客服回复一致性。已生成新草稿，要不要直接发布到客服知识库？</p>
+                  <div class="decision-actions">
+                    <span class="approval-action">批准发布</span>
+                    <span class="mini-pill">先看草稿</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="chat-composer">
+                <div class="composer-line">
+                  <span class="composer-tag">@Growth Agent</span>
+                  <span class="composer-tag">@Sales Agent</span>
+                  <span class="composer-tag">@Knowledge Agent</span>
+                </div>
+                <div class="composer-input">
+                  <span>输入任务，或者直接在群里 @Agent 分配工作...</span>
+                  <strong>Send</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="assignment-panel">
+              <article class="assignment-card">
+                <p class="card-label">How It Works</p>
+                <h3>先理解客户，再在群聊里分给 Agent</h3>
+                <ul class="agent-list compact-list">
+                  <li>系统先形成客户摘要、问题地图和优先级</li>
+                  <li>@ 某个 Agent 后，系统自动把客户上下文一起带过去</li>
+                  <li>执行状态回写到群聊，同时同步到工作台、审批流和任务面板</li>
+                </ul>
+              </article>
+
+              <article class="assignment-card">
+                <p class="card-label">Assignment Rules</p>
+                <h3>适合在群聊里分给 Agent 的工作</h3>
+                <div class="assign-rule-list">
+                  <div>
+                    <strong>@Growth Agent</strong>
+                    <p>广告复盘、预算建议、异常定位、增长摘要</p>
+                  </div>
+                  <div>
+                    <strong>@Sales Agent</strong>
+                    <p>线索排序、客户摘要、跟进建议、老板介入提醒</p>
+                  </div>
+                  <div>
+                    <strong>@Knowledge Agent</strong>
+                    <p>FAQ、SOP 更新、客服知识整理、文档归档</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="assignment-card">
+                <p class="card-label">Why It Matters</p>
+                <h3>协作方式更像“带 Agent 的团队群”</h3>
+                <p>谁发现问题，谁就在群里点名 Agent 去处理；谁需要结果，谁在同一个线程里拿到交付、进度和审批请求。这样比切来切去找控制台自然得多。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" id="login">
+          <div class="section-heading compact">
+            <p class="eyebrow">Login</p>
+            <h2>登录后先进入客户理解层，而不是空白聊天框</h2>
+          </div>
+          <div class="login-preview" data-reveal>
+            <div class="login-brand-panel">
+              <p class="eyebrow">Synapse OS</p>
+              <h3>连接客户数据后，团队每天打开的是“客户当前状态”。</h3>
+              <p>系统会先展示客户摘要、关键异常和可执行机会，再把这些信息分发给不同 Agent 和团队角色。</p>
+              <div class="login-stats">
+                <div>
+                  <strong>6</strong>
+                  <span>活跃连接</span>
+                </div>
+                <div>
+                  <strong>18</strong>
+                  <span>自动任务</span>
+                </div>
+                <div>
+                  <strong>3</strong>
+                  <span>关键异常</span>
+                </div>
+              </div>
+            </div>
+            <div class="login-form-card">
+              <p class="card-label">Workspace Access</p>
+              <h3>登录你的业务工作台</h3>
+              <div class="fake-field">
+                <label>邮箱</label>
+                <div>ops@company.com</div>
+              </div>
+              <div class="fake-field">
+                <label>工作区</label>
+                <div>Synapse Retail Demo</div>
+              </div>
+              <div class="fake-field">
+                <label>角色</label>
+                <div>运营负责人</div>
+              </div>
+              <div class="login-actions">
+                <a class="button button-primary" href="#workspace">进入工作台</a>
+                <a class="button button-secondary" href="contact.html">申请演示环境</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" id="workspace">
+          <div class="section-heading">
+            <p class="eyebrow">Main Workspace</p>
+            <h2>主工作台把“客户是什么情况、该派谁处理、下一步做什么”放在同一屏</h2>
+            <p>首页先展示客户理解结果，再显示哪些 Agent 已被派出去工作、哪些动作需要审批、哪些任务正在执行，不让团队自己拼上下文。</p>
+          </div>
+
+          <div class="dashboard-shell" data-reveal>
+            <aside class="app-sidebar">
+              <div class="sidebar-block">
+                <p class="sidebar-title">Workspace</p>
+                <a class="sidebar-link active" href="#workspace">客户总览</a>
+                <a class="sidebar-link" href="#intake">客户理解层</a>
+                <a class="sidebar-link" href="#agents">Agent Console</a>
+                <a class="sidebar-link" href="#flow">任务流</a>
+                <a class="sidebar-link" href="#ops">Token & Ops</a>
+              </div>
+              <div class="sidebar-block">
+                <p class="sidebar-title">Views</p>
+                <a class="sidebar-link" href="#workspace">客户状态</a>
+                <a class="sidebar-link" href="#agents">Agent 执行</a>
+                <a class="sidebar-link" href="#ops">管理员视角</a>
+              </div>
+              <div class="sidebar-note">
+                <p class="card-label">Today</p>
+                <h3>客户状态已完成理解</h3>
+                <p>广告 CPA 上升、退款问题重复出现、两个高意向线索 48 小时未跟进，已分别分配给不同 Agent。</p>
+              </div>
+            </aside>
+
+            <div class="dashboard-main">
+              <div class="dashboard-topbar">
+                <div>
+                  <p class="card-label">Good Morning</p>
+                  <h3>Retail Client Intelligence Workspace</h3>
+                </div>
+                <div class="dashboard-top-actions">
+                  <span class="mini-pill">6 connected systems</span>
+                  <span class="mini-pill">client context ready</span>
+                  <span class="mini-pill warn">2 approvals pending</span>
+                </div>
+              </div>
+
+              <div class="app-kpi-grid">
+                <article class="app-kpi-card">
+                  <span>客户健康度</span>
+                  <strong>74 / 100</strong>
+                  <p>由营收、广告、客服和线索状态综合得出</p>
+                </article>
+                <article class="app-kpi-card">
+                  <span>本周营收</span>
+                  <strong>$48,220</strong>
+                  <p>较上周 +12.4%</p>
+                </article>
+                <article class="app-kpi-card">
+                  <span>广告效率</span>
+                  <strong>ROAS 3.4</strong>
+                  <p>有 2 组广告建议暂停</p>
+                </article>
+                <article class="app-kpi-card">
+                  <span>线索推进</span>
+                  <strong>19 active</strong>
+                  <p>4 个高优先级等待跟进</p>
+                </article>
+                <article class="app-kpi-card accent">
+                  <span>今日主任务</span>
+                  <strong>先修复退款 FAQ</strong>
+                  <p>客户理解层已触发客服知识 Agent 建议</p>
+                </article>
+              </div>
+
+              <div class="workspace-grid">
+                <article class="workspace-card">
+                  <div class="workspace-card-head">
+                    <div>
+                      <p class="card-label">Client Understanding</p>
+                      <h3>AI 对当前客户情况的理解</h3>
+                    </div>
+                    <span class="status-badge">Context ready</span>
+                  </div>
+                  <ul class="brief-list">
+                    <li>当前客户最主要的问题不是流量不足，而是广告成本升高与客服知识更新滞后。</li>
+                    <li>销售端有新增机会，但跟进节奏慢，存在可挽回的高价值线索。</li>
+                    <li>系统判断应优先派出 Growth、Sales、Knowledge 三个 Agent 并行处理。</li>
+                  </ul>
+                </article>
+
+                <article class="workspace-card narrative-card">
+                  <div class="workspace-card-head">
+                    <div>
+                      <p class="card-label">Daily Brief</p>
+                      <h3>基于客户情况，今天 Synapse 先安排了什么</h3>
+                    </div>
+                    <span class="status-badge live">Live</span>
+                  </div>
+                  <ul class="brief-list">
+                    <li>门店营收正常增长，但广告成本在周三后明显抬升。</li>
+                    <li>高客单价产品的咨询质量在提升，说明素材方向有效。</li>
+                    <li>退款相关问题重复出现，建议优先更新客服 FAQ 与 SOP。</li>
+                    <li>两位高意向客户未在 48 小时内收到跟进，已生成销售动作。</li>
+                  </ul>
+                </article>
+
+                <article class="workspace-card approvals-card">
+                  <div class="workspace-card-head">
+                    <div>
+                      <p class="card-label">Approvals</p>
+                      <h3>需要你确认的动作</h3>
+                    </div>
+                    <span class="status-badge warn">2 waiting</span>
+                  </div>
+                  <div class="approval-item">
+                    <div>
+                      <strong>暂停 2 组低效广告</strong>
+                      <p>预计节省预算 14%，不影响当前高转化人群。</p>
+                    </div>
+                    <span class="approval-action">待确认</span>
+                  </div>
+                  <div class="approval-item">
+                    <div>
+                      <strong>更新退款 FAQ 版本</strong>
+                      <p>客服知识 Agent 已生成草稿，需要运营批准后发布。</p>
+                    </div>
+                    <span class="approval-action">待发布</span>
+                  </div>
+                </article>
+
+                <article class="workspace-card timeline-stream" id="flow">
+                  <div class="workspace-card-head">
+                    <div>
+                      <p class="card-label">Task Flow</p>
+                      <h3>客户数据如何变成多个 Agent 的执行流程</h3>
+                    </div>
+                  </div>
+                  <div class="flow-row">
+                    <span class="flow-stage done">1</span>
+                    <div>
+                      <strong>接入客户数据</strong>
+                      <p>CRM、广告、客服、销售报表、知识库与聊天记录完成同步。</p>
+                    </div>
+                  </div>
+                  <div class="flow-row">
+                    <span class="flow-stage done">2</span>
+                    <div>
+                      <strong>理解客户情况</strong>
+                      <p>系统生成客户画像、问题摘要、优先级和建议派单结构。</p>
+                    </div>
+                  </div>
+                  <div class="flow-row">
+                    <span class="flow-stage live">3</span>
+                    <div>
+                      <strong>分化成不同 Agent</strong>
+                      <p>Growth Agent 处理广告异常，Sales Agent 跟进线索，Knowledge Agent 更新 FAQ 与 SOP。</p>
+                    </div>
+                  </div>
+                  <div class="flow-row">
+                    <span class="flow-stage">4</span>
+                    <div>
+                      <strong>执行、回报、审批</strong>
+                      <p>各 Agent 把结果回写到群聊和工作台，关键动作等待人工确认后正式下发。</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" id="agents">
+          <div class="section-heading compact">
+            <p class="eyebrow">Agent Console</p>
+            <h2>Agent 不是预先固定死的，而是基于客户情况被唤起的不同角色</h2>
+          </div>
+          <div class="agent-grid">
+            <article class="agent-card" data-reveal>
+              <div class="agent-card-head">
+                <div class="agent-avatar">G</div>
+                <div>
+                  <h3>Growth Agent</h3>
+                  <p>客户当前问题集中在广告成本与增长效率，所以被优先唤起</p>
+                </div>
+              </div>
+              <div class="agent-meta">
+                <span class="mini-pill">Meta + Google</span>
+                <span class="mini-pill live">Running</span>
+              </div>
+              <ul class="agent-list">
+                <li>检测到 2 组广告转化下降</li>
+                <li>已生成预算调整建议</li>
+                <li>等待运营确认暂停动作</li>
+              </ul>
+            </article>
+
+            <article class="agent-card" data-reveal>
+              <div class="agent-card-head">
+                <div class="agent-avatar">S</div>
+                <div>
+                  <h3>Sales Agent</h3>
+                  <p>根据客户当前线索沉默和高价值机会状态，负责推进销售动作</p>
+                </div>
+              </div>
+              <div class="agent-meta">
+                <span class="mini-pill">CRM + Email</span>
+                <span class="mini-pill warn">Need review</span>
+              </div>
+              <ul class="agent-list">
+                <li>识别 4 个高意向沉默线索</li>
+                <li>生成销售跟进摘要</li>
+                <li>其中 1 个客户建议老板直接介入</li>
+              </ul>
+            </article>
+
+            <article class="agent-card" data-reveal>
+              <div class="agent-card-head">
+                <div class="agent-avatar">K</div>
+                <div>
+                  <h3>Knowledge Agent</h3>
+                  <p>当系统识别到知识滞后和客服重复问题时，负责更新 FAQ 与 SOP</p>
+                </div>
+              </div>
+              <div class="agent-meta">
+                <span class="mini-pill">Docs + Support</span>
+                <span class="mini-pill">Draft ready</span>
+              </div>
+              <ul class="agent-list">
+                <li>新退款 FAQ 草稿已完成</li>
+                <li>发现 3 处 SOP 内容过时</li>
+                <li>建议今日内更新客服训练资料</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="ops">
+          <div class="section-heading compact">
+            <p class="eyebrow">Token & Ops</p>
+            <h2>后台不是隐藏在深处，而是直接告诉管理员：成本花在哪，连接有没有风险</h2>
+          </div>
+          <div class="ops-grid">
+            <article class="ops-card wide" data-reveal>
+              <div class="workspace-card-head">
+                <div>
+                  <p class="card-label">Token Board</p>
+                  <h3>本周 Token 与模型路由</h3>
+                </div>
+                <span class="status-badge">Auto-routed</span>
+              </div>
+              <div class="token-chart">
+                <div class="token-bar-group">
+                  <span>日报 / 周报</span>
+                  <div class="token-bar"><i style="width: 36%"></i></div>
+                  <strong>36%</strong>
+                </div>
+                <div class="token-bar-group">
+                  <span>广告复盘</span>
+                  <div class="token-bar"><i style="width: 24%"></i></div>
+                  <strong>24%</strong>
+                </div>
+                <div class="token-bar-group">
+                  <span>销售摘要</span>
+                  <div class="token-bar"><i style="width: 18%"></i></div>
+                  <strong>18%</strong>
+                </div>
+                <div class="token-bar-group">
+                  <span>知识整理</span>
+                  <div class="token-bar"><i style="width: 12%"></i></div>
+                  <strong>12%</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="ops-card" data-reveal>
+              <p class="card-label">Routing</p>
+              <h3>模型分配策略</h3>
+              <ul class="agent-list">
+                <li>日常摘要与分类：SLM</li>
+                <li>复盘与建议生成：Hybrid</li>
+                <li>高价值推理与策略：LLM</li>
+              </ul>
+            </article>
+
+            <article class="ops-card" data-reveal>
+              <p class="card-label">Connections</p>
+              <h3>连接状态</h3>
+              <ul class="agent-list">
+                <li>CRM: Healthy</li>
+                <li>Meta Ads: Healthy</li>
+                <li>Support Inbox: Sync lag 8 min</li>
+              </ul>
+            </article>
+
+            <article class="ops-card wide" data-reveal>
+              <p class="card-label">Team Access</p>
+              <h3>角色与可见范围</h3>
+              <div class="access-grid">
+                <div>
+                  <strong>老板</strong>
+                  <p>看经营摘要、审批关键动作、查看 ROI 与关键异常。</p>
+                </div>
+                <div>
+                  <strong>运营</strong>
+                  <p>看 Agent 执行状态、复盘内容、任务流与待处理事项。</p>
+                </div>
+                <div>
+                  <strong>管理员</strong>
+                  <p>看连接、权限、模型路由、预算与组织配置。</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="cta-panel" data-reveal>
+            <div>
+              <p class="eyebrow">Next Layer</p>
+              <h2>这套 UI 已经把产品结构立起来了，下一步可以继续细化成交互原型。</h2>
+              <p>如果你满意这个方向，我下一轮可以继续把它拆成更完整的页面：登录页、总览页、Agent 详情页、审批流页、Token 设置页。</p>
+            </div>
+            <div class="cta-actions">
+              <a class="button button-primary" href="contact.html">继续演示版</a>
+              <a class="button button-secondary" href="index.html">返回官网</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

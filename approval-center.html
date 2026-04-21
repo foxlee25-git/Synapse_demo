@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Approval Center | 审批中心</title>
+    <meta
+      name="description"
+      content="Synapse 审批中心页，展示 Agent 提交的待批准动作、多级审批和合规留痕。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="site-bg"></div>
+    <div class="page-shell app-page-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="brand-name">Synapse</p>
+            <p class="brand-tag">审批中心</p>
+          </div>
+        </a>
+        <nav class="site-nav">
+          <a href="app.html">产品总览</a>
+          <a href="data-intake.html">Data Intake</a>
+          <a href="knowledge-feed.html">Knowledge Feed</a>
+          <a href="client-intelligence.html">Client</a>
+          <a href="task-center.html">Tasks</a>
+          <a href="approval-center.html" aria-current="page">Approvals</a>
+          <a href="settings.html">Settings</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button button-secondary" href="contact.html">预约演示</a>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="page-hero app-subhero">
+          <p class="eyebrow">Approval Center</p>
+          <h1>企业真正放心的前提，是 Agent 的关键动作都可见、可批、可追溯。</h1>
+          <p class="lead">这里处理发邮件、停广告、更新知识库、改 CRM、对外回复等高风险动作，保持人机协作的可控感。</p>
+        </section>
+
+        <section class="section-block">
+          <div class="approval-shell" data-reveal>
+            <article class="workspace-card wide-panel">
+              <div class="workspace-card-head">
+                <div>
+                  <p class="card-label">Pending Approval</p>
+                  <h3>今天需要确认的动作</h3>
+                </div>
+                <span class="status-badge warn">2 urgent</span>
+              </div>
+              <div class="approval-stack">
+                <div class="approval-row">
+                  <div>
+                    <strong>暂停 2 组低效广告</strong>
+                    <p>Growth Agent 建议暂停两组 CPA 持续升高且无新素材支撑的广告组，预计节省预算 14%。</p>
+                  </div>
+                  <div class="approval-buttons">
+                    <span class="approval-action">批准</span>
+                    <span class="mini-pill">要求修改</span>
+                  </div>
+                </div>
+                <div class="approval-row">
+                  <div>
+                    <strong>发布退款 FAQ 新版本</strong>
+                    <p>Knowledge Agent 已生成新草稿，发布后会同步到客服知识库并替换旧版本。</p>
+                  </div>
+                  <div class="approval-buttons">
+                    <span class="approval-action">批准</span>
+                    <span class="mini-pill">先看草稿</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div class="card-grid halves">
+              <article class="assignment-card">
+                <p class="card-label">Rules</p>
+                <h3>哪些动作强制审批</h3>
+                <ul class="agent-list compact-list">
+                  <li>对外发送邮件或客户消息</li>
+                  <li>暂停/开启广告或变更预算</li>
+                  <li>修改知识库正式版本</li>
+                  <li>直接写入 CRM 或订单系统</li>
+                </ul>
+              </article>
+              <article class="assignment-card">
+                <p class="card-label">Audit Trail</p>
+                <h3>审批记录与留痕</h3>
+                <ul class="agent-list compact-list">
+                  <li>谁发起</li>
+                  <li>谁批准 / 驳回</li>
+                  <li>什么时间执行</li>
+                  <li>最终结果与回滚记录</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
