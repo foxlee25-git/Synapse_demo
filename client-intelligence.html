@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Client Intelligence | 客户理解详情</title>
+    <title>Synapse Client Intelligence</title>
     <meta
       name="description"
-      content="Synapse 客户理解页，展示客户画像、问题地图、机会点、已派出的 Agent 和执行状态。"
+      content="Client intelligence demo for Synapse covering health, risk, opportunity, and recommended agent dispatch."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,77 +24,115 @@
           <div class="brand-mark">S</div>
           <div>
             <p class="brand-name">Synapse</p>
-            <p class="brand-tag">客户理解详情</p>
+            <p class="brand-tag">Client Intelligence</p>
           </div>
         </a>
         <nav class="site-nav">
-          <a href="app.html">产品总览</a>
+          <a href="index.html">Showcase</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="app.html">Workspace</a>
+          <a href="demo.html">Demo Flow</a>
           <a href="data-intake.html">Data Intake</a>
-          <a href="knowledge-feed.html">Knowledge Feed</a>
+          <a href="knowledge-feed.html">Knowledge</a>
           <a href="client-intelligence.html" aria-current="page">Client</a>
           <a href="task-center.html">Tasks</a>
           <a href="approval-center.html">Approvals</a>
           <a href="settings.html">Settings</a>
         </nav>
         <div class="header-actions">
-          <a class="button button-secondary" href="contact.html">预约演示</a>
+          <a class="button button-secondary" href="task-center.html">Open Task Center</a>
         </div>
       </header>
 
       <main class="app-main">
-        <section class="page-hero app-subhero">
+        <section class="page-hero">
           <p class="eyebrow">Client Intelligence</p>
-          <h1>系统先把客户当前情况讲清楚，再决定派谁去干活。</h1>
-          <p class="lead">这一页是 AI 对单个客户/企业的理解中枢：状态、问题、风险、机会、建议派单与最近进展都汇总在一起。</p>
+          <h1>Understand the client before dispatching work.</h1>
+          <p class="lead" data-client-field="heroLead">
+            AI builds a client intelligence layer first: state, problems, opportunities, and suggested agent actions.
+          </p>
+          <div class="hero-actions">
+            <div class="segmented-control">
+              <button class="segment-button is-active" data-client-scenario="retail" type="button">Retail</button>
+              <button class="segment-button" data-client-scenario="agency" type="button">Agency</button>
+            </div>
+            <button class="button button-secondary interactive-chip" type="button" data-client-action="refresh">Refresh context</button>
+            <button class="button button-primary interactive-chip" type="button" data-client-action="dispatch">Dispatch agents</button>
+          </div>
         </section>
 
         <section class="section-block">
-          <div class="client-shell" data-reveal>
-            <article class="workspace-card wide-panel">
-              <div class="workspace-card-head">
-                <div>
-                  <p class="card-label">Client Snapshot</p>
-                  <h3>Retail Growth Co.</h3>
-                </div>
-                <span class="status-badge live">Health 74 / 100</span>
+          <article class="workspace-card wide-panel" data-reveal>
+            <div class="workspace-card-head">
+              <div>
+                <p class="card-label">Client Snapshot</p>
+                <h3 data-client-field="clientName">Retail Growth Co.</h3>
               </div>
-              <div class="app-kpi-grid client-kpis">
-                <article class="app-kpi-card"><span>营收趋势</span><strong>+12.4%</strong><p>高客单产品增长明显</p></article>
-                <article class="app-kpi-card"><span>广告风险</span><strong>CPA +19%</strong><p>两组广告需要检查</p></article>
-                <article class="app-kpi-card"><span>客服压力</span><strong>退款问题上升</strong><p>FAQ 老化导致重复问答</p></article>
-                <article class="app-kpi-card"><span>销售机会</span><strong>4 high-intent</strong><p>48 小时未跟进</p></article>
-              </div>
-            </article>
-
-            <div class="card-grid halves">
-              <article class="workspace-card">
-                <div class="workspace-card-head">
-                  <div>
-                    <p class="card-label">Problem Map</p>
-                    <h3>当前关键问题</h3>
-                  </div>
-                </div>
-                <ul class="brief-list">
-                  <li>增长问题：广告成本抬升但素材方向仍有潜力。</li>
-                  <li>服务问题：退款 FAQ 过旧，客服知识不一致。</li>
-                  <li>销售问题：新增高意向线索推进节奏慢。</li>
-                </ul>
+              <span class="status-badge live" data-client-field="healthBadge">Health 74 / 100</span>
+            </div>
+            <div class="app-kpi-grid client-kpis">
+              <article class="app-kpi-card">
+                <span data-client-field="kpi1Label">Revenue trend</span>
+                <strong data-client-field="kpi1Value">+12.4%</strong>
+                <p data-client-field="kpi1Note">High-ticket products are growing well.</p>
               </article>
-              <article class="workspace-card">
-                <div class="workspace-card-head">
-                  <div>
-                    <p class="card-label">Suggested Agents</p>
-                    <h3>建议派出的 Agent</h3>
-                  </div>
-                </div>
-                <ul class="brief-list">
-                  <li>Growth Agent：先处理广告异常与预算建议。</li>
-                  <li>Knowledge Agent：更新 FAQ 和 SOP 草稿。</li>
-                  <li>Sales Agent：整理沉默高意向线索并安排跟进。</li>
-                </ul>
+              <article class="app-kpi-card">
+                <span data-client-field="kpi2Label">Ad risk</span>
+                <strong data-client-field="kpi2Value">CPA +19%</strong>
+                <p data-client-field="kpi2Note">Two ad groups need review.</p>
+              </article>
+              <article class="app-kpi-card">
+                <span data-client-field="kpi3Label">Support pressure</span>
+                <strong data-client-field="kpi3Value">Refund issues up</strong>
+                <p data-client-field="kpi3Note">Old FAQ causes repeated support work.</p>
+              </article>
+              <article class="app-kpi-card accent">
+                <span data-client-field="kpi4Label">Sales upside</span>
+                <strong data-client-field="kpi4Value">4 high-intent</strong>
+                <p data-client-field="kpi4Note">No follow-up in 48 hours.</p>
               </article>
             </div>
+          </article>
+        </section>
+
+        <section class="section-block">
+          <div class="card-grid halves">
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Problem Map</p>
+              <h3>What matters most right now</h3>
+              <ul class="brief-list" data-client-list="problemList">
+                <li>Growth issue: paid media cost is climbing even though creative still has room.</li>
+                <li>Support issue: refund FAQ is outdated and inconsistent.</li>
+                <li>Sales issue: new high-intent leads are moving too slowly.</li>
+              </ul>
+            </article>
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Suggested Dispatch</p>
+              <h3>Which agents should move first</h3>
+              <ul class="brief-list" data-client-list="agentList">
+                <li>Growth Agent: diagnose ad cost spike and budget moves.</li>
+                <li>Knowledge Agent: refresh FAQ and SOP draft.</li>
+                <li>Sales Agent: rank silent leads and prepare next follow-up.</li>
+              </ul>
+            </article>
           </div>
+        </section>
+
+        <section class="section-block">
+          <article class="workspace-card wide-panel" data-reveal>
+            <div class="workspace-card-head">
+              <div>
+                <p class="card-label">Latest Update</p>
+                <h3>Current reasoning state</h3>
+              </div>
+              <span class="status-badge" data-client-field="updateStatus">Context ready</span>
+            </div>
+            <ul class="brief-list" data-client-list="updateList">
+              <li>Problem map is ready and waiting for dispatch.</li>
+              <li>Highest priorities are paid media cost and the refund FAQ gap.</li>
+              <li>If dispatched, tasks sync into chat, tasks, and approvals automatically.</li>
+            </ul>
+          </article>
         </section>
       </main>
     </div>

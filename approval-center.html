@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Approval Center | 审批中心</title>
+    <title>Synapse Approval Center</title>
     <meta
       name="description"
-      content="Synapse 审批中心页，展示 Agent 提交的待批准动作、多级审批和合规留痕。"
+      content="Approval center demo for Synapse showing review, approval, revision, and audit trails."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,86 +24,98 @@
           <div class="brand-mark">S</div>
           <div>
             <p class="brand-name">Synapse</p>
-            <p class="brand-tag">审批中心</p>
+            <p class="brand-tag">Approval Center</p>
           </div>
         </a>
         <nav class="site-nav">
-          <a href="app.html">产品总览</a>
+          <a href="index.html">Showcase</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="app.html">Workspace</a>
+          <a href="demo.html">Demo Flow</a>
           <a href="data-intake.html">Data Intake</a>
-          <a href="knowledge-feed.html">Knowledge Feed</a>
+          <a href="knowledge-feed.html">Knowledge</a>
           <a href="client-intelligence.html">Client</a>
           <a href="task-center.html">Tasks</a>
           <a href="approval-center.html" aria-current="page">Approvals</a>
           <a href="settings.html">Settings</a>
         </nav>
         <div class="header-actions">
-          <a class="button button-secondary" href="contact.html">预约演示</a>
+          <a class="button button-secondary" href="settings.html">Open Settings</a>
         </div>
       </header>
 
       <main class="app-main">
-        <section class="page-hero app-subhero">
-          <p class="eyebrow">Approval Center</p>
-          <h1>企业真正放心的前提，是 Agent 的关键动作都可见、可批、可追溯。</h1>
-          <p class="lead">这里处理发邮件、停广告、更新知识库、改 CRM、对外回复等高风险动作，保持人机协作的可控感。</p>
+        <section class="page-hero">
+          <p class="eyebrow">Approval Layer</p>
+          <h1>Keep fast execution controllable.</h1>
+          <p class="lead">
+            Synapse is designed for action, but high-risk moves stay visible, reviewable,
+            and auditable before they go live.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="settings.html">Open Settings</a>
+            <a class="button button-secondary" href="task-center.html">Back to Task Center</a>
+          </div>
         </section>
 
         <section class="section-block">
-          <div class="approval-shell" data-reveal>
-            <article class="workspace-card wide-panel">
-              <div class="workspace-card-head">
-                <div>
-                  <p class="card-label">Pending Approval</p>
-                  <h3>今天需要确认的动作</h3>
-                </div>
-                <span class="status-badge warn">2 urgent</span>
+          <article class="workspace-card wide-panel" data-reveal>
+            <div class="workspace-card-head">
+              <div>
+                <p class="card-label">Queue Status</p>
+                <h3>Approval queue</h3>
               </div>
-              <div class="approval-stack">
-                <div class="approval-row">
-                  <div>
-                    <strong>暂停 2 组低效广告</strong>
-                    <p>Growth Agent 建议暂停两组 CPA 持续升高且无新素材支撑的广告组，预计节省预算 14%。</p>
-                  </div>
-                  <div class="approval-buttons">
-                    <span class="approval-action">批准</span>
-                    <span class="mini-pill">要求修改</span>
-                  </div>
-                </div>
-                <div class="approval-row">
-                  <div>
-                    <strong>发布退款 FAQ 新版本</strong>
-                    <p>Knowledge Agent 已生成新草稿，发布后会同步到客服知识库并替换旧版本。</p>
-                  </div>
-                  <div class="approval-buttons">
-                    <span class="approval-action">批准</span>
-                    <span class="mini-pill">先看草稿</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <div class="card-grid halves">
-              <article class="assignment-card">
-                <p class="card-label">Rules</p>
-                <h3>哪些动作强制审批</h3>
-                <ul class="agent-list compact-list">
-                  <li>对外发送邮件或客户消息</li>
-                  <li>暂停/开启广告或变更预算</li>
-                  <li>修改知识库正式版本</li>
-                  <li>直接写入 CRM 或订单系统</li>
-                </ul>
-              </article>
-              <article class="assignment-card">
-                <p class="card-label">Audit Trail</p>
-                <h3>审批记录与留痕</h3>
-                <ul class="agent-list compact-list">
-                  <li>谁发起</li>
-                  <li>谁批准 / 驳回</li>
-                  <li>什么时间执行</li>
-                  <li>最终结果与回滚记录</li>
-                </ul>
-              </article>
+              <span class="status-badge warn" data-approval-field="urgentCount">2 urgent</span>
             </div>
+
+            <div class="approval-stack">
+              <div class="approval-row">
+                <div>
+                  <strong>Ad budget / pause action</strong>
+                  <p data-approval-field="approvalRowOne">Growth Agent suggests pausing two ad groups with rising CPA and weak creative support.</p>
+                </div>
+                <div class="approval-buttons">
+                  <button class="approval-action interactive-chip" type="button" data-approval-action="approve-ad">Approve</button>
+                  <button class="mini-pill interactive-chip" type="button" data-approval-action="revise-ad">Request revision</button>
+                </div>
+              </div>
+
+              <div class="approval-row">
+                <div>
+                  <strong>FAQ publish action</strong>
+                  <p data-approval-field="approvalRowTwo">Knowledge Agent prepared a new FAQ draft that will replace the old support version after review.</p>
+                </div>
+                <div class="approval-buttons">
+                  <button class="approval-action interactive-chip" type="button" data-approval-action="approve-faq">Approve</button>
+                  <button class="mini-pill interactive-chip" type="button" data-approval-action="review-faq">Review draft</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section-block">
+          <div class="card-grid halves">
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Approval Rules</p>
+              <h3>What should require review</h3>
+              <ul class="agent-list compact-list" data-approval-list="rulesList">
+                <li>External email or client communication</li>
+                <li>Budget changes and ad pauses</li>
+                <li>Publishing new FAQ or SOP content</li>
+                <li>Direct CRM or order-system writebacks</li>
+              </ul>
+            </article>
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Audit Trail</p>
+              <h3>What gets recorded</h3>
+              <ul class="agent-list compact-list" data-approval-list="auditList">
+                <li>Who requested it</li>
+                <li>Who approved or rejected it</li>
+                <li>What changed</li>
+                <li>How to roll back if needed</li>
+              </ul>
+            </article>
           </div>
         </section>
       </main>

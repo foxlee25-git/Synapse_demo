@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Knowledge Feed | 企业知识喂养</title>
+    <title>Synapse Knowledge Feed</title>
     <meta
       name="description"
-      content="Synapse 企业知识喂养页，展示 SOP、FAQ、销售话术、规则边界和企业记忆如何进入系统。"
+      content="Knowledge feed demo for Synapse covering company rules, FAQ, SOPs, drafts, and memory."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,83 +24,111 @@
           <div class="brand-mark">S</div>
           <div>
             <p class="brand-name">Synapse</p>
-            <p class="brand-tag">企业知识喂养</p>
+            <p class="brand-tag">Knowledge Feed</p>
           </div>
         </a>
         <nav class="site-nav">
-          <a href="app.html">产品总览</a>
+          <a href="index.html">Showcase</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="app.html">Workspace</a>
+          <a href="demo.html">Demo Flow</a>
           <a href="data-intake.html">Data Intake</a>
-          <a href="knowledge-feed.html" aria-current="page">Knowledge Feed</a>
+          <a href="knowledge-feed.html" aria-current="page">Knowledge</a>
           <a href="client-intelligence.html">Client</a>
           <a href="task-center.html">Tasks</a>
           <a href="approval-center.html">Approvals</a>
           <a href="settings.html">Settings</a>
         </nav>
         <div class="header-actions">
-          <a class="button button-secondary" href="contact.html">预约演示</a>
+          <a class="button button-secondary" href="settings.html">Open Settings</a>
         </div>
       </header>
 
       <main class="app-main">
-        <section class="page-hero app-subhero">
+        <section class="page-hero">
           <p class="eyebrow">Knowledge Feed</p>
-          <h1>把企业知道的事，喂成系统会记住、会遵守、会继承的上下文。</h1>
-          <p class="lead">这层不是通用知识库，而是企业自己的规则、话术、边界和经验沉淀。Agent 的风格与安全边界都从这里来。</p>
+          <h1>Feed rules, not just files.</h1>
+          <p class="lead" data-knowledge-field="heroLead">
+            This layer is where teams feed SOPs, FAQ, templates, boundaries, and verified operating memory into the system.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-secondary interactive-chip" type="button" data-knowledge-action="draft">Create draft</button>
+            <button class="button button-secondary interactive-chip" type="button" data-knowledge-action="publish">Publish</button>
+            <button class="button button-primary interactive-chip" type="button" data-knowledge-action="memory">Save to memory</button>
+            <a class="button button-secondary" href="settings.html">See Governance</a>
+          </div>
         </section>
 
         <section class="section-block">
-          <div class="knowledge-shell">
-            <article class="workspace-card wide-panel" data-reveal>
+          <div class="knowledge-grid">
+            <article class="knowledge-card" data-reveal>
               <div class="workspace-card-head">
                 <div>
                   <p class="card-label">Library</p>
-                  <h3>企业知识总库</h3>
+                  <h3>Company knowledge base</h3>
                 </div>
-                <span class="status-badge">124 docs</span>
+                <span class="status-badge" data-knowledge-field="libraryStatus">124 docs</span>
               </div>
-              <div class="knowledge-grid">
-                <div class="knowledge-card">
-                  <strong>FAQ / 客服规则</strong>
-                  <p>退款、物流、售后、发票、会员权益</p>
-                </div>
-                <div class="knowledge-card">
-                  <strong>销售 Playbook</strong>
-                  <p>客户分类、跟进节奏、禁用表达、升级条件</p>
-                </div>
-                <div class="knowledge-card">
-                  <strong>品牌内容规范</strong>
-                  <p>语气、视觉要求、不能承诺的内容、渠道差异</p>
-                </div>
-                <div class="knowledge-card">
-                  <strong>SOP / 流程制度</strong>
-                  <p>工单流转、审批流程、异常升级、日报模板</p>
-                </div>
-              </div>
+              <p data-knowledge-field="faqCard">Refund, shipping, after-sales, invoice, membership rules</p>
             </article>
-
-            <div class="card-grid halves">
-              <article class="assignment-card" data-reveal>
-                <p class="card-label">Versioning</p>
-                <h3>版本与审核</h3>
-                <ul class="agent-list compact-list">
-                  <li>文档版本历史</li>
-                  <li>谁更新了规则</li>
-                  <li>待审核草稿</li>
-                  <li>失效内容提醒</li>
-                </ul>
-              </article>
-              <article class="assignment-card" data-reveal>
-                <p class="card-label">Memory</p>
-                <h3>企业记忆沉淀</h3>
-                <ul class="agent-list compact-list">
-                  <li>哪些话术有效</li>
-                  <li>哪些动作曾被批准</li>
-                  <li>哪些客户适合老板介入</li>
-                  <li>哪些策略被标记为无效</li>
-                </ul>
-              </article>
-            </div>
+            <article class="knowledge-card" data-reveal>
+              <p class="card-label">Sales</p>
+              <h3>Talk tracks and boundaries</h3>
+              <p data-knowledge-field="salesCard">Client segmentation, follow-up timing, banned phrasing, escalation rules</p>
+            </article>
+            <article class="knowledge-card" data-reveal>
+              <p class="card-label">Brand</p>
+              <h3>Brand and policy rules</h3>
+              <p data-knowledge-field="brandCard">Tone, style, promises you cannot make, and channel-specific rules</p>
+            </article>
+            <article class="knowledge-card" data-reveal>
+              <p class="card-label">Ops</p>
+              <h3>SOP and workflow logic</h3>
+              <p data-knowledge-field="sopCard">Ticket flow, approvals, escalations, and reporting templates</p>
+            </article>
           </div>
+        </section>
+
+        <section class="section-block">
+          <div class="card-grid halves">
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Versioning</p>
+              <h3>What changed in the library</h3>
+              <ul class="agent-list compact-list" data-knowledge-list="versionList">
+                <li>Version history</li>
+                <li>Who changed the rule</li>
+                <li>Pending review drafts</li>
+                <li>Expired content alerts</li>
+              </ul>
+            </article>
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Memory</p>
+              <h3>What the company has learned</h3>
+              <ul class="agent-list compact-list" data-knowledge-list="memoryList">
+                <li>Which talk tracks work</li>
+                <li>Which actions were approved</li>
+                <li>Which clients need owner involvement</li>
+                <li>Which strategies were marked ineffective</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <article class="workspace-card wide-panel" data-reveal>
+            <div class="workspace-card-head">
+              <div>
+                <p class="card-label">Timeline</p>
+                <h3>Knowledge state</h3>
+              </div>
+              <span class="status-badge" data-knowledge-field="timelineStatus">Stable</span>
+            </div>
+            <ul class="brief-list" data-knowledge-list="timelineList">
+              <li>The current library covers FAQ, sales talk tracks, brand rules, and SOPs.</li>
+              <li>Approved actions and effective strategies are added into company memory.</li>
+              <li>New rules automatically flow into agent behavior after publish.</li>
+            </ul>
+          </article>
         </section>
       </main>
     </div>

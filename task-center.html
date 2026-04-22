@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Task Center | 任务中心</title>
+    <title>Synapse Task Center</title>
     <meta
       name="description"
-      content="Synapse 任务中心页，展示人机混合任务、Agent 任务状态、优先级和任务流转。"
+      content="Task center demo for Synapse covering queued, running, waiting approval, and completed execution."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,92 +24,101 @@
           <div class="brand-mark">S</div>
           <div>
             <p class="brand-name">Synapse</p>
-            <p class="brand-tag">任务中心</p>
+            <p class="brand-tag">Task Center</p>
           </div>
         </a>
         <nav class="site-nav">
-          <a href="app.html">产品总览</a>
+          <a href="index.html">Showcase</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="app.html">Workspace</a>
+          <a href="demo.html">Demo Flow</a>
           <a href="data-intake.html">Data Intake</a>
-          <a href="knowledge-feed.html">Knowledge Feed</a>
+          <a href="knowledge-feed.html">Knowledge</a>
           <a href="client-intelligence.html">Client</a>
           <a href="task-center.html" aria-current="page">Tasks</a>
           <a href="approval-center.html">Approvals</a>
           <a href="settings.html">Settings</a>
         </nav>
         <div class="header-actions">
-          <a class="button button-secondary" href="contact.html">预约演示</a>
+          <a class="button button-secondary" href="approval-center.html">Review Approvals</a>
         </div>
       </header>
 
       <main class="app-main">
-        <section class="page-hero app-subhero">
+        <section class="page-hero">
           <p class="eyebrow">Task Center</p>
-          <h1>聊天里分出去的工作，最后都要回到任务系统里被管理。</h1>
-          <p class="lead">这里汇总人做的任务、Agent 做的任务、需要审批的任务和失败重试任务，让执行不是只停留在对话里。</p>
+          <h1>Track work across humans, agents, and approvals.</h1>
+          <p class="lead" data-task-field="heroLead">
+            This board shows how chat requests become executable tasks and flow through the system.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-secondary interactive-chip" type="button" data-task-action="dispatch">Create agent task</button>
+            <button class="button button-secondary interactive-chip" type="button" data-task-action="progress">Move task forward</button>
+            <button class="button button-primary interactive-chip" type="button" data-task-action="complete">Complete one task</button>
+            <a class="button button-secondary" href="approval-center.html">Open Approval Center</a>
+          </div>
         </section>
 
         <section class="section-block">
-          <div class="task-board" data-reveal>
-            <article class="board-column">
+          <div class="task-board">
+            <article class="board-column" data-reveal>
               <div class="workspace-card-head">
-                <div><p class="card-label">Queued</p><h3>待处理</h3></div>
-                <span class="mini-pill">5</span>
+                <div>
+                  <p class="card-label">Queued</p>
+                  <h3>Waiting to run</h3>
+                </div>
+                <span class="mini-pill" data-task-field="queuedCount">2</span>
               </div>
-              <div class="task-ticket">
-                <strong>整理本周 FAQ 更新点</strong>
-                <p>Knowledge Agent · High</p>
-              </div>
-              <div class="task-ticket">
-                <strong>拉取上周广告素材表现</strong>
-                <p>Growth Agent · Medium</p>
-              </div>
+              <div data-task-slot="queued"></div>
             </article>
-
-            <article class="board-column">
+            <article class="board-column" data-reveal>
               <div class="workspace-card-head">
-                <div><p class="card-label">Running</p><h3>执行中</h3></div>
-                <span class="mini-pill live">3</span>
+                <div>
+                  <p class="card-label">Running</p>
+                  <h3>Execution in progress</h3>
+                </div>
+                <span class="mini-pill live" data-task-field="runningCount">2</span>
               </div>
-              <div class="task-ticket live-ticket">
-                <strong>高意向线索排序</strong>
-                <p>Sales Agent 正在输出老板介入建议</p>
-              </div>
-              <div class="task-ticket live-ticket">
-                <strong>广告异常分析</strong>
-                <p>Growth Agent 正在比较 Meta / Google 账户变化</p>
-              </div>
+              <div data-task-slot="running"></div>
             </article>
-
-            <article class="board-column">
+            <article class="board-column" data-reveal>
               <div class="workspace-card-head">
-                <div><p class="card-label">Waiting</p><h3>待审批</h3></div>
-                <span class="mini-pill warn">2</span>
+                <div>
+                  <p class="card-label">Waiting</p>
+                  <h3>Needs approval</h3>
+                </div>
+                <span class="mini-pill warn" data-task-field="waitingCount">2</span>
               </div>
-              <div class="task-ticket warn-ticket">
-                <strong>发布退款 FAQ 新版本</strong>
-                <p>等待运营批准</p>
-              </div>
-              <div class="task-ticket warn-ticket">
-                <strong>暂停低效广告组</strong>
-                <p>等待老板确认预算变更</p>
-              </div>
+              <div data-task-slot="waiting"></div>
             </article>
-
-            <article class="board-column">
+            <article class="board-column" data-reveal>
               <div class="workspace-card-head">
-                <div><p class="card-label">Done</p><h3>已完成</h3></div>
-                <span class="mini-pill">8</span>
+                <div>
+                  <p class="card-label">Done</p>
+                  <h3>Completed work</h3>
+                </div>
+                <span class="mini-pill" data-task-field="doneCount">2</span>
               </div>
-              <div class="task-ticket">
-                <strong>周经营简报生成</strong>
-                <p>已回写到群聊与老板工作台</p>
-              </div>
-              <div class="task-ticket">
-                <strong>客户摘要同步 CRM</strong>
-                <p>Sales Agent 已完成更新</p>
-              </div>
+              <div data-task-slot="done"></div>
             </article>
           </div>
+        </section>
+
+        <section class="section-block">
+          <article class="workspace-card wide-panel" data-reveal>
+            <div class="workspace-card-head">
+              <div>
+                <p class="card-label">Task Timeline</p>
+                <h3>How the board is changing</h3>
+              </div>
+              <span class="status-badge" data-task-field="timelineStatus">Board synced</span>
+            </div>
+            <ul class="brief-list" data-task-list="timelineList">
+              <li>Tasks created in chat sync back into the task center.</li>
+              <li>High-risk tasks are automatically routed into approvals.</li>
+              <li>Completed results sync back into workspace and client context.</li>
+            </ul>
+          </article>
         </section>
       </main>
     </div>

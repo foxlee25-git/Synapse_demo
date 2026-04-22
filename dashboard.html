@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Dashboard</title>
+    <meta
+      name="description"
+      content="Executive dashboard demo for Synapse covering client health, active agents, approvals, and execution signals."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="site-bg"></div>
+    <div class="page-shell app-page-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="brand-name">Synapse</p>
+            <p class="brand-tag">Pilot Dashboard</p>
+          </div>
+        </a>
+        <nav class="site-nav">
+          <a href="index.html">Showcase</a>
+          <a href="dashboard.html" aria-current="page">Dashboard</a>
+          <a href="app.html">Workspace</a>
+          <a href="demo.html">Demo Flow</a>
+          <a href="data-intake.html">Data Intake</a>
+          <a href="knowledge-feed.html">Knowledge</a>
+          <a href="client-intelligence.html">Client</a>
+          <a href="task-center.html">Tasks</a>
+          <a href="approval-center.html">Approvals</a>
+          <a href="settings.html">Settings</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button button-secondary" href="app.html">Open Workspace</a>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="page-hero">
+          <p class="eyebrow">Executive View</p>
+          <h1>See what the client pilot will surface first.</h1>
+          <p class="lead" data-dashboard-field="heroLead">
+            This dashboard is the top-level operating view for owners and operators. It shows health, risk, active agents, approvals, and what should happen next.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-secondary interactive-chip" type="button" data-dashboard-action="refresh">Refresh board</button>
+            <button class="button button-primary interactive-chip" type="button" data-dashboard-action="dispatch">Dispatch priority work</button>
+            <button class="button button-secondary interactive-chip" type="button" data-dashboard-action="escalate">Escalate approvals</button>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="dashboard-shell" data-reveal>
+            <aside class="workspace-card app-sidebar">
+              <div class="sidebar-block">
+                <p class="sidebar-title">Dashboard Focus</p>
+                <a class="sidebar-link active" href="#overview">Overview</a>
+                <a class="sidebar-link" href="#signals">Signals</a>
+                <a class="sidebar-link" href="#agents">Agents</a>
+                <a class="sidebar-link" href="#actions">Actions</a>
+              </div>
+              <div class="sidebar-note">
+                <p class="card-label">Live Status</p>
+                <h3 data-dashboard-field="sidebarTitle">Retail workspace</h3>
+                <p data-dashboard-field="sidebarText">The board is ready to summarize client health, priority tasks, and approval pressure.</p>
+              </div>
+              <div class="sidebar-block">
+                <p class="sidebar-title">Quick Links</p>
+                <a class="sidebar-link" href="client-intelligence.html">Open Client Intelligence</a>
+                <a class="sidebar-link" href="task-center.html">Open Task Center</a>
+                <a class="sidebar-link" href="approval-center.html">Open Approval Center</a>
+              </div>
+            </aside>
+
+            <div class="dashboard-main">
+              <article class="workspace-card" id="overview">
+                <div class="dashboard-topbar">
+                  <div>
+                    <p class="card-label">Overview</p>
+                    <h3 data-dashboard-field="boardTitle">Retail Growth Co. executive board</h3>
+                    <p class="journey-note" data-dashboard-field="boardSummary">Growth costs are rising, support friction is still high, and four high-intent leads need attention.</p>
+                  </div>
+                  <div class="dashboard-top-actions">
+                    <span class="status-badge live" data-dashboard-field="healthBadge">Health 74 / 100</span>
+                    <span class="mini-pill warn" data-dashboard-field="alertBadge">2 approvals waiting</span>
+                  </div>
+                </div>
+
+                <div class="app-kpi-grid">
+                  <article class="app-kpi-card">
+                    <span data-dashboard-field="kpi1Label">Revenue trend</span>
+                    <strong data-dashboard-field="kpi1Value">+12.4%</strong>
+                    <p data-dashboard-field="kpi1Note">Strong product mix this week.</p>
+                  </article>
+                  <article class="app-kpi-card">
+                    <span data-dashboard-field="kpi2Label">Ad pressure</span>
+                    <strong data-dashboard-field="kpi2Value">CPA +19%</strong>
+                    <p data-dashboard-field="kpi2Note">Two ad groups need review.</p>
+                  </article>
+                  <article class="app-kpi-card">
+                    <span data-dashboard-field="kpi3Label">Support load</span>
+                    <strong data-dashboard-field="kpi3Value">Refund issues up</strong>
+                    <p data-dashboard-field="kpi3Note">FAQ is still outdated.</p>
+                  </article>
+                  <article class="app-kpi-card accent">
+                    <span data-dashboard-field="kpi4Label">Sales upside</span>
+                    <strong data-dashboard-field="kpi4Value">4 leads</strong>
+                    <p data-dashboard-field="kpi4Note">High-intent opportunities need follow-up.</p>
+                  </article>
+                </div>
+              </article>
+
+              <div class="workspace-grid" id="signals">
+                <article class="workspace-card">
+                  <p class="card-label">Priority Signals</p>
+                  <h3>What needs attention now</h3>
+                  <ul class="brief-list" data-dashboard-list="signalList">
+                    <li>Paid media costs are rising without clear creative rotation.</li>
+                    <li>Refund FAQ is causing repeated support work.</li>
+                    <li>Lead follow-up timing slipped across four high-intent prospects.</li>
+                  </ul>
+                </article>
+
+                <article class="workspace-card">
+                  <p class="card-label">Recommended Actions</p>
+                  <h3>What Synapse should do next</h3>
+                  <ul class="brief-list" data-dashboard-list="actionList">
+                    <li>Dispatch Growth Agent to review budget and creative fatigue.</li>
+                    <li>Dispatch Knowledge Agent to refresh FAQ and SOP draft.</li>
+                    <li>Dispatch Sales Agent to rank leads and draft next moves.</li>
+                  </ul>
+                </article>
+
+                <article class="workspace-card timeline-stream" id="agents">
+                  <div class="workspace-card-head">
+                    <div>
+                      <p class="card-label">Agent Board</p>
+                      <h3>What is already running</h3>
+                    </div>
+                    <span class="mini-pill live" data-dashboard-field="agentBadge">3 agents active</span>
+                  </div>
+                  <ul class="agent-list compact-list" data-dashboard-list="agentList">
+                    <li>Growth Agent: reviewing ad efficiency and budget shifts.</li>
+                    <li>Sales Agent: preparing next follow-up plan for high-intent leads.</li>
+                    <li>Knowledge Agent: updating refund FAQ and support playbook.</li>
+                  </ul>
+                </article>
+
+                <article class="workspace-card timeline-stream" id="actions">
+                  <div class="workspace-card-head">
+                    <div>
+                      <p class="card-label">Executive Timeline</p>
+                      <h3>What changed most recently</h3>
+                    </div>
+                    <span class="status-badge" data-dashboard-field="timelineBadge">Board synced</span>
+                  </div>
+                  <ul class="brief-list" data-dashboard-list="timelineList">
+                    <li>Client understanding was refreshed from CRM, ad, support, and SOP data.</li>
+                    <li>Three agents are ready to move with visible approval gates.</li>
+                    <li>Two high-risk actions still need approval before execution.</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

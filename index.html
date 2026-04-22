@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse | 给小企业用的 AI 平台</title>
+    <title>Synapse Showcase | Product Demo</title>
     <meta
       name="description"
-      content="Synapse 是给中小企业使用的 AI 平台，连接 CRM、表格、文档、广告和客服工具，把分析、执行、报告与增长动作真正做完。"
+      content="Synapse product showcase for data intake, client intelligence, agent dispatch, approvals, and governance."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,292 +16,177 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="app-body">
     <div class="site-bg"></div>
-    <div class="page-shell">
+    <div class="page-shell app-page-shell">
       <header class="site-header">
         <a class="brand-lockup" href="index.html">
           <div class="brand-mark">S</div>
           <div>
             <p class="brand-name">Synapse</p>
-            <p class="brand-tag">给小企业用的 AI 平台</p>
+            <p class="brand-tag">Product Showcase</p>
           </div>
         </a>
         <nav class="site-nav">
-          <a href="index.html#platform">平台</a>
-          <a href="index.html#solutions">解决方案</a>
-          <a href="app.html">产品 UI</a>
-          <a href="demo.html">Demo</a>
-          <a href="about.html">About</a>
-          <a href="faq.html">FAQ</a>
+          <a href="index.html" aria-current="page">Showcase</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="app.html">Workspace</a>
+          <a href="demo.html">Demo Flow</a>
+          <a href="data-intake.html">Data Intake</a>
+          <a href="knowledge-feed.html">Knowledge</a>
+          <a href="client-intelligence.html">Client</a>
+          <a href="task-center.html">Tasks</a>
+          <a href="approval-center.html">Approvals</a>
+          <a href="settings.html">Settings</a>
         </nav>
         <div class="header-actions">
-          <a class="lang-link" href="en.html">EN</a>
-          <a class="button button-primary" href="contact.html">预约演示</a>
+          <a class="button button-primary" href="dashboard.html">Open Pilot Dashboard</a>
         </div>
       </header>
 
-      <main>
-        <section class="hero hero-home">
-          <div class="hero-copy">
-            <p class="eyebrow">AI Execution Platform</p>
-            <h1>不是聊天框。是能把小企业工作真正做完的 AI 平台。</h1>
-            <p class="hero-text">
-              Synapse 面向门店、服务公司、代理商、电商和成长型团队。它连接你的
-              CRM、表格、文档、广告和客服工具，把周报、复盘、客户跟进、知识整理与增长动作从“建议”推进到“交付”。
+      <main class="app-main">
+        <section class="app-hero">
+          <div class="app-hero-copy">
+            <p class="eyebrow">Synapse Pilot</p>
+            <h1>What the client will actually see next week.</h1>
+            <p class="lead">
+              This version is packaged as a pilot walkthrough. It shows the
+              executive dashboard, the workspace, and the execution flow we can
+              put in front of a client next week.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="contact.html">预约演示</a>
-              <a class="button button-secondary" href="app.html">看产品 UI</a>
-              <a class="button button-secondary" href="demo.html">看业务 Demo</a>
+              <a class="button button-primary" href="dashboard.html">Open Pilot Dashboard</a>
+              <a class="button button-secondary" href="demo.html">Open Pilot Story</a>
+              <a class="button button-secondary" href="app.html">Open Workspace</a>
             </div>
-            <ul class="hero-points">
-              <li>零代码接入，老板、运营、销售都能直接上手</li>
-              <li>统一连接数据与工具，不再靠人工搬运信息</li>
-              <li>智能路由模型，让 Token 成本更可控</li>
-            </ul>
           </div>
+          <div class="app-hero-stack">
+            <article class="app-peek-card highlight-card" data-reveal>
+              <p class="card-label">Layer 01</p>
+              <h3>Start from the pilot dashboard</h3>
+              <p>Show the owner or operator what needs attention before they open any deeper module.</p>
+            </article>
+            <article class="app-peek-card" data-reveal>
+              <p class="card-label">Layer 02</p>
+              <h3>Prove the system understands the business</h3>
+              <p>Use intake and client intelligence to show why the pilot can make the right next move.</p>
+            </article>
+            <article class="app-peek-card" data-reveal>
+              <p class="card-label">Layer 03</p>
+              <h3>Show controlled execution</h3>
+              <p>Growth, sales, knowledge, and ops agents run with approvals, visibility, and policy guardrails.</p>
+            </article>
+          </div>
+        </section>
 
-          <div class="hero-panel">
-            <div class="panel-card panel-card-main">
-              <div class="panel-topline">
-                <span>Synapse OS</span>
-                <span>Business Workspace</span>
-              </div>
-              <h2>一句话发起，一整条业务流被拉通。</h2>
+        <section class="section-block">
+          <div class="demo-console" data-reveal>
+            <div class="demo-console-copy">
+              <p class="eyebrow">Pilot Map</p>
+              <h2>A clickable pilot for next week's client conversation.</h2>
               <p>
-                “把这个月销售、广告消耗、客户线索和客服问题汇总成老板能看懂的周报，并标出下周该先处理什么。”
+                Lead with the dashboard if the client wants outcomes first, or
+                use the story flow if they want to understand how the system works.
               </p>
-              <div class="task-stack">
-                <div class="task-pill">CRM synced</div>
-                <div class="task-pill">Ad account reviewed</div>
-                <div class="task-pill">Weekly brief generated</div>
-                <div class="task-pill">Actions assigned</div>
-              </div>
             </div>
-            <div class="hero-metrics">
-              <article class="metric-card">
-                <strong>30%–80%</strong>
-                <span>可优化的 Token 成本空间</span>
-              </article>
-              <article class="metric-card">
-                <strong>4 Steps</strong>
-                <span>连接、理解、执行、交付</span>
-              </article>
-              <article class="metric-card">
-                <strong>SMB-first</strong>
-                <span>按中小企业预算和流程来设计</span>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="trust-strip" data-reveal>
-          <p>适合门店、零售、电商、服务公司、代理商、小型 SaaS 与成长型团队</p>
-        </section>
-
-        <section class="section-block" id="platform">
-          <div class="section-heading">
-            <p class="eyebrow">Platform</p>
-            <h2>把碎片化工具，变成可执行的 AI 工作系统</h2>
-            <p>
-              Synapse 的核心不是多一个入口，而是把原本分散在 CRM、文档、表格、广告账户和客服系统里的信息串起来，直接交付行动结果。
-            </p>
-          </div>
-          <div class="card-grid thirds">
-            <article class="info-card" data-reveal>
-              <p class="card-label">统一入口</p>
-              <h3>连接业务工具，而不是替代业务工具</h3>
-              <p>通过 MCP 与连接层接入 CRM、ERP、表格、广告平台、知识库和客服渠道，让数据先流动起来。</p>
-            </article>
-            <article class="info-card" data-reveal>
-              <p class="card-label">执行闭环</p>
-              <h3>不只回答问题，而是产出报告、任务和动作</h3>
-              <p>从日报、周报、广告复盘到销售跟进建议、FAQ 和内部工具，Synapse 交的是结果，不是仅供参考的文本。</p>
-            </article>
-            <article class="info-card" data-reveal>
-              <p class="card-label">成本控制</p>
-              <h3>简单任务用小模型，关键推理才用大模型</h3>
-              <p>通过智能模型路由与 Token 分析，把 AI 成本从不透明开销变成可以预算、追踪、优化的经营项目。</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="section-heading compact">
-            <p class="eyebrow">How It Works</p>
-            <h2>四步把“会说”变成“会做”</h2>
-          </div>
-          <div class="step-grid">
-            <article class="step-card" data-reveal>
-              <span class="step-number">01</span>
-              <h3>连接工具</h3>
-              <p>接入 CRM、广告账户、文档、表格、订单、客服和知识库。</p>
-            </article>
-            <article class="step-card" data-reveal>
-              <span class="step-number">02</span>
-              <h3>理解业务</h3>
-              <p>把 SOP、业务目标、常见问题和历史数据变成上下文。</p>
-            </article>
-            <article class="step-card" data-reveal>
-              <span class="step-number">03</span>
-              <h3>执行任务</h3>
-              <p>分析经营状况、生成动作建议、推动销售与运营流程。</p>
-            </article>
-            <article class="step-card" data-reveal>
-              <span class="step-number">04</span>
-              <h3>交付结果</h3>
-              <p>输出周报、复盘、行动清单、知识库更新和内部工作流。</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="section-heading compact">
-            <p class="eyebrow">Deliverables</p>
-            <h2>老板和团队真正会收到的交付物</h2>
-          </div>
-          <div class="card-grid halves">
-            <article class="deliverable-card" data-reveal>
-              <h3>经营日报 / 周报</h3>
-              <p>汇总营收、毛利、线索、广告与回款，给出本周重点动作，不再手工拼 Excel 和截图。</p>
-            </article>
-            <article class="deliverable-card" data-reveal>
-              <h3>广告复盘 / 预算建议</h3>
-              <p>自动读取渠道数据，标记低效投放，生成下一轮预算与创意方向建议。</p>
-            </article>
-            <article class="deliverable-card" data-reveal>
-              <h3>客户跟进建议 / 销售任务</h3>
-              <p>基于 CRM 和沟通记录识别机会，输出优先级、提醒动作和客户摘要。</p>
-            </article>
-            <article class="deliverable-card" data-reveal>
-              <h3>知识库 / FAQ / 内部工具</h3>
-              <p>整理 SOP、订单规则、售后话术和常见问题，让新同事和客服更快进入状态。</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-block" id="solutions">
-          <div class="section-heading">
-            <p class="eyebrow">Solutions</p>
-            <h2>中小企业最先能感受到价值的典型场景</h2>
-          </div>
-          <div class="card-grid halves">
-            <article class="use-card" data-reveal>
-              <h3>门店 / 零售</h3>
-              <p>门店销售、广告、会员、库存和客服信息统一汇总，让老板每天看一份就能做判断。</p>
-            </article>
-            <article class="use-card" data-reveal>
-              <h3>服务公司</h3>
-              <p>把客户跟进、交付计划、周报、工单和回款串起来，减少老板靠群消息追进度。</p>
-            </article>
-            <article class="use-card" data-reveal>
-              <h3>代理商 / 营销团队</h3>
-              <p>批量读取客户账户数据，自动生成投放复盘、预算建议和下周行动清单。</p>
-            </article>
-            <article class="use-card" data-reveal>
-              <h3>电商 / 成长型团队</h3>
-              <p>把广告投放、订单、客服、商品反馈和内容表现做成统一增长看板与执行建议。</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="section-heading compact">
-            <p class="eyebrow">Product UI</p>
-            <h2>产品端不是又一个聊天页，而是一套给团队协作的执行工作台</h2>
-            <p>你可以继续看官网，也可以直接进入产品原型，查看工作台、Agent 控制、任务流与成本面板如何组织在一起。</p>
-          </div>
-          <div class="comparison-band" data-reveal>
-            <div>
-              <p class="eyebrow">Prototype Preview</p>
-              <h2>从老板视角看结果，从运营视角看动作，从管理员视角看成本与连接。</h2>
-            </div>
-            <div class="cta-actions">
-              <a class="button button-primary" href="app.html">打开产品原型</a>
-              <a class="button button-secondary" href="contact.html">预约演示</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="comparison-band" data-reveal>
-            <div>
-              <p class="eyebrow">Why Execution Matters</p>
-              <h2>现在的小企业缺的不是更多 AI 建议，而是能落地的 AI 执行系统。</h2>
-            </div>
-            <div class="comparison-list">
-              <div>
-                <span class="compare-label neutral">普通 AI</span>
-                <p>会总结、会写文案、会给建议，但最后还是你自己去协调数据、安排动作、做汇报。</p>
-              </div>
-              <div>
-                <span class="compare-label accent">Synapse</span>
-                <p>连工具、拉数据、做分析、生成交付、给出动作优先级，让团队真正往前推进。</p>
+            <div class="demo-console-actions">
+              <div class="demo-action-group">
+                <span class="demo-label">Recommended Flow</span>
+                <div class="upload-actions">
+                  <span class="mini-pill live">1. Dashboard</span>
+                  <span class="mini-pill live">2. Demo Flow</span>
+                  <span class="mini-pill live">3. Workspace</span>
+                  <span class="mini-pill live">4. Client</span>
+                  <span class="mini-pill live">5. Tasks</span>
+                  <span class="mini-pill live">6. Approvals</span>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         <section class="section-block">
-          <div class="section-heading">
-            <p class="eyebrow">3-Phase Agentic Model</p>
-            <h2>一条从接入到增长执行的 AI 路径</h2>
-            <p>先让企业用起来，再把成本降下来，最后把 AI 从内部提效推进到外部增长。</p>
-          </div>
-          <div class="phase-grid">
-            <article class="phase-card" data-reveal>
-              <span class="phase-number">01</span>
-              <h3>接入层</h3>
-              <p class="phase-subtitle">No-Vibe Onboarding</p>
-              <p>不要求客户懂提示词、模型或自动化。上传数据、连接工具、描述目标，Synapse 负责把知识变成可工作的智能体。</p>
+          <div class="demo-journey-grid">
+            <article class="journey-card" data-reveal>
+              <p class="card-label">Demo Runbook</p>
+              <h3>Fastest path to show the product</h3>
+              <ul class="brief-list">
+                <li>Start in Dashboard if the client wants the operator view first.</li>
+                <li>Use Demo Flow to explain how the pilot goes from data to execution.</li>
+                <li>Close on Approvals and Settings to prove rollout safety.</li>
+              </ul>
             </article>
-            <article class="phase-card" data-reveal>
-              <span class="phase-number">02</span>
-              <h3>优化层</h3>
-              <p class="phase-subtitle">Token Optimization</p>
-              <p>通过 Bitslab Anytoken 与智能路由，自动把任务分配给 SLM / LLM，让成本像水电煤一样可管理。</p>
+            <article class="journey-card" data-reveal>
+              <p class="card-label">Scenario Switching</p>
+              <h3>One demo, two business narratives</h3>
+              <ul class="brief-list">
+                <li>Retail shows owner, ecommerce, and support operations.</li>
+                <li>Agency shows portfolio risk, renewals, and client delivery.</li>
+                <li>The top demo bar keeps scenario and stage aligned across pages.</li>
+              </ul>
             </article>
-            <article class="phase-card" data-reveal>
-              <span class="phase-number">03</span>
-              <h3>执行层</h3>
-              <p class="phase-subtitle">Simulated Growth</p>
-              <p>结合 Aaru 模拟与业务执行，把通过验证的策略交给智能体去推动投放、获客和增长动作。</p>
+            <article class="journey-card" data-reveal>
+              <p class="card-label">Presenter Tip</p>
+              <h3>Reset before each walkthrough</h3>
+              <p class="journey-note">
+                Use the global <strong>Reset Demo</strong> button in the context bar
+                to return the product to the retail connect stage before a live walkthrough.
+              </p>
             </article>
           </div>
         </section>
 
         <section class="section-block">
-          <div class="cta-panel" data-reveal>
-            <div>
-              <p class="eyebrow">Book Demo</p>
-              <h2>预约一次演示，直接看 Synapse 如何接入你的小企业流程。</h2>
-              <p>我们会重点展示你关心的场景：经营周报、广告复盘、销售跟进或客服知识联动，而不是空泛讲概念。</p>
-            </div>
-            <div class="cta-actions">
-              <a class="button button-primary" href="contact.html">预约演示</a>
-              <a class="button button-secondary" href="faq.html">先看 FAQ</a>
-            </div>
+          <div class="feature-page-grid">
+            <a class="page-link-card" href="dashboard.html" data-reveal>
+              <p class="card-label">01</p>
+              <h3>Dashboard</h3>
+              <p>Lead with the owner and operator view for the pilot.</p>
+            </a>
+            <a class="page-link-card" href="demo.html" data-reveal>
+              <p class="card-label">02</p>
+              <h3>Demo Flow</h3>
+              <p>Walk through connect, understand, dispatch, and approve in one story.</p>
+            </a>
+            <a class="page-link-card" href="app.html" data-reveal>
+              <p class="card-label">03</p>
+              <h3>Workspace</h3>
+              <p>See the operating surface where client context and agent work come together.</p>
+            </a>
+            <a class="page-link-card" href="data-intake.html" data-reveal>
+              <p class="card-label">04</p>
+              <h3>Data Intake</h3>
+              <p>Upload files, connect email, CRM, and knowledge sources.</p>
+            </a>
+            <a class="page-link-card" href="knowledge-feed.html" data-reveal>
+              <p class="card-label">05</p>
+              <h3>Knowledge Feed</h3>
+              <p>Turn SOPs, FAQ, rules, and approved playbooks into company memory.</p>
+            </a>
+            <a class="page-link-card" href="client-intelligence.html" data-reveal>
+              <p class="card-label">06</p>
+              <h3>Client Intelligence</h3>
+              <p>Review health, risk, opportunity, and suggested dispatch before work starts.</p>
+            </a>
+            <a class="page-link-card" href="task-center.html" data-reveal>
+              <p class="card-label">07</p>
+              <h3>Task Center</h3>
+              <p>Track queued, running, waiting, and completed human-plus-agent work.</p>
+            </a>
+            <a class="page-link-card" href="approval-center.html" data-reveal>
+              <p class="card-label">08</p>
+              <h3>Approval Center</h3>
+              <p>Keep risky actions reviewable, auditable, and safe to adopt.</p>
+            </a>
+            <a class="page-link-card" href="settings.html" data-reveal>
+              <p class="card-label">09</p>
+              <h3>Settings</h3>
+              <p>Control roles, model routing, budget, and agent scope.</p>
+            </a>
           </div>
         </section>
       </main>
-
-      <footer class="site-footer">
-        <div>
-          <p class="brand-name">Synapse</p>
-          <p class="footer-copy">给小企业用的 AI 平台</p>
-        </div>
-        <div class="footer-links">
-          <a href="app.html">产品 UI</a>
-          <a href="about.html">About</a>
-          <a href="demo.html">Demo</a>
-          <a href="faq.html">FAQ</a>
-          <a href="contact.html">预约演示</a>
-          <a href="en.html">English</a>
-        </div>
-      </footer>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>

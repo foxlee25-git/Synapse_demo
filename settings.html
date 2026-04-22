@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Settings | 权限、连接与模型设置</title>
+    <title>Synapse Settings</title>
     <meta
       name="description"
-      content="Synapse 设置页，展示角色权限、模型路由、Token 预算、连接授权和 Agent 可访问范围。"
+      content="Settings and governance demo for Synapse covering roles, routing, budget, and agent scope."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,70 +24,101 @@
           <div class="brand-mark">S</div>
           <div>
             <p class="brand-name">Synapse</p>
-            <p class="brand-tag">设置与治理</p>
+            <p class="brand-tag">Settings & Governance</p>
           </div>
         </a>
         <nav class="site-nav">
-          <a href="app.html">产品总览</a>
+          <a href="index.html">Showcase</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="app.html">Workspace</a>
+          <a href="demo.html">Demo Flow</a>
           <a href="data-intake.html">Data Intake</a>
-          <a href="knowledge-feed.html">Knowledge Feed</a>
+          <a href="knowledge-feed.html">Knowledge</a>
           <a href="client-intelligence.html">Client</a>
           <a href="task-center.html">Tasks</a>
           <a href="approval-center.html">Approvals</a>
           <a href="settings.html" aria-current="page">Settings</a>
         </nav>
         <div class="header-actions">
-          <a class="button button-secondary" href="contact.html">预约演示</a>
+          <a class="button button-secondary" href="approval-center.html">Back to Approvals</a>
         </div>
       </header>
 
       <main class="app-main">
-        <section class="page-hero app-subhero">
-          <p class="eyebrow">Settings & Governance</p>
-          <h1>让企业知道谁能看什么、谁能做什么、AI 能动到哪里为止。</h1>
-          <p class="lead">这页把角色权限、连接授权、模型路由、Token 预算和 Agent 能访问的数据范围集中管理。</p>
+        <section class="page-hero">
+          <p class="eyebrow">Governance Layer</p>
+          <h1>Control roles, models, and budget.</h1>
+          <p class="lead" data-settings-field="heroLead">
+            This page manages permissions, integration scope, routing strategy, budget pressure, and audit posture.
+          </p>
+          <div class="hero-actions">
+            <div class="segmented-control">
+              <button class="segment-button is-active" data-settings-role="owner" type="button">Owner</button>
+              <button class="segment-button" data-settings-role="operator" type="button">Operator</button>
+              <button class="segment-button" data-settings-role="admin" type="button">Admin</button>
+            </div>
+            <button class="button button-secondary interactive-chip" type="button" data-settings-action="route">Shift routing</button>
+            <button class="button button-primary interactive-chip" type="button" data-settings-action="budget">Trigger budget alert</button>
+          </div>
         </section>
 
         <section class="section-block">
-          <div class="settings-grid" data-reveal>
-            <article class="assignment-card">
+          <div class="settings-grid">
+            <article class="workspace-card wide-panel" data-reveal>
               <p class="card-label">Roles</p>
-              <h3>角色权限</h3>
-              <ul class="agent-list compact-list">
-                <li>老板：看结果、批关键动作</li>
-                <li>运营：看任务、改知识、管审批</li>
-                <li>销售：看线索、跟进建议、客户摘要</li>
-                <li>管理员：管连接、模型、预算和审计</li>
+              <h3>Who sees and approves what</h3>
+              <ul class="agent-list compact-list" data-settings-list="rolesList">
+                <li>Owner: sees outcomes and approves high-risk actions</li>
+                <li>Operator: runs daily tasks and reviews drafts</li>
+                <li>Sales: pushes client actions and follow-up</li>
+                <li>Admin: manages systems, permissions, and policies</li>
               </ul>
             </article>
-            <article class="assignment-card">
-              <p class="card-label">Agent Scope</p>
-              <h3>Agent 可访问范围</h3>
-              <ul class="agent-list compact-list">
-                <li>Growth Agent 仅访问广告和增长数据</li>
-                <li>Sales Agent 可访问 CRM 和邮件摘要</li>
-                <li>Knowledge Agent 可访问 SOP 与 FAQ 文档</li>
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Scope</p>
+              <h3>Agent access boundaries</h3>
+              <ul class="agent-list compact-list" data-settings-list="scopeList">
+                <li>Owner sees the executive summary and approval queue.</li>
+                <li>Growth Agent can only read growth and ads data.</li>
+                <li>Sales Agent cannot change budget settings directly.</li>
               </ul>
             </article>
-            <article class="assignment-card">
-              <p class="card-label">Model Routing</p>
-              <h3>模型策略</h3>
-              <ul class="agent-list compact-list">
-                <li>摘要和分类默认 SLM</li>
-                <li>业务复盘与建议用 Hybrid</li>
-                <li>高价值推理或审批说明用 LLM</li>
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Routing</p>
+              <h3>Model strategy</h3>
+              <ul class="agent-list compact-list" data-settings-list="routingList">
+                <li>Hybrid model route for balanced cost and quality</li>
+                <li>High-value approval notes can use a stronger model</li>
+                <li>Simple summaries default to smaller models</li>
               </ul>
             </article>
-            <article class="assignment-card">
+            <article class="workspace-card wide-panel" data-reveal>
               <p class="card-label">Budget</p>
-              <h3>Token 预算与告警</h3>
-              <ul class="agent-list compact-list">
-                <li>本月预算：$420</li>
-                <li>已用：61%</li>
-                <li>超预算前发出管理员提醒</li>
+              <h3>Usage control</h3>
+              <ul class="agent-list compact-list" data-settings-list="budgetList">
+                <li>Monthly budget: $420</li>
+                <li>Used: 61%</li>
+                <li>On track this week</li>
               </ul>
             </article>
           </div>
+        </section>
+
+        <section class="section-block">
+          <article class="workspace-card wide-panel" data-reveal>
+            <div class="workspace-card-head">
+              <div>
+                <p class="card-label">Governance Timeline</p>
+                <h3>Current policy state</h3>
+              </div>
+              <span class="status-badge" data-settings-field="governanceStatus">Owner mode</span>
+            </div>
+            <ul class="brief-list" data-settings-list="timelineList">
+              <li>Default routing is balanced for cost and quality.</li>
+              <li>High-risk actions must go through approval before execution.</li>
+              <li>Owners only step in on budget, client-facing, or risk-heavy moves.</li>
+            </ul>
+          </article>
         </section>
       </main>
     </div>
