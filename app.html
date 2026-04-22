@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Workspace | Product UI</title>
+    <title>Synapse Doctor Workspace</title>
     <meta
       name="description"
-      content="Workspace view for Synapse showing client context, agent actions, and product surfaces."
+      content="Doctor workspace for the dental clinic pilot showing patient context, AI chat, draft medical records, and controlled approvals."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,7 @@
           <div class="brand-mark">S</div>
           <div>
             <p class="brand-name">Synapse</p>
-            <p class="brand-tag">Workspace UI</p>
+            <p class="brand-tag">Doctor Workspace</p>
           </div>
         </a>
         <nav class="site-nav">
@@ -34,46 +34,47 @@
           <a href="demo.html">Demo Flow</a>
           <a href="data-intake.html">Data Intake</a>
           <a href="knowledge-feed.html">Knowledge</a>
-          <a href="client-intelligence.html">Client</a>
+          <a href="client-intelligence.html">Patient</a>
           <a href="task-center.html">Tasks</a>
           <a href="approval-center.html">Approvals</a>
           <a href="settings.html">Settings</a>
         </nav>
         <div class="header-actions">
-          <a class="button button-secondary" href="demo.html">Open Demo Flow</a>
+          <a class="button button-secondary" href="dashboard.html">Open Dashboard</a>
         </div>
       </header>
 
       <main class="app-main">
         <section class="app-hero">
           <div class="app-hero-copy">
-            <p class="eyebrow">Customer-to-Agent System</p>
-            <h1>Take in data, understand the client, then dispatch work.</h1>
+            <p class="eyebrow">Dental Clinic Pilot</p>
+            <h1>Let the doctor chat with AI to read reports and finish the note faster.</h1>
             <p class="lead">
-              The workspace is not just a chat tool. It is the operating surface
-              where client context, agent activity, and approvals stay aligned.
+              This workspace is built for the doctor. The agent reads the patient chart,
+              summarizes the report, drafts the medical record, and prepares next-step
+              actions while the doctor stays in one thread.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#intake">See Client Layer</a>
-              <a class="button button-primary" href="#chat">See Group Chat</a>
+              <a class="button button-primary" href="#chat">Open Doctor Chat</a>
+              <a class="button button-secondary" href="#draft">See Draft Record</a>
               <a class="button button-secondary" href="task-center.html">Open Task Center</a>
             </div>
           </div>
           <div class="app-hero-stack">
             <article class="app-peek-card highlight-card" data-reveal>
-              <p class="card-label">Ingest</p>
-              <h3>Connect the business</h3>
-              <p>Bring CRM, campaigns, support, and docs into one operating layer.</p>
+              <p class="card-label">Step 01</p>
+              <h3>Read the patient fast</h3>
+              <p>The system pulls chart history, imaging notes, complaints, and prior treatment into one summary.</p>
             </article>
             <article class="app-peek-card" data-reveal>
-              <p class="card-label">Understand</p>
-              <h3>Build client context</h3>
-              <p>Turn raw data into a clear view of health, issues, and opportunities.</p>
+              <p class="card-label">Step 02</p>
+              <h3>Chat with the doctor agent</h3>
+              <p>The doctor asks for a report summary, note draft, or follow-up plan without leaving the workspace.</p>
             </article>
             <article class="app-peek-card" data-reveal>
-              <p class="card-label">Execute</p>
-              <h3>Wake the right agents</h3>
-              <p>Dispatch agents with context, tasks, and approval rules already attached.</p>
+              <p class="card-label">Step 03</p>
+              <h3>Confirm before writeback</h3>
+              <p>The doctor reviews the draft note and approves what should go back into the clinic system.</p>
             </article>
           </div>
         </section>
@@ -81,178 +82,132 @@
         <section class="section-block">
           <div class="demo-console" data-reveal>
             <div class="demo-console-copy">
-              <p class="eyebrow">Interactive Demo</p>
-              <h2>Drive the workspace live.</h2>
-              <p>Switch the client type and simulate intake, dispatch, and approval.</p>
+              <p class="eyebrow">Pilot Controls</p>
+              <h2>Run the doctor workflow live.</h2>
+              <p>Switch between a routine follow-up and a complex implant consult, then drive the note flow forward.</p>
             </div>
             <div class="demo-console-actions">
               <div class="demo-action-group">
-                <span class="demo-label">Scenario</span>
+                <span class="demo-label">Case Type</span>
                 <div class="segmented-control">
-                  <button class="segment-button is-active" data-scenario="retail" type="button">Retail</button>
-                  <button class="segment-button" data-scenario="agency" type="button">Agency</button>
+                  <button class="segment-button is-active" data-scenario="retail" type="button">Follow-up</button>
+                  <button class="segment-button" data-scenario="agency" type="button">Implant consult</button>
                 </div>
               </div>
               <div class="demo-action-group">
                 <span class="demo-label">Actions</span>
                 <div class="demo-button-row">
-                  <button class="button button-secondary demo-trigger" type="button" data-demo-action="connect">Simulate intake</button>
-                  <button class="button button-secondary demo-trigger" type="button" data-demo-action="dispatch">Dispatch agents</button>
-                  <button class="button button-primary demo-trigger" type="button" data-demo-action="approve">Simulate approval</button>
+                  <button class="button button-secondary demo-trigger" type="button" data-demo-action="connect">Load patient chart</button>
+                  <button class="button button-secondary demo-trigger" type="button" data-demo-action="dispatch">Draft note</button>
+                  <button class="button button-primary demo-trigger" type="button" data-demo-action="approve">Doctor sign-off</button>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="section-block" id="intake">
+        <section class="section-block" id="patient">
           <div class="section-heading">
-            <p class="eyebrow">Client Understanding Layer</p>
-            <h2>The first layer is client understanding, not the agent.</h2>
-            <p>Synapse reads the account before it starts assigning work.</p>
-          </div>
-          <div class="card-grid halves">
-            <article class="info-card" data-reveal>
-              <p class="card-label">Step 01</p>
-              <h3>Connect client data</h3>
-              <p data-demo-field="intakeStep">Connect CRM, ad, order, support, and SOP data.</p>
-            </article>
-            <article class="info-card" data-reveal>
-              <p class="card-label">Step 02</p>
-              <h3>Understand the client</h3>
-              <p data-demo-field="understandStep">Build a risk and opportunity snapshot before any action.</p>
-            </article>
-            <article class="info-card" data-reveal>
-              <p class="card-label">Step 03</p>
-              <h3>Split into agents</h3>
-              <p data-demo-field="agentSplitStep">Dispatch the right agents based on context and priority.</p>
-            </article>
-            <article class="info-card" data-reveal>
-              <p class="card-label">Step 04</p>
-              <h3>Execute with control</h3>
-              <p data-demo-field="executionStep">Analyze, schedule, draft, and execute with approvals where needed.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="section-heading compact">
-            <p class="eyebrow">Live Workspace State</p>
-            <h2>See how context moves into action.</h2>
+            <p class="eyebrow">Patient Context</p>
+            <h2>The doctor starts from one patient view.</h2>
+            <p>The pilot should reduce chart flipping and make report reading much faster.</p>
           </div>
           <div class="card-grid thirds">
             <article class="info-card" data-reveal>
-              <p class="card-label">Context</p>
-              <h3 data-demo-field="contextStatus">waiting for data sync</h3>
-              <p data-demo-field="connectedSystems">0 connected systems</p>
+              <p class="card-label">Current Patient</p>
+              <h3 data-demo-field="patientName">Lina Chen / follow-up visit</h3>
+              <p data-demo-field="patientMeta">Seen 3 times before. Root canal history on tooth 36.</p>
             </article>
             <article class="info-card" data-reveal>
-              <p class="card-label">Growth Agent</p>
-              <h3 data-demo-field="growthStatus">Ready</h3>
-              <p><span class="mini-pill" data-demo-field="growthTagPrimary">Idle</span> <span class="mini-pill" data-demo-field="growthTagSecondary">No task</span></p>
-              <p data-demo-field="growthMeta">Not running yet</p>
+              <p class="card-label">Clinical Focus</p>
+              <h3 data-demo-field="contextStatus">chart ready for review</h3>
+              <p data-demo-field="connectedSystems">EMR, imaging notes, appointment record, treatment history</p>
             </article>
             <article class="info-card" data-reveal>
-              <p class="card-label">Sales / Knowledge</p>
-              <h3 data-demo-field="salesStatus">Ready</h3>
-              <p data-demo-field="salesMeta">Waiting for dispatch</p>
-              <p data-demo-field="knowledgeStatus">No draft yet</p>
+              <p class="card-label">Report Summary</p>
+              <h3 data-demo-field="reportTitle">Periapical review</h3>
+              <p data-demo-field="reportSummary">Possible recurrent inflammation around tooth 36. Sensitivity reported on chewing.</p>
             </article>
           </div>
         </section>
 
         <section class="section-block">
-          <div class="section-heading compact">
-            <p class="eyebrow">Product Map</p>
-            <h2>Every major module is clickable.</h2>
-          </div>
-          <div class="feature-page-grid">
-            <a class="page-link-card" href="data-intake.html" data-reveal>
-              <p class="card-label">01</p>
-              <h3>Data Intake</h3>
-              <p>Upload files, connect cloud docs, email, and CRM sources.</p>
-            </a>
-            <a class="page-link-card" href="knowledge-feed.html" data-reveal>
-              <p class="card-label">02</p>
-              <h3>Knowledge Feed</h3>
-              <p>Store rules, FAQ, templates, and memory that agents should inherit.</p>
-            </a>
-            <a class="page-link-card" href="client-intelligence.html" data-reveal>
-              <p class="card-label">03</p>
-              <h3>Client Intelligence</h3>
-              <p>Review context before dispatching any work.</p>
-            </a>
-            <a class="page-link-card" href="task-center.html" data-reveal>
-              <p class="card-label">04</p>
-              <h3>Task Center</h3>
-              <p>Track execution once agents and people start moving.</p>
-            </a>
-            <a class="page-link-card" href="approval-center.html" data-reveal>
-              <p class="card-label">05</p>
-              <h3>Approval Center</h3>
-              <p>Review risky actions before they change the business.</p>
-            </a>
-            <a class="page-link-card" href="settings.html" data-reveal>
-              <p class="card-label">06</p>
-              <h3>Settings</h3>
-              <p>Control models, roles, budgets, and agent scope.</p>
-            </a>
+          <div class="card-grid halves">
+            <article class="workspace-card wide-panel" data-reveal>
+              <p class="card-label">Patient Snapshot</p>
+              <h3>What the AI already understands</h3>
+              <ul class="brief-list" data-demo-list="patientContextList">
+                <li>Chief complaint: chewing discomfort on lower left side.</li>
+                <li>History: prior root canal and crown placement on tooth 36.</li>
+                <li>Watch item: confirm whether periapical inflammation has progressed.</li>
+              </ul>
+            </article>
+            <article class="workspace-card wide-panel" data-reveal id="draft">
+              <p class="card-label">Draft Record</p>
+              <h3 data-demo-field="draftTitle">Medical record draft not started</h3>
+              <p data-demo-field="draftSummary">Load the patient chart first, then ask the doctor agent to draft the note.</p>
+              <ul class="brief-list" data-demo-list="draftChecklistList">
+                <li>Chief complaint</li>
+                <li>Exam findings</li>
+                <li>Assessment and plan</li>
+              </ul>
+            </article>
           </div>
         </section>
 
         <section class="section-block" id="chat">
           <div class="section-heading">
-            <p class="eyebrow">Group Chat + Agent Assignment</p>
-            <h2>Assign work inside the team thread.</h2>
-            <p>Agents do not live outside the team. They join the work where the team already talks.</p>
+            <p class="eyebrow">Doctor Chat + Agent</p>
+            <h2>Let the doctor finish the work inside one conversation.</h2>
+            <p>The doctor can ask for a report summary, chart review, draft note, and next-step plan without switching modules.</p>
           </div>
           <div class="chat-workspace" data-reveal>
             <div class="chat-thread-card">
               <div class="workspace-card-head">
                 <div>
-                  <p class="card-label">Team Thread</p>
-                  <h3 data-demo-field="threadTitle"># weekly-ops / operating review</h3>
+                  <p class="card-label">Doctor Thread</p>
+                  <h3 data-demo-field="threadTitle"># dr-li / patient-2026-04-22-1030</h3>
                 </div>
-                <span class="status-badge live" data-demo-field="threadStatus">3 agents active</span>
+                <span class="status-badge live" data-demo-field="threadStatus">doctor agent active</span>
               </div>
               <div class="chat-thread">
                 <div class="chat-bubble human">
-                  <div class="chat-meta"><strong data-demo-field="chatActorOne">Ops Lead</strong></div>
-                  <p data-demo-field="chatLineOne">@Growth Agent review why paid efficiency dropped this week.</p>
+                  <div class="chat-meta"><strong data-demo-field="chatActorOne">Dr. Li</strong></div>
+                  <p data-demo-field="chatLineOne">Summarize this patient's history and today's imaging note before I see her.</p>
                 </div>
                 <div class="chat-bubble agent">
-                  <div class="chat-meta"><strong data-demo-field="chatActorTwo">Growth Agent</strong></div>
-                  <p data-demo-field="chatLineTwo">I am comparing ad, order, and support context now.</p>
+                  <div class="chat-meta"><strong data-demo-field="chatActorTwo">Doctor Agent</strong></div>
+                  <p data-demo-field="chatLineTwo">I have reviewed the chart, prior treatment, and imaging note. Tooth 36 is still the main concern.</p>
                 </div>
                 <div class="chat-bubble agent">
-                  <div class="chat-meta"><strong data-demo-field="chatActorThree">Growth Agent</strong></div>
-                  <p data-demo-field="chatLineThree">I found creative fatigue and one low-efficiency ad group. Approval is recommended before pause.</p>
+                  <div class="chat-meta"><strong data-demo-field="chatActorThree">Doctor Agent</strong></div>
+                  <p data-demo-field="chatLineThree">I can now draft the medical record with chief complaint, findings, and plan in the clinic template.</p>
                 </div>
                 <div class="chat-bubble decision">
-                  <div class="chat-meta"><strong data-demo-field="chatActorFour">Approval Required</strong></div>
-                  <p data-demo-field="chatLineFour">This action needs review before execution.</p>
+                  <div class="chat-meta"><strong data-demo-field="chatActorFour">Doctor Review</strong></div>
+                  <p data-demo-field="chatLineFour">The note will wait for doctor confirmation before writeback.</p>
                 </div>
               </div>
               <div class="chat-composer">
                 <div class="composer-line">
-                  <span class="composer-tag">@Growth Agent</span>
-                  <span class="composer-tag">@Sales Agent</span>
-                  <span class="composer-tag">@Knowledge Agent</span>
+                  <span class="composer-tag">@Doctor Agent</span>
+                  <span class="composer-tag">@Record Agent</span>
+                  <span class="composer-tag">@Follow-up Agent</span>
                 </div>
                 <div class="composer-input">
-                  <span>Ask an agent to analyze, draft, or move work forward.</span>
+                  <span>Ask the agent to summarize the report, draft the note, or prepare follow-up instructions.</span>
                   <strong>Enter</strong>
                 </div>
               </div>
             </div>
             <aside class="assignment-card">
-              <p class="card-label">Approval State</p>
-              <h3 data-demo-field="approvalSecondaryStatus">Pending publish</h3>
-              <p data-demo-field="knowledgeSecondary">Review draft</p>
+              <p class="card-label">Draft Status</p>
+              <h3 data-demo-field="approvalSecondaryStatus">Pending doctor review</h3>
+              <p data-demo-field="knowledgeSecondary">Draft note is waiting for final confirmation.</p>
               <ul class="agent-list compact-list" data-demo-list="chatOutcomeList">
-                <li>Chat messages can become tasks.</li>
-                <li>Risky moves route into approvals.</li>
-                <li>Results sync back into the workspace and client view.</li>
+                <li>The chat can summarize the patient report.</li>
+                <li>The chat can produce a clinic-format medical record draft.</li>
+                <li>Only confirmed content writes back to the patient record.</li>
               </ul>
             </aside>
           </div>

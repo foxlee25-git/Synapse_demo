@@ -48,12 +48,12 @@ const PAGE_STAGE_MAP = {
 
 const scenarioMeta = {
   retail: {
-    label: "Retail",
-    summary: "store / ecommerce / small team",
+    label: "Follow-up",
+    summary: "return visit / prior treatment / note update",
   },
   agency: {
-    label: "Agency",
-    summary: "multi-client / service team",
+    label: "Implant consult",
+    summary: "complex case / imaging review / treatment planning",
   },
 };
 
@@ -66,9 +66,9 @@ const stageMeta = {
   },
   understand: {
     label: "Stage 2 / Understand",
-    summary: "Understand client",
+    summary: "Understand patient",
     href: "client-intelligence.html",
-    cta: "Open Client View",
+    cta: "Open Patient View",
   },
   dispatch: {
     label: "Stage 3 / Dispatch",
@@ -91,7 +91,7 @@ const pageLabelMeta = {
   app: { label: "Workspace", href: "app.html" },
   "data-intake": { label: "Data Intake", href: "data-intake.html" },
   "knowledge-feed": { label: "Knowledge", href: "knowledge-feed.html" },
-  "client-intelligence": { label: "Client", href: "client-intelligence.html" },
+  "client-intelligence": { label: "Patient", href: "client-intelligence.html" },
   "task-center": { label: "Tasks", href: "task-center.html" },
   "approval-center": { label: "Approvals", href: "approval-center.html" },
   settings: { label: "Settings", href: "settings.html" },
@@ -111,12 +111,12 @@ const pageGuideMeta = {
   },
   dashboard: {
     eyebrow: "Pilot Dashboard Guide",
-    title: "Lead with the executive view for the pilot.",
-    body: "This page works best when the client wants to know what their owner or operator sees every day. It summarizes health, pressure, active agents, and what the pilot should do next.",
+    title: "Lead with the clinic dashboard for the pilot.",
+    body: "This page works best when the clinic wants to know what the owner, operator, or lead doctor sees before the first patient is called in. It summarizes chart pressure, report review load, active agents, and what the pilot should do next.",
     clicks: [
-      "Use Refresh board to show the pilot starts from current business context.",
-      "Use Dispatch priority work to show the pilot can turn insight into action.",
-      "Use Escalate approvals to show risky moves stay controlled.",
+      "Use Refresh board to show the pilot starts from live patient and report data.",
+      "Use Prepare doctor work to show the pilot can summarize charts before chair time.",
+      "Use Escalate doctor review to show nothing writes back without sign-off.",
     ],
     next: { label: "Open Workspace", href: "app.html" },
   },
@@ -133,25 +133,25 @@ const pageGuideMeta = {
   },
   app: {
     eyebrow: "Workspace Guide",
-    title: "Show that the product is an operating surface, not a single chat box.",
-    body: "This page works best after Demo Flow. It proves that client understanding, group chat, agent execution, and approvals all live inside one shared workspace.",
+    title: "Show that the doctor can finish the work inside one workspace.",
+    body: "This page works best after the dashboard. It proves the doctor can ask the AI to read the patient chart, summarize the report, draft the note, and prepare follow-up actions without leaving one thread.",
     clicks: [
-      "Switch between Retail and Agency to show the same product can serve two sales stories.",
-      "Run Simulate intake, then Dispatch agents, then Simulate approval.",
-      "Scroll to the group chat to show how work gets assigned inside a real team thread.",
+      "Switch between Follow-up and Implant consult to show two common dental workflows.",
+      "Run Load patient chart, then Draft note, then Doctor sign-off.",
+      "Scroll to the doctor chat to show how the note gets completed inside one conversation.",
     ],
     next: { label: "Open Task Center", href: "task-center.html" },
   },
   "data-intake": {
     eyebrow: "Intake Guide",
-    title: "Lead with how the system learns the business.",
-    body: "This page helps answer the first trust question: what does Synapse actually read before it acts? Use it when the audience asks about uploads, email access, CRM sync, or source coverage.",
+    title: "Lead with how the system learns the clinic.",
+    body: "This page helps answer the first trust question: what exactly does Synapse read before it drafts anything for the doctor? Use it when the audience asks about EMR sync, report ingestion, image notes, or template coverage.",
     clicks: [
-      "Click Upload files to show unstructured knowledge entering the system.",
-      "Click CRM or Gmail to show live business context instead of static docs only.",
-      "Use this page before Client Intelligence if the audience needs proof of data depth.",
+      "Click Upload files to show historical reports and templates entering the system.",
+      "Click CRM or Gmail to explain the broader feed model even if the clinic starts with uploads first.",
+      "Use this page before Patient Intelligence if the audience needs proof of chart depth.",
     ],
-    next: { label: "Open Client Intelligence", href: "client-intelligence.html" },
+    next: { label: "Open Patient Intelligence", href: "client-intelligence.html" },
   },
   "knowledge-feed": {
     eyebrow: "Knowledge Guide",
@@ -165,13 +165,13 @@ const pageGuideMeta = {
     next: { label: "Open Settings", href: "settings.html" },
   },
   "client-intelligence": {
-    eyebrow: "Client Guide",
-    title: "Prove the product understands the client before dispatching work.",
-    body: "This page is the bridge between raw data and agent execution. It should answer why the system is taking action, not just what it is doing.",
+    eyebrow: "Patient Guide",
+    title: "Prove the product understands the patient before drafting the note.",
+    body: "This page is the bridge between raw reports and doctor action. It should answer why the AI is drafting a particular medical record, not just what it is doing.",
     clicks: [
-      "Switch scenarios to show the same UI can serve both retail and agency accounts.",
-      "Refresh context first, then Dispatch agents so the audience sees the sequence clearly.",
-      "Point out that risks, opportunities, and the suggested agent lineup are all visible before action.",
+      "Switch scenarios to show both a routine follow-up and a more complex consult.",
+      "Refresh context first, then Dispatch agents so the audience sees the note flow clearly.",
+      "Point out that complaint, history, report focus, and draft direction are visible before action.",
     ],
     next: { label: "Open Task Center", href: "task-center.html" },
   },
@@ -231,15 +231,15 @@ const pageJourneyMeta = {
   },
   app: {
     stage: "Workspace",
-    summary: "Prove the system can run inside a real team operating surface.",
+    summary: "Prove the doctor can read the chart, chat with AI, and finish the note in one place.",
     previous: { label: "Back to Demo Flow", href: "demo.html" },
     next: { label: "Open Data Intake", href: "data-intake.html" },
   },
   "data-intake": {
     stage: "Intake",
-    summary: "Show how business data, email, and files become usable context.",
+    summary: "Show how reports, templates, charts, and clinic documents become usable context.",
     previous: { label: "Back to Workspace", href: "app.html" },
-    next: { label: "Open Client Intelligence", href: "client-intelligence.html" },
+    next: { label: "Open Patient Intelligence", href: "client-intelligence.html" },
   },
   "knowledge-feed": {
     stage: "Knowledge",
@@ -249,14 +249,14 @@ const pageJourneyMeta = {
   },
   "client-intelligence": {
     stage: "Understanding",
-    summary: "Bridge raw inputs and agent action with a visible client reasoning layer.",
+    summary: "Bridge raw reports and doctor action with a visible patient reasoning layer.",
     previous: { label: "Back to Data Intake", href: "data-intake.html" },
     next: { label: "Open Task Center", href: "task-center.html" },
   },
   "task-center": {
     stage: "Execution",
     summary: "Show work moving through queue, live execution, approvals, and completion.",
-    previous: { label: "Back to Client View", href: "client-intelligence.html" },
+    previous: { label: "Back to Patient View", href: "client-intelligence.html" },
     next: { label: "Open Approval Center", href: "approval-center.html" },
   },
   "approval-center": {
@@ -410,8 +410,8 @@ function renderDemoContextBar() {
     </div>
     <div class="demo-context-actions">
       <div class="segmented-control demo-context-toggle">
-        <button class="segment-button" data-global-scenario="retail" type="button">Retail</button>
-        <button class="segment-button" data-global-scenario="agency" type="button">Agency</button>
+        <button class="segment-button" data-global-scenario="retail" type="button">Follow-up</button>
+        <button class="segment-button" data-global-scenario="agency" type="button">Implant consult</button>
       </div>
       <div class="demo-context-links">
         <a class="mini-pill interactive-chip" href="demo.html">Back to Demo Flow</a>
@@ -641,73 +641,105 @@ saveDemoContext();
 const workspaceScenarioContent = {
   retail: {
     fields: {
-      intakeStep: "Connect CRM, order data, ad accounts, service logs, docs, and SOPs into one workspace.",
-      understandStep: "Build a client snapshot with risks, opportunities, and top priorities before agents move.",
-      agentSplitStep: "Wake the right agents for growth, sales, and knowledge based on live client context.",
-      executionStep: "Let agents analyze, schedule, draft, and push work with approvals where needed.",
-      contextStatus: "client context synced",
-      connectedSystems: "6 connected systems",
-      growthStatus: "Running -> growth review live",
-      salesStatus: "Queued -> follow-up plan ready",
-      knowledgeStatus: "Draft ready -> waiting review",
-      growthTagPrimary: "Growth issue",
-      growthTagSecondary: "Ad cost spike",
-      growthMeta: "Live run",
-      salesMeta: "Needs owner review",
-      approvalSecondaryStatus: "Pending publish",
-      knowledgeSecondary: "Review draft",
-      threadTitle: "# weekly-ops / operating review",
-      threadStatus: "3 agents active",
-      chatActorOne: "Ops Lead",
-      chatLineOne: "@Growth Agent review why paid efficiency dropped this week.",
-      chatActorTwo: "Growth Agent",
-      chatLineTwo: "I am comparing ad, order, and support context now.",
-      chatActorThree: "Growth Agent",
-      chatLineThree: "I found creative fatigue and one low-efficiency ad group. Approval is recommended before pause.",
-      chatActorFour: "Approval Required",
-      chatLineFour: "This action needs review before execution.",
+      patientName: "Lina Chen / follow-up visit",
+      patientMeta: "Seen 3 times before. Root canal history on tooth 36.",
+      intakeStep: "Load prior chart, imaging note, treatment history, and clinic template into one view.",
+      understandStep: "Summarize complaint, prior treatment, report focus, and what the doctor should check first.",
+      agentSplitStep: "Wake the doctor agent, record agent, and follow-up agent for this patient visit.",
+      executionStep: "Summarize the report, draft the note, and prepare revisit actions with doctor sign-off.",
+      contextStatus: "patient chart synced",
+      connectedSystems: "EMR, imaging notes, appointment record, treatment history",
+      reportTitle: "Periapical review",
+      reportSummary: "Possible recurrent inflammation around tooth 36. Sensitivity reported on chewing.",
+      growthStatus: "Chart read -> summary ready",
+      salesStatus: "Draft queued -> medical record note",
+      knowledgeStatus: "Template ready -> clinic note format",
+      growthTagPrimary: "Follow-up",
+      growthTagSecondary: "Tooth 36",
+      growthMeta: "Doctor agent live",
+      salesMeta: "Waiting for doctor edit",
+      draftTitle: "Medical record draft not started",
+      draftSummary: "Load the patient chart first, then ask the doctor agent to draft the note.",
+      approvalSecondaryStatus: "Pending doctor review",
+      knowledgeSecondary: "Draft note is waiting for final confirmation.",
+      threadTitle: "# dr-li / patient-2026-04-22-1030",
+      threadStatus: "doctor agent active",
+      chatActorOne: "Dr. Li",
+      chatLineOne: "Summarize this patient's history and today's imaging note before I see her.",
+      chatActorTwo: "Doctor Agent",
+      chatLineTwo: "I have reviewed the chart, prior treatment, and imaging note. Tooth 36 is still the main concern.",
+      chatActorThree: "Doctor Agent",
+      chatLineThree: "I can now draft the medical record with chief complaint, findings, and plan in the clinic template.",
+      chatActorFour: "Doctor Review",
+      chatLineFour: "The note will wait for doctor confirmation before writeback.",
     },
     lists: {
       chatOutcomeList: [
-        "Chat messages can become tasks.",
-        "Risky moves route into approvals.",
-        "Results sync back into the workspace and client view.",
+        "The chat can summarize the patient report.",
+        "The chat can produce a clinic-format medical record draft.",
+        "Only confirmed content writes back to the patient record.",
+      ],
+      patientContextList: [
+        "Chief complaint: chewing discomfort on lower left side.",
+        "History: prior root canal and crown placement on tooth 36.",
+        "Watch item: confirm whether periapical inflammation has progressed.",
+      ],
+      draftChecklistList: [
+        "Chief complaint",
+        "Exam findings",
+        "Assessment and plan",
       ],
     },
   },
   agency: {
     fields: {
-      intakeStep: "Connect portfolio data, renewal sheets, campaign accounts, client threads, and delivery docs.",
-      understandStep: "Score at-risk accounts, renewal opportunities, and which clients need leadership attention.",
-      agentSplitStep: "Split work across growth, account, and knowledge agents for each client account.",
-      executionStep: "Generate client-ready explanations, renewal actions, and updated playbooks in parallel.",
-      contextStatus: "portfolio context synced",
-      connectedSystems: "9 connected systems",
-      growthStatus: "Running -> account risk review",
-      salesStatus: "Queued -> renewal ranking ready",
-      knowledgeStatus: "Draft ready -> template update",
-      growthTagPrimary: "Portfolio risk",
-      growthTagSecondary: "Client at risk",
-      growthMeta: "Live run",
-      salesMeta: "Needs account lead",
-      approvalSecondaryStatus: "Pending client send",
-      knowledgeSecondary: "Review template",
-      threadTitle: "# portfolio-review / client risk thread",
-      threadStatus: "3 agents active",
-      chatActorOne: "Account Director",
-      chatLineOne: "@Growth Agent explain why Alpha account got more expensive and what we should tell the client.",
-      chatActorTwo: "Growth Agent",
-      chatLineTwo: "I am comparing campaign changes, creative fatigue, and recent client notes now.",
-      chatActorThree: "Growth Agent",
-      chatLineThree: "I found audience overlap and weak creative rotation. A client-safe explanation draft is ready for review.",
-      chatActorFour: "Approval Required",
-      chatLineFour: "Client-facing language must be approved before sending.",
+      patientName: "David Wu / implant consult",
+      patientMeta: "New consult. CBCT uploaded. Bone loss and sinus proximity need review.",
+      intakeStep: "Load consult form, CBCT interpretation, prior imaging notes, and treatment planning template.",
+      understandStep: "Summarize missing teeth, implant planning risks, and what the doctor should confirm chairside.",
+      agentSplitStep: "Wake the doctor agent, record agent, and treatment-plan agent for this consult.",
+      executionStep: "Read the report, prepare a structured consult note, and draft post-visit next steps for staff.",
+      contextStatus: "consult chart synced",
+      connectedSystems: "EMR, CBCT note, consult form, treatment plan template",
+      reportTitle: "CBCT review",
+      reportSummary: "Reduced bone height in the posterior maxilla. Sinus lift may need discussion before implant planning.",
+      growthStatus: "Chart read -> consult summary ready",
+      salesStatus: "Draft queued -> consult note",
+      knowledgeStatus: "Template ready -> implant consult format",
+      growthTagPrimary: "Complex case",
+      growthTagSecondary: "CBCT review",
+      growthMeta: "Doctor agent live",
+      salesMeta: "Waiting for doctor edit",
+      draftTitle: "Consult record draft not started",
+      draftSummary: "Load the consult chart first, then ask the doctor agent to structure the record.",
+      approvalSecondaryStatus: "Pending doctor sign-off",
+      knowledgeSecondary: "Consult draft is waiting for final confirmation.",
+      threadTitle: "# dr-li / implant-consult-2026-04-22-1130",
+      threadStatus: "doctor agent active",
+      chatActorOne: "Dr. Li",
+      chatLineOne: "Read the CBCT summary and tell me the main planning risks before I start the consult.",
+      chatActorTwo: "Doctor Agent",
+      chatLineTwo: "I reviewed the CBCT note and prior intake. Bone height and sinus proximity are the main watch items.",
+      chatActorThree: "Doctor Agent",
+      chatLineThree: "I can draft the consult note with chief concern, imaging findings, assessment, and planning discussion.",
+      chatActorFour: "Doctor Review",
+      chatLineFour: "The consult note will wait for doctor confirmation before writeback.",
     },
     lists: {
       chatOutcomeList: [
-        "Client-facing drafts wait for review before send.",
-        "Renewal and delivery work can run in parallel.",
-        "Approved outputs sync back into templates and client context.",
+        "The chat can summarize the CBCT note and planning risks.",
+        "The chat can prepare a structured implant consult record.",
+        "Only confirmed content writes back to the patient chart.",
+      ],
+      patientContextList: [
+        "Chief concern: implant options for missing posterior teeth.",
+        "History: new consult with uploaded CBCT and intake form.",
+        "Watch item: review bone height and sinus risk before planning.",
+      ],
+      draftChecklistList: [
+        "Chief concern",
+        "Imaging findings",
+        "Treatment discussion and plan",
       ],
     },
   },
@@ -728,59 +760,136 @@ function renderWorkspaceDemo() {
   }
 
   if (demoRuntimeState.connected) {
-    setDemoField("contextStatus", "client context synced");
+    setDemoField(
+      "contextStatus",
+      demoRuntimeState.scenario === "retail" ? "patient chart synced" : "consult chart synced"
+    );
     if (demoRuntimeState.scenario === "retail") {
-      setDemoField("chatLineTwo", "I have connected CRM, ad, order, and support context. The retail picture is ready.");
+      setDemoField("draftTitle", "Medical record draft ready to start");
+      setDemoField(
+        "draftSummary",
+        "The chart is loaded. Ask the doctor agent to draft the note in the clinic template."
+      );
+      setDemoField(
+        "chatLineTwo",
+        "I have connected the prior chart, imaging note, and treatment history. Tooth 36 is the main issue today."
+      );
     } else {
-      setDemoField("chatLineTwo", "I have connected renewal sheets, campaign data, and client notes. The account picture is ready.");
+      setDemoField("draftTitle", "Implant consult draft ready to start");
+      setDemoField(
+        "draftSummary",
+        "The consult chart is loaded. Ask the doctor agent to prepare the consult note in clinic format."
+      );
+      setDemoField(
+        "chatLineTwo",
+        "I have connected the consult form, CBCT summary, and planning template. Bone height and sinus risk are the main issues today."
+      );
     }
   }
   if (demoRuntimeState.dispatched) {
-    setDemoField("growthStatus", "Working live -> agent dispatched");
-    setDemoField("salesStatus", "In progress -> next action drafted");
-    setDemoField("knowledgeStatus", "Waiting approval -> draft updated");
-    setDemoField("threadStatus", "3 agents running");
+    setDemoField("growthStatus", "Working live -> chart summarized");
+    setDemoField("salesStatus", "In progress -> note draft prepared");
+    setDemoField("knowledgeStatus", "Waiting approval -> clinic format ready");
+    setDemoField("threadStatus", "doctor and record agents running");
     if (demoRuntimeState.scenario === "retail") {
-      setDemoField("chatActorThree", "Sales Agent");
-      setDemoField("chatLineThree", "I ranked four high-intent leads and prepared the next follow-up plan for review.");
-      setDemoField("chatActorFour", "Knowledge Agent");
-      setDemoField("chatLineFour", "Refund FAQ draft is ready. Publish approval is recommended before it goes live.");
+      setDemoField("draftTitle", "Medical record draft in review");
+      setDemoField(
+        "draftSummary",
+        "Chief complaint, findings, assessment, and plan are drafted in the clinic template and waiting for the doctor."
+      );
+      setDemoField("chatActorThree", "Record Agent");
+      setDemoField(
+        "chatLineThree",
+        "I drafted the follow-up note with chief complaint, exam finding, assessment, and today's plan."
+      );
+      setDemoField("chatActorFour", "Follow-up Agent");
+      setDemoField(
+        "chatLineFour",
+        "Post-visit instructions and revisit reminders are ready after doctor sign-off."
+      );
       setDemoList("chatOutcomeList", [
-        "Growth review, lead follow-up, and FAQ update are now live.",
-        "Two outputs are waiting for approval before external impact.",
-        "Every action is syncing into tasks, approvals, and client view.",
+        "The report summary is now attached to the doctor thread.",
+        "The draft medical record is ready for doctor edit and sign-off.",
+        "Follow-up instructions are prepared but still locked behind doctor review.",
+      ]);
+      setDemoList("draftChecklistList", [
+        "Chief complaint completed",
+        "Exam findings completed",
+        "Assessment and plan waiting for sign-off",
       ]);
     } else {
-      setDemoField("chatActorThree", "Sales Agent");
-      setDemoField("chatLineThree", "I ranked renewal risk and prepared leadership follow-up suggestions for Alpha account.");
-      setDemoField("chatActorFour", "Knowledge Agent");
-      setDemoField("chatLineFour", "The client explanation template was updated and is waiting for final review.");
+      setDemoField("draftTitle", "Implant consult draft in review");
+      setDemoField(
+        "draftSummary",
+        "Imaging findings, planning risks, and treatment discussion are drafted in the consult format and waiting for the doctor."
+      );
+      setDemoField("chatActorThree", "Record Agent");
+      setDemoField(
+        "chatLineThree",
+        "I drafted the consult record with imaging findings, planning risks, and treatment discussion."
+      );
+      setDemoField("chatActorFour", "Follow-up Agent");
+      setDemoField(
+        "chatLineFour",
+        "The consult summary and next-step checklist are ready after doctor confirmation."
+      );
       setDemoList("chatOutcomeList", [
-        "Account review, renewal ranking, and template update are now live.",
-        "Client-facing language is still protected by approval.",
-        "Approved changes will sync back into portfolio memory.",
+        "The CBCT summary is now attached to the doctor thread.",
+        "The consult note draft is ready for doctor review.",
+        "Next-step treatment planning instructions are prepared but not yet written back.",
+      ]);
+      setDemoList("draftChecklistList", [
+        "Chief concern completed",
+        "Imaging findings completed",
+        "Treatment discussion waiting for sign-off",
       ]);
     }
   }
   if (demoRuntimeState.approved) {
-    setDemoField("approvalSecondaryStatus", "Approved");
-    setDemoField("knowledgeSecondary", "Published");
-    setDemoField("threadStatus", "Approved and synced");
+    setDemoField("approvalSecondaryStatus", "Doctor signed");
+    setDemoField("knowledgeSecondary", "Record written back");
+    setDemoField("threadStatus", "doctor confirmed and synced");
     if (demoRuntimeState.scenario === "retail") {
-      setDemoField("chatActorFour", "Approval Completed");
-      setDemoField("chatLineFour", "The FAQ and growth actions were approved. Tasks are syncing back into the workspace.");
+      setDemoField("draftTitle", "Medical record signed");
+      setDemoField(
+        "draftSummary",
+        "The doctor signed the record. The chart, follow-up task, and revisit reminder are now synced."
+      );
+      setDemoField("chatActorFour", "Doctor Sign-off");
+      setDemoField(
+        "chatLineFour",
+        "The signed note was written back to the patient chart and the follow-up instructions are now ready."
+      );
       setDemoList("chatOutcomeList", [
-        "High-risk actions were approved with a clear audit trail.",
-        "The new FAQ is now published and available to the team.",
-        "The workspace, client page, and task board now show the updated state.",
+        "The signed medical record is back in the patient chart.",
+        "Revisit and patient communication tasks are now ready for staff.",
+        "The workspace, patient page, and task board now show the updated clinic state.",
+      ]);
+      setDemoList("draftChecklistList", [
+        "Chief complaint signed",
+        "Exam findings signed",
+        "Assessment and plan signed",
       ]);
     } else {
-      setDemoField("chatActorFour", "Approval Completed");
-      setDemoField("chatLineFour", "The client-safe explanation and template update were approved and synced to the account workspace.");
+      setDemoField("draftTitle", "Consult record signed");
+      setDemoField(
+        "draftSummary",
+        "The doctor signed the consult record. The chart, treatment plan note, and next-step instructions are now synced."
+      );
+      setDemoField("chatActorFour", "Doctor Sign-off");
+      setDemoField(
+        "chatLineFour",
+        "The signed consult note was written back and the treatment planning checklist is now ready for staff."
+      );
       setDemoList("chatOutcomeList", [
-        "Client-facing output was approved before send.",
-        "The updated template is now stored in company knowledge.",
-        "Portfolio context, approvals, and next actions are now aligned.",
+        "The signed consult record is back in the patient chart.",
+        "The treatment plan summary is now ready for staff follow-up.",
+        "The workspace, patient page, and task board now show the updated clinic state.",
+      ]);
+      setDemoList("draftChecklistList", [
+        "Chief concern signed",
+        "Imaging findings signed",
+        "Treatment discussion and plan signed",
       ]);
     }
   }
@@ -794,7 +903,7 @@ function renderWorkspaceDemo() {
 
   document.querySelectorAll('[data-demo-action="approve"]').forEach((button) => {
     button.disabled = demoRuntimeState.approved;
-    button.textContent = demoRuntimeState.approved ? "Approved" : "Simulate approval";
+    button.textContent = demoRuntimeState.approved ? "Doctor signed" : "Doctor sign-off";
   });
 }
 
@@ -1588,94 +1697,94 @@ const taskBoardState = {
 const dashboardScenarios = {
   retail: {
     heroLead:
-      "This pilot dashboard gives the owner and operator one place to see health, active agents, approvals, and what should happen this week.",
-    sidebarTitle: "Retail pilot workspace",
+      "This pilot dashboard gives the clinic owner and operator one place to see today's patients, draft-note pressure, report review load, and what should happen next.",
+    sidebarTitle: "Follow-up clinic day",
     sidebarText:
-      "Week one should focus on ad efficiency, refund FAQ cleanup, and high-intent lead follow-up.",
-    boardTitle: "Retail Growth Co. pilot dashboard",
+      "Week one should focus on faster report reading, note drafting, and doctor confirmation.",
+    boardTitle: "Dr. Li / today's clinic dashboard",
     boardSummary:
-      "Growth costs are rising, support friction is still high, and four high-intent leads need attention this week.",
-    healthBadge: "Health 74 / 100",
-    alertBadge: "2 approvals waiting",
-    kpi1Label: "Revenue trend",
-    kpi1Value: "+12.4%",
-    kpi1Note: "Strong product mix this week.",
-    kpi2Label: "Ad pressure",
-    kpi2Value: "CPA +19%",
-    kpi2Note: "Two ad groups need review.",
-    kpi3Label: "Support load",
-    kpi3Value: "Refund issues up",
-    kpi3Note: "FAQ is still outdated.",
-    kpi4Label: "Sales upside",
-    kpi4Value: "4 leads",
-    kpi4Note: "High-intent opportunities need follow-up.",
+      "Three charts need review, two draft notes are waiting for sign-off, and one report needs fast interpretation before the patient enters.",
+    healthBadge: "6 patients / 2 urgent",
+    alertBadge: "2 notes waiting",
+    kpi1Label: "Patients today",
+    kpi1Value: "12 booked",
+    kpi1Note: "6 morning, 6 afternoon.",
+    kpi2Label: "Reports pending",
+    kpi2Value: "3 unread",
+    kpi2Note: "AI can summarize before consult.",
+    kpi3Label: "Draft notes",
+    kpi3Value: "2 waiting",
+    kpi3Note: "Doctor sign-off still needed.",
+    kpi4Label: "Follow-up load",
+    kpi4Value: "4 due",
+    kpi4Note: "Call-back and revisit reminders today.",
     agentBadge: "3 agents active",
     timelineBadge: "Board synced",
     signalList: [
-      "Paid media costs are rising without clear creative rotation.",
-      "Refund FAQ is causing repeated support work.",
-      "Lead follow-up timing slipped across four high-intent prospects.",
+      "Patient Lina Chen has new chewing pain around tooth 36 and needs report review before chair time.",
+      "One implant consult has CT findings that still need structured interpretation.",
+      "Two follow-up cases still do not have final signed records.",
     ],
     actionList: [
-      "Dispatch Growth Agent to review budget and creative fatigue.",
-      "Dispatch Knowledge Agent to refresh FAQ and SOP draft.",
-      "Dispatch Sales Agent to rank leads and draft next moves.",
+      "Prepare patient summaries before the doctor opens each chart.",
+      "Draft notes immediately after chairside findings are entered.",
+      "Route final note approval back to the doctor before writeback.",
     ],
     agentList: [
-      "Growth Agent: reviewing ad efficiency and budget shifts.",
-      "Sales Agent: preparing next follow-up plan for high-intent leads.",
-      "Knowledge Agent: updating refund FAQ and support playbook.",
+      "Doctor Agent: reading chart history and current complaint.",
+      "Record Agent: preparing a structured draft note in clinic format.",
+      "Follow-up Agent: preparing revisit and post-visit next steps.",
     ],
     timelineList: [
-      "Client understanding was refreshed from CRM, ad, support, and SOP data.",
-      "Three agents are ready to move with visible approval gates.",
-      "Two high-risk actions still need approval before execution.",
+      "Today's patient list, prior records, and imaging notes were refreshed from the clinic system.",
+      "Three patient charts are ready for AI summary before doctor review.",
+      "Two signed-note actions are still waiting for the doctor.",
     ],
   },
   agency: {
     heroLead:
-      "This pilot dashboard gives agency leadership one place to see portfolio risk, active agents, renewal pressure, and what needs approval first.",
-    sidebarTitle: "Agency pilot workspace",
+      "This pilot dashboard gives the clinic one place to see consult complexity, draft-note pressure, imaging review load, and what the doctor should review first.",
+    sidebarTitle: "Implant consult day",
     sidebarText:
-      "Week one should focus on account risk, client-safe explanations, renewal follow-up, and template cleanup.",
-    boardTitle: "Alpha Portfolio pilot dashboard",
+      "Week one should focus on CBCT interpretation, consult-note drafting, and doctor sign-off.",
+    boardTitle: "Dr. Li / implant consult dashboard",
     boardSummary:
-      "One account needs a client-safe explanation, renewal risk is rising, and delivery templates need cleanup this week.",
-    healthBadge: "Health 81 / 100",
-    alertBadge: "2 client reviews waiting",
-    kpi1Label: "Portfolio trend",
-    kpi1Value: "2 accounts at risk",
-    kpi1Note: "Leadership attention is needed on one key client.",
-    kpi2Label: "Account pressure",
-    kpi2Value: "CPA +23%",
-    kpi2Note: "Budget changes need better explanation.",
-    kpi3Label: "Delivery load",
-    kpi3Value: "Template gaps",
-    kpi3Note: "Client review format needs updating.",
-    kpi4Label: "Renewal upside",
-    kpi4Value: "3 renewals",
-    kpi4Note: "Good candidates for leadership follow-up.",
+      "Two consults need imaging review, one implant patient needs a signed consult record, and one treatment discussion is waiting for final confirmation.",
+    healthBadge: "4 consults / 1 urgent",
+    alertBadge: "1 consult note waiting",
+    kpi1Label: "Consults today",
+    kpi1Value: "4 booked",
+    kpi1Note: "Two implant consults this afternoon.",
+    kpi2Label: "Imaging pending",
+    kpi2Value: "2 CBCT notes",
+    kpi2Note: "AI can summarize risks before chair time.",
+    kpi3Label: "Draft consults",
+    kpi3Value: "1 waiting",
+    kpi3Note: "Doctor sign-off still needed.",
+    kpi4Label: "Treatment plans",
+    kpi4Value: "3 next steps",
+    kpi4Note: "Post-visit planning needs staff handoff.",
     agentBadge: "3 agents active",
     timelineBadge: "Board synced",
     signalList: [
-      "One client account has rising cost without a clean explanation yet.",
-      "Renewal follow-up needs stronger prioritization across the portfolio.",
-      "Delivery templates are not keeping pace with account pressure.",
+      "One implant consult still needs a structured CBCT summary before the doctor enters.",
+      "One signed consult note is missing from yesterday's case.",
+      "Treatment-planning follow-up is not yet ready for staff handoff.",
     ],
     actionList: [
-      "Dispatch Growth Agent to diagnose account anomalies.",
-      "Dispatch Sales Agent to rank renewal risk and next moves.",
-      "Dispatch Knowledge Agent to update client explanation templates.",
+      "Prepare imaging summaries before the doctor opens each consult.",
+      "Draft consult notes in the clinic template after findings are entered.",
+      "Route treatment-planning approval back to the doctor before writeback.",
     ],
     agentList: [
-      "Growth Agent: reviewing account anomaly and client explanation draft.",
-      "Sales Agent: ranking renewals and leadership interventions.",
-      "Knowledge Agent: refreshing the client review and escalation template.",
+      "Doctor Agent: reviewing consult history and imaging notes.",
+      "Record Agent: preparing an implant consult draft in clinic format.",
+      "Follow-up Agent: preparing treatment-planning next steps for staff.",
     ],
     timelineList: [
-      "Portfolio context was refreshed from campaign data, renewal sheets, and client notes.",
-      "Three agents are ready to move with visible approval controls.",
-      "Two client-facing outputs still need review before send.",
+      "Today's consult list, prior records, and CBCT notes were refreshed from the clinic system.",
+      "Two consult charts are ready for AI summary before doctor review.",
+      "One signed consult-note action is still waiting for the doctor.",
     ],
   },
 };
@@ -1699,14 +1808,14 @@ function renderDashboardState() {
   });
 
   if (dashboardState.dispatched) {
-    setTextByAttr("data-dashboard-field", "agentBadge", "3 agents dispatched");
-    setTextByAttr("data-dashboard-field", "timelineBadge", "Priority work live");
+    setTextByAttr("data-dashboard-field", "agentBadge", "3 doctor agents dispatched");
+    setTextByAttr("data-dashboard-field", "timelineBadge", "Pilot work live");
     setListByAttr("data-dashboard-list", "timelineList", [
-      "Priority work was dispatched directly from the executive board.",
-      "Agent execution is now syncing into workspace, tasks, and approvals.",
+      "Priority clinic work was dispatched directly from the dashboard.",
+      "AI preparation is now syncing into workspace, tasks, and approvals.",
       dashboardState.scenario === "retail"
-        ? "The pilot is now focused on growth review, FAQ refresh, and lead follow-up."
-        : "The pilot is now focused on anomaly review, renewal ranking, and template refresh.",
+        ? "The pilot is now focused on chart summary, note drafting, and follow-up instructions."
+        : "The pilot is now focused on CBCT summary, consult-note drafting, and treatment-plan handoff.",
     ]);
   }
 
@@ -1714,14 +1823,14 @@ function renderDashboardState() {
     setTextByAttr(
       "data-dashboard-field",
       "alertBadge",
-      dashboardState.scenario === "retail" ? "Owner review requested" : "Client review requested"
+      "Doctor review requested"
     );
     setTextByAttr("data-dashboard-field", "timelineBadge", "Escalated");
     setListByAttr("data-dashboard-list", "timelineList", [
       dashboardState.scenario === "retail"
-        ? "Two high-risk actions were escalated to the owner for approval."
-        : "Two client-facing actions were escalated for leadership review.",
-      "Nothing will publish or send until approvals are complete.",
+        ? "Two draft-note actions were escalated to the doctor for sign-off."
+        : "One consult-note action was escalated to the doctor for sign-off.",
+      "Nothing writes back into the chart until the doctor confirms it.",
       "The board, task center, and approval center stay aligned.",
     ]);
   }

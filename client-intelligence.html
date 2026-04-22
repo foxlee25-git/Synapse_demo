@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Client Intelligence</title>
+    <title>Synapse Patient Intelligence</title>
     <meta
       name="description"
-      content="Client intelligence demo for Synapse covering health, risk, opportunity, and recommended agent dispatch."
+      content="Patient intelligence demo for Synapse covering chart history, report focus, clinical risk, and recommended AI drafting."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,7 @@
           <div class="brand-mark">S</div>
           <div>
             <p class="brand-name">Synapse</p>
-            <p class="brand-tag">Client Intelligence</p>
+            <p class="brand-tag">Patient Intelligence</p>
           </div>
         </a>
         <nav class="site-nav">
@@ -34,7 +34,7 @@
           <a href="demo.html">Demo Flow</a>
           <a href="data-intake.html">Data Intake</a>
           <a href="knowledge-feed.html">Knowledge</a>
-          <a href="client-intelligence.html" aria-current="page">Client</a>
+          <a href="client-intelligence.html" aria-current="page">Patient</a>
           <a href="task-center.html">Tasks</a>
           <a href="approval-center.html">Approvals</a>
           <a href="settings.html">Settings</a>
@@ -46,15 +46,15 @@
 
       <main class="app-main">
         <section class="page-hero">
-          <p class="eyebrow">Client Intelligence</p>
-          <h1>Understand the client before dispatching work.</h1>
+          <p class="eyebrow">Patient Intelligence</p>
+          <h1>Understand the patient before drafting the record.</h1>
           <p class="lead" data-client-field="heroLead">
-            AI builds a client intelligence layer first: state, problems, opportunities, and suggested agent actions.
+            AI builds a patient intelligence layer first: history, report focus, risk, and the right draft direction before any note is written.
           </p>
           <div class="hero-actions">
             <div class="segmented-control">
-              <button class="segment-button is-active" data-client-scenario="retail" type="button">Retail</button>
-              <button class="segment-button" data-client-scenario="agency" type="button">Agency</button>
+              <button class="segment-button is-active" data-client-scenario="retail" type="button">Follow-up</button>
+              <button class="segment-button" data-client-scenario="agency" type="button">Implant consult</button>
             </div>
             <button class="button button-secondary interactive-chip" type="button" data-client-action="refresh">Refresh context</button>
             <button class="button button-primary interactive-chip" type="button" data-client-action="dispatch">Dispatch agents</button>
@@ -65,8 +65,8 @@
           <article class="workspace-card wide-panel" data-reveal>
             <div class="workspace-card-head">
               <div>
-                <p class="card-label">Client Snapshot</p>
-                <h3 data-client-field="clientName">Retail Growth Co.</h3>
+                <p class="card-label">Patient Snapshot</p>
+                <h3 data-client-field="clientName">Lina Chen / follow-up visit</h3>
               </div>
               <span class="status-badge live" data-client-field="healthBadge">Health 74 / 100</span>
             </div>
