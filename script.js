@@ -20,6 +20,7 @@ if ("IntersectionObserver" in window && revealTargets.length > 0) {
 
 const DEMO_CONTEXT_KEY = "synapse-demo-context";
 const DEMO_VISITED_KEY = "synapse-demo-visited-pages";
+const DEMO_LOCALE_KEY = "synapse-demo-locale";
 const JOURNEY_ORDER = ["connect", "understand", "dispatch", "approve"];
 const DEMO_PAGE_ORDER = [
   "index",
@@ -45,6 +46,577 @@ const PAGE_STAGE_MAP = {
   "approval-center": "approve",
   settings: "approve",
 };
+
+const SUPPORTED_LOCALES = ["en", "zh"];
+
+const zhTextMap = {
+  "Showcase": "展示",
+  "Dashboard": "总览",
+  "Workspace": "工作台",
+  "Demo Flow": "演示流程",
+  "Data Intake": "数据接入",
+  "Knowledge": "知识库",
+  "Patient": "病人",
+  "Tasks": "任务",
+  "Approvals": "审批",
+  "Settings": "设置",
+  "Dental Clinic Pilot": "牙科诊所试点版",
+  "Dental Pilot Dashboard": "牙科试点总览",
+  "Doctor Workspace": "医生工作台",
+  "Open Dashboard": "打开总览",
+  "Open Doctor Workspace": "打开医生工作台",
+  "Open Workspace": "打开工作台",
+  "Open Pilot Dashboard": "打开试点总览",
+  "Open Pilot Story": "打开试点演示",
+  "Open Demo Flow": "打开演示流程",
+  "Open Task Center": "打开任务中心",
+  "Open Approval Center": "打开审批中心",
+  "Open Patient View": "打开病人视图",
+  "Open Patient Intelligence": "打开病人智能",
+  "Open Approvals": "打开审批",
+  "Back to Demo Flow": "返回演示流程",
+  "Back to Showcase": "返回展示页",
+  "Back to Data Intake": "返回数据接入",
+  "Back to Workspace": "返回工作台",
+  "Back to Patient View": "返回病人视图",
+  "Back to Tasks": "返回任务",
+  "Back to Approvals": "返回审批",
+  "Review Approvals": "查看审批",
+  "See Governance": "查看治理",
+  "Open Settings": "打开设置",
+  "Reset Demo": "重置演示",
+  "Back to Demo Flow": "返回演示流程",
+  "Live Demo Context": "实时演示上下文",
+  "Current page:": "当前页面：",
+  "Dental Demo": "牙科演示",
+  "From one patient question to a signed note.": "从一个病人问题到一份已签名病历。",
+  "What the client will actually see next week.": "客户下周实际会看到的内容。",
+  "This version is packaged as a pilot walkthrough. It shows the executive dashboard, the workspace, and the execution flow we can put in front of a client next week.": "这一版被打包成试点演示。它展示了总览看板、医生工作台，以及下周可以直接给客户看的执行流程。",
+  "Synapse Pilot": "Synapse 试点版",
+  "Pilot Map": "试点地图",
+  "A clickable pilot for next week's client conversation.": "一个可以直接用于下周客户沟通的可点击试点版本。",
+  "Recommended Flow": "推荐路径",
+  "Demo Runbook": "演示脚本",
+  "Fastest path to show the product": "最快讲清产品的路径",
+  "Scenario Switching": "场景切换",
+  "One demo, two business narratives": "一套演示，两种业务叙事",
+  "Presenter Tip": "演示提示",
+  "Reset before each walkthrough": "每次演示前先重置",
+  "Dashboard": "总览",
+  "Lead with the owner and operator view for the pilot.": "先从老板和运营视角的试点总览开始。",
+  "Follow-up": "复诊随访",
+  "Implant consult": "种植咨询",
+  "Owner + Operator View": "老板与运营视图",
+  "See what the client pilot will surface first.": "先看到客户试点最先呈现的内容。",
+  "Refresh board": "刷新看板",
+  "Prepare doctor work": "准备医生工作",
+  "Escalate doctor review": "升级医生审核",
+  "Pilot Controls": "试点控制",
+  "Run the doctor workflow live.": "现场演示医生工作流。",
+  "Case Type": "病例类型",
+  "Load patient chart": "加载病人档案",
+  "Draft note": "起草病历",
+  "Doctor sign-off": "医生签字确认",
+  "Dental Clinic Pilot": "牙科诊所试点",
+  "Let the doctor chat with AI to read reports and finish the note faster.": "让医生通过和 AI 对话更快读报告、完成病历。",
+  "Open Doctor Chat": "打开医生对话",
+  "See Draft Record": "查看病历草稿",
+  "Patient Context": "病人上下文",
+  "The doctor starts from one patient view.": "医生先从统一的病人视图开始。",
+  "Current Patient": "当前病人",
+  "Clinical Focus": "临床重点",
+  "Report Summary": "报告摘要",
+  "Patient Snapshot": "病人摘要",
+  "What the AI already understands": "AI 已经理解的内容",
+  "Draft Record": "病历草稿",
+  "Doctor Chat + Agent": "医生对话 + AI Agent",
+  "Let the doctor finish the work inside one conversation.": "让医生在一次对话里完成工作。",
+  "Doctor Thread": "医生线程",
+  "Draft Status": "草稿状态",
+  "Pending doctor review": "待医生审核",
+  "Draft note is waiting for final confirmation.": "病历草稿正在等待最终确认。",
+  "Patient Intelligence": "病人智能",
+  "Understand the patient before drafting the record.": "在起草病历前先理解病人。",
+  "Refresh context": "刷新上下文",
+  "Dispatch agents": "派出 Agent",
+  "Patient Snapshot": "病人快照",
+  "Problem Map": "问题地图",
+  "Suggested Dispatch": "建议分派",
+  "Latest Update": "最新更新",
+  "Context ready": "上下文已准备",
+  "Doctor Workspace": "医生工作台",
+  "Pilot demo for client intelligence, agents, approvals, and governance.": "面向病人理解、AI Agent、审批和治理的试点演示。",
+  "Ready for the next part of the demo?": "准备进入演示的下一部分了吗？",
+  "Demo Map": "演示地图",
+  "Track where you are in the product walkthrough.": "跟踪你当前在整套产品演示中的位置。",
+  "What to Click": "建议点击",
+  "Best Next Step": "最佳下一步",
+  "Scenario:": "场景：",
+  "Best next step:": "最佳下一步：",
+  "Pilot Guide": "试点说明",
+  "Pilot Dashboard Guide": "试点总览说明",
+  "Workspace Guide": "工作台说明",
+  "Patient Guide": "病人说明",
+  "Knowledge Guide": "知识说明",
+  "Intake Guide": "接入说明",
+  "Task Guide": "任务说明",
+  "Approval Guide": "审批说明",
+  "Governance Guide": "治理说明",
+  "Stage 1 / Connect": "阶段 1 / 接入",
+  "Stage 2 / Understand": "阶段 2 / 理解",
+  "Stage 3 / Dispatch": "阶段 3 / 执行",
+  "Stage 4 / Approve": "阶段 4 / 审批",
+  "Connect data": "接入数据",
+  "Understand patient": "理解病人",
+  "Dispatch agents": "执行工作",
+  "Approve actions": "审批动作",
+  "Showcase Step": "展示阶段",
+  "Pilot Dashboard Step": "试点总览阶段",
+  "Story Step": "故事阶段",
+  "Workspace Step": "工作台阶段",
+  "Intake Step": "接入阶段",
+  "Understanding Step": "理解阶段",
+  "Execution Step": "执行阶段",
+  "Control Step": "控制阶段",
+  "Governance Step": "治理阶段",
+  "1. Connect": "1. 接入",
+  "2. Understand": "2. 理解",
+  "3. Dispatch": "3. 执行",
+  "4. Approve": "4. 审批",
+  "Start Demo": "开始演示",
+  "Next": "下一步",
+  "Reset": "重置",
+  "Collapse details": "收起详情",
+  "Expand details": "展开详情",
+  "Business Demos": "业务演示",
+  "See Workspace": "查看工作台",
+  "Live Walkthrough": "实时演示",
+  "Stage": "阶段",
+  "Flow Control": "流程控制",
+  "Progress": "进度",
+  "Current State": "当前状态",
+  "What Happens": "系统在做什么",
+  "What You Get": "你会得到什么",
+  "Next Step": "下一步",
+  "Narration": "讲解话术",
+  "Audience": "适合谁看",
+  "Objections": "常见疑问",
+  "Close Line": "收尾一句话",
+  "Featured Case": "推荐案例",
+  "Jump to case": "跳转到案例",
+  "Proof": "可信度",
+  "Follow-up clinic day": "复诊随访日",
+  "Implant consult day": "种植咨询日",
+  "Board synced": "看板已同步",
+  "Pilot work live": "试点工作进行中",
+  "Escalated": "已升级",
+  "doctor agent active": "医生 Agent 已激活",
+  "doctor and record agents running": "医生 Agent 与病历 Agent 运行中",
+  "doctor confirmed and synced": "医生已确认并同步",
+  "Doctor Agent": "医生 Agent",
+  "Record Agent": "病历 Agent",
+  "Follow-up Agent": "随访 Agent",
+  "Doctor Review": "医生审核",
+  "Doctor Sign-off": "医生签字",
+  "Doctor signed": "医生已签字",
+  "Record written back": "病历已写回",
+  "Medical record draft not started": "病历草稿尚未开始",
+  "Medical record draft ready to start": "病历草稿可开始",
+  "Medical record draft in review": "病历草稿审核中",
+  "Medical record signed": "病历已签名",
+  "Consult record draft not started": "咨询病历草稿尚未开始",
+  "Implant consult draft ready to start": "种植咨询草稿可开始",
+  "Implant consult draft in review": "种植咨询草稿审核中",
+  "Consult record signed": "咨询病历已签名",
+  "chart ready for review": "档案已准备可供查看",
+  "patient chart synced": "病人档案已同步",
+  "consult chart synced": "咨询档案已同步",
+  "Periapical review": "根尖片复查",
+  "CBCT review": "CBCT 复查",
+  "doctor agent active": "医生 Agent 在线",
+  "Pending doctor sign-off": "待医生签字",
+  "Refresh board": "刷新看板",
+  "Prepare doctor work": "准备医生工作",
+  "Escalate doctor review": "升级医生审核",
+  "Open Patient Intelligence": "打开病人智能",
+  "Open Patient View": "打开病人视图",
+  "Current page:": "当前页面："
+};
+
+function getLocale() {
+  const urlLocale = new URLSearchParams(window.location.search).get("lang");
+  if (SUPPORTED_LOCALES.includes(urlLocale)) {
+    localStorage.setItem(DEMO_LOCALE_KEY, urlLocale);
+    return urlLocale;
+  }
+  const stored = localStorage.getItem(DEMO_LOCALE_KEY);
+  if (SUPPORTED_LOCALES.includes(stored)) return stored;
+  return "en";
+}
+
+const currentLocale = getLocale();
+document.documentElement.lang = currentLocale === "zh" ? "zh-CN" : "en";
+
+const localeTextMap =
+  currentLocale === "zh"
+    ? {
+        "Showcase": "展示",
+        "Dashboard": "总览",
+        "Workspace": "工作台",
+        "Demo Flow": "演示流程",
+        "Data Intake": "数据接入",
+        "Knowledge": "知识库",
+        "Patient": "病人",
+        "Tasks": "任务",
+        "Approvals": "审批",
+        "Settings": "设置",
+        "Dental Clinic Pilot": "牙科诊所试点",
+        "Dental Pilot Dashboard": "牙科试点总览",
+        "Doctor Workspace": "医生工作台",
+        "Open Dashboard": "打开总览",
+        "Open Doctor Workspace": "打开医生工作台",
+        "Open Workspace": "打开工作台",
+        "Open Pilot Dashboard": "打开试点总览",
+        "Open Pilot Story": "打开试点演示",
+        "Open Demo Flow": "打开演示流程",
+        "Open Task Center": "打开任务中心",
+        "Open Approval Center": "打开审批中心",
+        "Open Patient View": "打开病人视图",
+        "Open Patient Intelligence": "打开病人智能",
+        "Open Approvals": "打开审批",
+        "Open Settings": "打开设置",
+        "Back to Demo Flow": "返回演示流程",
+        "Back to Showcase": "返回展示页",
+        "Back to Data Intake": "返回数据接入",
+        "Back to Workspace": "返回工作台",
+        "Back to Patient View": "返回病人视图",
+        "Back to Tasks": "返回任务",
+        "Back to Approvals": "返回审批",
+        "Review Approvals": "查看审批",
+        "See Governance": "查看治理",
+        "Reset Demo": "重置演示",
+        "Live Demo Context": "实时演示上下文",
+        "Current page:": "当前页面：",
+        "Synapse Pilot": "Synapse 试点版",
+        "Pilot Map": "试点地图",
+        "A clickable pilot for next week's client conversation.": "一套可以直接用于下周客户沟通的可点击 pilot。",
+        "Start from the pilot dashboard": "从试点总览开始",
+        "Prove the system understands the business": "证明系统已经理解业务",
+        "Show controlled execution": "展示可控执行",
+        "Fastest path to show the product": "最快讲清产品的路径",
+        "See today's clinic pressure before the doctor opens a chart.": "在医生打开病人档案前，先看清今天诊所的工作压力。",
+        "Dashboard Focus": "总览焦点",
+        "Overview": "总览",
+        "Patient signals": "病人信号",
+        "AI preparation": "AI 准备",
+        "Timeline": "时间线",
+        "Live Status": "实时状态",
+        "Quick Links": "快捷入口",
+        "Open Doctor Approvals": "打开医生审批",
+        "Daily Overview": "今日总览",
+        "Patient Signals": "病人信号",
+        "What the clinic should look at first": "诊所现在最该先看什么",
+        "Recommended Actions": "建议动作",
+        "What the pilot should do next": "试点系统接下来该做什么",
+        "AI Preparation Board": "AI 准备看板",
+        "What the agents are already doing": "Agent 已经在做什么",
+        "Clinic Timeline": "诊所时间线",
+        "What changed most recently": "最近发生了什么变化",
+        "What the client will actually see next week.": "下周客户实际会看到什么。",
+        "Read the patient fast": "快速读懂病人",
+        "Chat with the doctor agent": "和医生 Agent 对话",
+        "Confirm before writeback": "写回前先确认",
+        "Run the doctor workflow live.": "现场演示医生工作流。",
+        "The doctor starts from one patient view.": "医生从统一病人视图开始。",
+        "What the system does in this stage": "这个阶段系统在做什么",
+        "What the team sees": "团队会看到什么",
+        "Best page to open next": "下一步最适合打开哪一页",
+        "How to talk through this stage": "这一步该怎么讲",
+        "Who cares most right now": "这一步最打动谁",
+        "Likely questions": "可能出现的问题",
+        "How to land the point": "这一段怎么收尾",
+        "Understand the patient before drafting the record.": "在起草病历前先理解病人。",
+        "What matters most right now": "当前最重要的是什么",
+        "Which agents should move first": "应该先让哪些 Agent 动起来",
+        "Current reasoning state": "当前推理状态",
+        "Recommended Flow": "推荐路径",
+        "Demo Runbook": "演示脚本",
+        "Fastest path to show the product": "最快讲清产品的路径",
+        "Scenario Switching": "场景切换",
+        "One demo, two business narratives": "一套演示，两种业务叙事",
+        "Presenter Tip": "演示提示",
+        "Reset before each walkthrough": "每次演示前先重置",
+        "What the client will actually see next week.": "下周给客户看到的就是这一版。",
+        "This version is packaged as a pilot walkthrough. It shows the executive dashboard, the workspace, and the execution flow we can put in front of a client next week.": "这一版已经被打包成可讲的 pilot 演示。它展示了管理总览、医生工作台，以及下周可以直接给客户看的执行流程。",
+        "Lead with the owner and operator view for the pilot.": "先从老板和运营视角讲试点总览。",
+        "Follow-up": "复诊随访",
+        "Implant consult": "种植咨询",
+        "Owner + Operator View": "老板与运营视角",
+        "See what the client pilot will surface first.": "先看客户试点最先呈现什么。",
+        "Refresh board": "刷新看板",
+        "Prepare doctor work": "准备医生工作",
+        "Escalate doctor review": "升级医生审核",
+        "Pilot Controls": "试点控制",
+        "Run the doctor workflow live.": "现场演示医生工作流。",
+        "Case Type": "病例类型",
+        "Load patient chart": "加载病人档案",
+        "Draft note": "起草病历",
+        "Doctor sign-off": "医生签字确认",
+        "Let the doctor chat with AI to read reports and finish the note faster.": "让医生直接和 AI 对话，更快读报告、完成病历。",
+        "Open Doctor Chat": "打开医生对话",
+        "See Draft Record": "查看病历草稿",
+        "Patient Context": "病人上下文",
+        "The doctor starts from one patient view.": "医生先从统一的病人视图开始。",
+        "Current Patient": "当前病人",
+        "Clinical Focus": "临床重点",
+        "Report Summary": "报告摘要",
+        "Patient Snapshot": "病人摘要",
+        "What the AI already understands": "AI 已经理解的内容",
+        "Draft Record": "病历草稿",
+        "Doctor Chat + Agent": "医生对话 + AI Agent",
+        "Let the doctor finish the work inside one conversation.": "让医生在一段对话里完成整项工作。",
+        "Doctor Thread": "医生线程",
+        "Draft Status": "草稿状态",
+        "Pending doctor review": "待医生审核",
+        "Draft note is waiting for final confirmation.": "病历草稿正在等待最终确认。",
+        "Patient Intelligence": "病人智能",
+        "Understand the patient before drafting the record.": "在起草病历前先理解病人。",
+        "Refresh context": "刷新上下文",
+        "Dispatch agents": "派出 Agent",
+        "Problem Map": "问题地图",
+        "Suggested Dispatch": "建议派发",
+        "Latest Update": "最新更新",
+        "Context ready": "上下文已准备",
+        "Pilot demo for client intelligence, agents, approvals, and governance.": "用于展示病人理解、AI Agent、审批和治理的试点演示。",
+        "Ready for the next part of the demo?": "准备进入演示的下一部分了吗？",
+        "Demo Map": "演示地图",
+        "Track where you are in the product walkthrough.": "跟踪你在整套产品演示中的位置。",
+        "What to Click": "建议点击",
+        "Best Next Step": "最佳下一步",
+        "Scenario:": "场景：",
+        "Best next step:": "最佳下一步：",
+        "Pilot Guide": "试点说明",
+        "Pilot Dashboard Guide": "试点总览说明",
+        "Workspace Guide": "工作台说明",
+        "Patient Guide": "病人说明",
+        "Knowledge Guide": "知识说明",
+        "Intake Guide": "接入说明",
+        "Task Guide": "任务说明",
+        "Approval Guide": "审批说明",
+        "Governance Guide": "治理说明",
+        "Stage 1 / Connect": "阶段 1 / 接入",
+        "Stage 2 / Understand": "阶段 2 / 理解",
+        "Stage 3 / Dispatch": "阶段 3 / 执行",
+        "Stage 4 / Approve": "阶段 4 / 审批",
+        "Connect data": "接入数据",
+        "Understand patient": "理解病人",
+        "Approve actions": "审批动作",
+        "Showcase Step": "展示阶段",
+        "Pilot Dashboard Step": "试点总览阶段",
+        "Story Step": "故事阶段",
+        "Workspace Step": "工作台阶段",
+        "Intake Step": "接入阶段",
+        "Understanding Step": "理解阶段",
+        "Execution Step": "执行阶段",
+        "Control Step": "控制阶段",
+        "Governance Step": "治理阶段",
+        "Start Demo": "开始演示",
+        "Next": "下一步",
+        "Reset": "重置",
+        "Collapse details": "收起详情",
+        "Expand details": "展开详情",
+        "Business Demos": "业务演示",
+        "See Workspace": "查看工作台",
+        "Live Walkthrough": "实时演示",
+        "Stage": "阶段",
+        "Flow Control": "流程控制",
+        "Progress": "进度",
+        "Current State": "当前状态",
+        "What Happens": "系统在做什么",
+        "What You Get": "你会得到什么",
+        "Next Step": "下一步",
+        "Narration": "讲解话术",
+        "Audience": "适合谁看",
+        "Objections": "常见疑问",
+        "Close Line": "收尾一句话",
+        "Featured Case": "推荐案例",
+        "Jump to case": "跳转到案例",
+        "Proof": "可信度",
+        "Follow-up clinic day": "复诊随访日",
+        "Implant consult day": "种植咨询日",
+        "Board synced": "看板已同步",
+        "Pilot work live": "试点已开始运行",
+        "Escalated": "已升级",
+        "doctor agent active": "医生 Agent 在线",
+        "doctor and record agents running": "医生与病历 Agent 运行中",
+        "doctor confirmed and synced": "医生已确认并同步",
+        "Doctor Agent": "医生 Agent",
+        "Record Agent": "病历 Agent",
+        "Follow-up Agent": "随访 Agent",
+        "Doctor Review": "医生审核",
+        "Doctor Sign-off": "医生签字",
+        "Doctor signed": "医生已签字",
+        "Record written back": "病历已写回",
+        "Medical record draft not started": "病历草稿尚未开始",
+        "Medical record draft ready to start": "病历草稿可开始",
+        "Medical record draft in review": "病历草稿审核中",
+        "Medical record signed": "病历已签字",
+        "Consult record draft not started": "咨询病历草稿尚未开始",
+        "Implant consult draft ready to start": "种植咨询草稿可开始",
+        "Implant consult draft in review": "种植咨询草稿审核中",
+        "Consult record signed": "咨询病历已签字",
+        "chart ready for review": "档案已可查看",
+        "patient chart synced": "病人档案已同步",
+        "consult chart synced": "咨询档案已同步",
+        "Periapical review": "根尖片复查",
+        "CBCT review": "CBCT 复查",
+        "Pending doctor sign-off": "待医生签字",
+        "Approved": "已批准",
+        "Published": "已发布",
+        "Approve": "批准",
+        "Request revision": "要求修改",
+        "Review draft": "查看草稿",
+      }
+    : null;
+
+const pageMetaTranslations =
+  currentLocale === "zh"
+    ? {
+        index: {
+          title: "Synapse 牙科诊所试点",
+          description: "Synapse 牙科诊所试点，用于展示医生工作台、病人智能、AI 病历起草、审批和治理。",
+        },
+        dashboard: {
+          title: "Synapse 牙科试点总览",
+          description: "牙科试点总览，用于展示今日病人、报告压力、病历草稿和医生审核状态。",
+        },
+        demo: {
+          title: "Synapse 牙科演示流程",
+          description: "展示牙科诊所如何从病人资料接入、理解，到 AI 起草病历和医生签字确认。",
+        },
+        app: {
+          title: "Synapse 医生工作台",
+          description: "牙科医生工作台，用于展示病人上下文、AI 对话、病历草稿和医生确认。",
+        },
+        "data-intake": {
+          title: "Synapse 数据接入",
+          description: "展示牙科诊所如何接入病历、检查报告、模板和业务资料。",
+        },
+        "knowledge-feed": {
+          title: "Synapse 知识喂养",
+          description: "展示诊所如何把模板、规则、SOP 和长期记忆喂给系统。",
+        },
+        "client-intelligence": {
+          title: "Synapse 病人智能",
+          description: "展示系统如何在起草病历前先理解病人、病情重点和下一步建议。",
+        },
+        "task-center": {
+          title: "Synapse 任务中心",
+          description: "展示医生与 AI Agent 之间的任务流转、跟进和完成状态。",
+        },
+        "approval-center": {
+          title: "Synapse 审批中心",
+          description: "展示病历、外发内容和高风险动作的审批与追溯能力。",
+        },
+        settings: {
+          title: "Synapse 设置与治理",
+          description: "展示角色权限、模型路由、预算控制和治理策略。",
+        },
+      }
+    : null;
+
+function localizeString(value) {
+  if (!localeTextMap || typeof value !== "string") return value;
+  return localeTextMap[value] || value;
+}
+
+function withLocaleHref(href, locale = currentLocale) {
+  if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+    return href;
+  }
+  try {
+    const url = new URL(href, window.location.href);
+    if (url.origin !== window.location.origin || !url.pathname.endsWith(".html")) {
+      return href;
+    }
+    if (locale === "zh") {
+      url.searchParams.set("lang", "zh");
+    } else {
+      url.searchParams.delete("lang");
+    }
+    return `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+  } catch (error) {
+    return href;
+  }
+}
+
+function rewriteInternalLinks(root = document) {
+  root.querySelectorAll("a[href]").forEach((link) => {
+    const nextHref = withLocaleHref(link.getAttribute("href"));
+    if (nextHref) link.setAttribute("href", nextHref);
+  });
+}
+
+function translateStaticContent(root = document) {
+  if (!localeTextMap) return;
+  root.querySelectorAll("a, button, p, h1, h2, h3, h4, li, span, strong").forEach((element) => {
+    if (
+      [
+        "data-demo-field",
+        "data-demo-list",
+        "data-demo-journey-field",
+        "data-demo-journey-link",
+        "data-demo-guide",
+        "data-demo-guide-list",
+        "data-demo-guide-link",
+        "data-page-journey",
+        "data-page-journey-link",
+        "data-dashboard-field",
+        "data-dashboard-list",
+        "data-intake-field",
+        "data-intake-list",
+        "data-approval-field",
+        "data-approval-list",
+        "data-client-field",
+        "data-client-list",
+        "data-task-list",
+        "data-knowledge-field",
+        "data-knowledge-list",
+        "data-settings-field",
+        "data-settings-list",
+      ].some((attr) => element.hasAttribute(attr))
+    ) {
+      return;
+    }
+    if (element.children.length > 0 && !["A", "BUTTON"].includes(element.tagName)) return;
+    const base = (element.dataset.i18nOrig || element.textContent || "").trim();
+    if (!base) return;
+    if (!element.dataset.i18nOrig) element.dataset.i18nOrig = base;
+    element.textContent = localizeString(element.dataset.i18nOrig);
+  });
+}
+
+function injectLanguageSwitcher() {
+  const headerActions = document.querySelector(".header-actions");
+  if (!headerActions || headerActions.querySelector("[data-language-switcher]")) return;
+  const switcher = document.createElement("div");
+  switcher.className = "demo-button-row";
+  switcher.setAttribute("data-language-switcher", "true");
+  switcher.innerHTML = `
+    <a class="button ${currentLocale === "en" ? "button-primary" : "button-secondary"}" href="${withLocaleHref(window.location.href, "en")}">EN</a>
+    <a class="button ${currentLocale === "zh" ? "button-primary" : "button-secondary"}" href="${withLocaleHref(window.location.href, "zh")}">中文</a>
+  `;
+  headerActions.prepend(switcher);
+}
+
+function localizePageMeta() {
+  if (!pageMetaTranslations) return;
+  const pageMeta = pageMetaTranslations[getCurrentPageKey()];
+  if (!pageMeta) return;
+  document.title = pageMeta.title;
+  const description = document.querySelector('meta[name="description"]');
+  if (description) description.setAttribute("content", pageMeta.description);
+}
 
 const scenarioMeta = {
   retail: {
@@ -340,17 +912,13 @@ function setDemoStage(stage) {
 
 function sanitizeDisplayText(value) {
   if (typeof value !== "string") return value;
-  return value
-    .replace(/[^\x00-\x7F]+/g, " -> ")
-    .replace(/\s*->\s*/g, " -> ")
-    .replace(/\s{2,}/g, " ")
-    .trim();
+  return value.replace(/\s{2,}/g, " ").trim();
 }
 
 function setTextByAttr(attr, field, value) {
   const element = document.querySelector(`[${attr}="${field}"]`);
   if (element) {
-    element.textContent = sanitizeDisplayText(value);
+    element.textContent = sanitizeDisplayText(localizeString(value));
   }
 }
 
@@ -360,7 +928,7 @@ function setListByAttr(attr, field, items) {
   list.innerHTML = "";
   items.forEach((item) => {
     const li = document.createElement("li");
-    li.textContent = sanitizeDisplayText(item);
+    li.textContent = sanitizeDisplayText(localizeString(item));
     list.appendChild(li);
   });
 }
@@ -368,8 +936,8 @@ function setListByAttr(attr, field, items) {
 function setLinkByAttr(attr, field, value) {
   const link = document.querySelector(`[${attr}="${field}"]`);
   if (!link || !value) return;
-  link.textContent = sanitizeDisplayText(value.label);
-  link.setAttribute("href", value.href);
+  link.textContent = sanitizeDisplayText(localizeString(value.label));
+  link.setAttribute("href", withLocaleHref(value.href));
 }
 
 function setDemoField(field, value) {
@@ -463,8 +1031,8 @@ function syncDemoContextBar() {
   );
   const link = document.querySelector('[data-demo-context="stageLink"]');
   if (link) {
-    link.textContent = stage.cta;
-    link.setAttribute("href", stage.href);
+    link.textContent = localizeString(stage.cta);
+    link.setAttribute("href", withLocaleHref(stage.href));
   }
   document.querySelectorAll("[data-global-scenario]").forEach((button) => {
     button.classList.toggle(
@@ -552,8 +1120,8 @@ function syncDemoMapBand() {
     const meta = pageLabelMeta[pageKey];
     const link = document.createElement("a");
     link.className = "demo-map-item";
-    link.href = meta.href;
-    link.textContent = meta.label;
+    link.href = withLocaleHref(meta.href);
+    link.textContent = localizeString(meta.label);
     if (pageKey === currentPage) link.classList.add("is-current");
     if (visitedPages.includes(pageKey)) link.classList.add("is-visited");
     grid.appendChild(link);
@@ -561,7 +1129,10 @@ function syncDemoMapBand() {
 
   const progress = document.querySelector('[data-demo-map="progress"]');
   if (progress) {
-    progress.textContent = `${visitedPages.length} / ${DEMO_PAGE_ORDER.length} visited`;
+    progress.textContent =
+      currentLocale === "zh"
+        ? `已访问 ${visitedPages.length} / ${DEMO_PAGE_ORDER.length}`
+        : `${visitedPages.length} / ${DEMO_PAGE_ORDER.length} visited`;
   }
 }
 
@@ -636,6 +1207,10 @@ syncDemoMapBand();
 renderPageJourneyBand();
 syncPageJourneyBand();
 renderGlobalProductFooter();
+injectLanguageSwitcher();
+localizePageMeta();
+rewriteInternalLinks();
+translateStaticContent();
 saveDemoContext();
 
 const workspaceScenarioContent = {
@@ -903,7 +1478,9 @@ function renderWorkspaceDemo() {
 
   document.querySelectorAll('[data-demo-action="approve"]').forEach((button) => {
     button.disabled = demoRuntimeState.approved;
-    button.textContent = demoRuntimeState.approved ? "Doctor signed" : "Doctor sign-off";
+  button.textContent = demoRuntimeState.approved
+    ? localizeString("Doctor signed")
+    : localizeString("Doctor sign-off");
   });
 }
 
@@ -1395,7 +1972,9 @@ document.querySelectorAll("[data-case-toggle]").forEach((button) => {
     );
     if (!card) return;
     const expanded = card.classList.toggle("is-expanded");
-    button.textContent = expanded ? "Collapse details" : "Expand details";
+    button.textContent = expanded
+      ? localizeString("Collapse details")
+      : localizeString("Expand details");
   });
 });
 
@@ -1515,7 +2094,7 @@ document.querySelectorAll("[data-approval-action]").forEach((button) => {
       approvalState.urgentCount = "1 urgent";
       approvalState.approvalRowOne =
         "Ad pause approved. Growth Agent will write the budget impact back into the workspace.";
-      button.textContent = "Approved";
+      button.textContent = localizeString("Approved");
       button.disabled = true;
     }
     if (action === "revise-ad") {
@@ -1532,7 +2111,7 @@ document.querySelectorAll("[data-approval-action]").forEach((button) => {
       approvalState.urgentCount = "0 urgent";
       approvalState.approvalRowTwo =
         "FAQ approved. Knowledge Agent is publishing the new version and syncing team memory.";
-      button.textContent = "Published";
+      button.textContent = localizeString("Published");
       button.disabled = true;
     }
     if (action === "review-faq") {
@@ -1866,8 +2445,8 @@ function renderTaskColumn(slot, items) {
     card.className = `task-ticket ${item.style}`.trim();
     const strong = document.createElement("strong");
     const p = document.createElement("p");
-    strong.textContent = sanitizeDisplayText(item.title);
-    p.textContent = sanitizeDisplayText(item.note);
+    strong.textContent = sanitizeDisplayText(localizeString(item.title));
+    p.textContent = sanitizeDisplayText(localizeString(item.note));
     card.appendChild(strong);
     card.appendChild(p);
     container.appendChild(card);
@@ -2261,10 +2840,10 @@ window.addEventListener("synapse:reset-demo", () => {
   ];
   document.querySelectorAll("[data-approval-action]").forEach((button) => {
     button.disabled = false;
-    if (button.dataset.approvalAction === "approve-ad") button.textContent = "Approve";
-    if (button.dataset.approvalAction === "revise-ad") button.textContent = "Request revision";
-    if (button.dataset.approvalAction === "approve-faq") button.textContent = "Approve";
-    if (button.dataset.approvalAction === "review-faq") button.textContent = "Review draft";
+    if (button.dataset.approvalAction === "approve-ad") button.textContent = localizeString("Approve");
+    if (button.dataset.approvalAction === "revise-ad") button.textContent = localizeString("Request revision");
+    if (button.dataset.approvalAction === "approve-faq") button.textContent = localizeString("Approve");
+    if (button.dataset.approvalAction === "review-faq") button.textContent = localizeString("Review draft");
   });
 
   clientState.scenario = "retail";
@@ -2314,7 +2893,7 @@ window.addEventListener("synapse:reset-demo", () => {
   budgetAlert = false;
   routeShifted = false;
   document.querySelectorAll("[data-case-toggle]").forEach((button) => {
-    button.textContent = "Expand details";
+    button.textContent = localizeString("Expand details");
   });
   document.querySelectorAll("[data-demo-case-card]").forEach((card) => {
     card.classList.remove("is-expanded");
