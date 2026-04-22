@@ -40,16 +40,16 @@
           <a href="settings.html">Settings</a>
         </nav>
         <div class="header-actions">
-          <a class="button button-secondary" href="app.html">Open Doctor Workspace</a>
+          <a class="button button-primary" href="app.html">Open Doctor Workspace</a>
         </div>
       </header>
 
       <main class="app-main">
         <section class="page-hero">
-          <p class="eyebrow">Owner + Operator View</p>
-          <h1>See today's clinic pressure before the doctor opens a chart.</h1>
+          <p class="eyebrow">Owner + Lead Doctor View</p>
+          <h1>Start the pilot from the clinic board.</h1>
           <p class="lead" data-dashboard-field="heroLead">
-            This pilot dashboard is designed for the clinic owner, operator, or lead doctor. It shows note pressure, report review status, patient risk, and what the AI should prepare next.
+            This board shows which patients need report review, where draft-note pressure is building, and what work the AI should prepare before the doctor opens a chart.
           </p>
           <div class="hero-actions">
             <button class="button button-secondary interactive-chip" type="button" data-dashboard-action="refresh">Refresh board</button>
@@ -62,9 +62,9 @@
           <div class="dashboard-shell" data-reveal>
             <aside class="workspace-card app-sidebar">
               <div class="sidebar-block">
-                <p class="sidebar-title">Dashboard Focus</p>
+                <p class="sidebar-title">Board Areas</p>
                 <a class="sidebar-link active" href="#overview">Overview</a>
-                <a class="sidebar-link" href="#signals">Patient signals</a>
+                <a class="sidebar-link" href="#day-board">Clinic day board</a>
                 <a class="sidebar-link" href="#agents">AI preparation</a>
                 <a class="sidebar-link" href="#actions">Timeline</a>
               </div>
@@ -74,7 +74,7 @@
                 <p data-dashboard-field="sidebarText">The pilot is focused on faster report reading, note drafting, and doctor confirmation.</p>
               </div>
               <div class="sidebar-block">
-                <p class="sidebar-title">Quick Links</p>
+                <p class="sidebar-title">Next Step</p>
                 <a class="sidebar-link" href="app.html">Open Doctor Workspace</a>
                 <a class="sidebar-link" href="client-intelligence.html">Open Patient View</a>
                 <a class="sidebar-link" href="approval-center.html">Open Doctor Approvals</a>
@@ -119,7 +119,35 @@
                 </div>
               </article>
 
-              <div class="workspace-grid" id="signals">
+              <div class="workspace-grid" id="day-board">
+                <article class="workspace-card">
+                  <p class="card-label">Clinic Day Board</p>
+                  <h3>Which patient should move first</h3>
+                  <div class="queue-stack">
+                    <article class="queue-card active">
+                      <div class="queue-topline">
+                        <strong data-dashboard-field="priorityPatient">Lina Chen / 10:30 follow-up</strong>
+                        <span class="mini-pill warn">report review</span>
+                      </div>
+                      <p data-dashboard-field="prioritySummary">Chewing pain around tooth 36. Imaging note should be summarized before chair time.</p>
+                    </article>
+                    <article class="queue-card">
+                      <div class="queue-topline">
+                        <strong>David Wu / 11:30 implant consult</strong>
+                        <span class="mini-pill">CBCT review</span>
+                      </div>
+                      <p>Consult form and imaging note are ready for planning summary.</p>
+                    </article>
+                    <article class="queue-card">
+                      <div class="queue-topline">
+                        <strong>Wendy Zhao / 15:00 hygiene revisit</strong>
+                        <span class="mini-pill">draft sign-off</span>
+                      </div>
+                      <p>Assistant updated chairside findings. Note draft is waiting for doctor wording.</p>
+                    </article>
+                  </div>
+                </article>
+
                 <article class="workspace-card">
                   <p class="card-label">Patient Signals</p>
                   <h3>What the clinic should look at first</h3>

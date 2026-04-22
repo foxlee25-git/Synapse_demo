@@ -48,33 +48,33 @@
         <section class="app-hero">
           <div class="app-hero-copy">
             <p class="eyebrow">Dental Clinic Pilot</p>
-            <h1>Let the doctor chat with AI to read reports and finish the note faster.</h1>
+            <h1>A doctor operating platform, not just a chatbot.</h1>
             <p class="lead">
-              This workspace is built for the doctor. The agent reads the patient chart,
-              summarizes the report, drafts the medical record, and prepares next-step
-              actions while the doctor stays in one thread.
+              The doctor logs in, sees today's patients, opens one thread, lets the agent
+              read the report, draft the note, and prepare follow-up work, then confirms
+              what should go back into the clinic system.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#chat">Open Doctor Chat</a>
-              <a class="button button-secondary" href="#draft">See Draft Record</a>
-              <a class="button button-secondary" href="task-center.html">Open Task Center</a>
+              <a class="button button-primary" href="#workspace">Open Workspace</a>
+              <a class="button button-secondary" href="#chat">Open Doctor Chat</a>
+              <a class="button button-secondary" href="approval-center.html">See Approvals</a>
             </div>
           </div>
           <div class="app-hero-stack">
             <article class="app-peek-card highlight-card" data-reveal>
-              <p class="card-label">Step 01</p>
-              <h3>Read the patient fast</h3>
-              <p>The system pulls chart history, imaging notes, complaints, and prior treatment into one summary.</p>
+              <p class="card-label">Layer 01</p>
+              <h3>Patient context is loaded first</h3>
+              <p>The agent pulls chart history, imaging notes, complaints, and the clinic template into one working view.</p>
             </article>
             <article class="app-peek-card" data-reveal>
-              <p class="card-label">Step 02</p>
-              <h3>Chat with the doctor agent</h3>
-              <p>The doctor asks for a report summary, note draft, or follow-up plan without leaving the workspace.</p>
+              <p class="card-label">Layer 02</p>
+              <h3>The doctor works in one thread</h3>
+              <p>Ask for report summaries, note drafts, and next-step plans without switching between disconnected tools.</p>
             </article>
             <article class="app-peek-card" data-reveal>
-              <p class="card-label">Step 03</p>
-              <h3>Confirm before writeback</h3>
-              <p>The doctor reviews the draft note and approves what should go back into the clinic system.</p>
+              <p class="card-label">Layer 03</p>
+              <h3>Writeback stays controlled</h3>
+              <p>Nothing goes back into the clinic record until the doctor reviews and signs off.</p>
             </article>
           </div>
         </section>
@@ -84,7 +84,7 @@
             <div class="demo-console-copy">
               <p class="eyebrow">Pilot Controls</p>
               <h2>Run the doctor workflow live.</h2>
-              <p>Switch between a routine follow-up and a complex implant consult, then drive the note flow forward.</p>
+              <p>Switch between a routine follow-up and an implant consult, then move the workspace from chart load to signed note.</p>
             </div>
             <div class="demo-console-actions">
               <div class="demo-action-group">
@@ -106,110 +106,200 @@
           </div>
         </section>
 
-        <section class="section-block" id="patient">
+        <section class="section-block" id="workspace">
           <div class="section-heading">
-            <p class="eyebrow">Patient Context</p>
-            <h2>The doctor starts from one patient view.</h2>
-            <p>The pilot should reduce chart flipping and make report reading much faster.</p>
+            <p class="eyebrow">Doctor Operating Surface</p>
+            <h2>Everything the doctor needs in one working screen.</h2>
+            <p>This is the pilot UI to show clients. The center is the doctor thread. The left keeps the clinic day visible. The right keeps context and sign-off visible.</p>
           </div>
-          <div class="card-grid thirds">
-            <article class="info-card" data-reveal>
-              <p class="card-label">Current Patient</p>
-              <h3 data-demo-field="patientName">Lina Chen / follow-up visit</h3>
-              <p data-demo-field="patientMeta">Seen 3 times before. Root canal history on tooth 36.</p>
-            </article>
-            <article class="info-card" data-reveal>
-              <p class="card-label">Clinical Focus</p>
-              <h3 data-demo-field="contextStatus">chart ready for review</h3>
-              <p data-demo-field="connectedSystems">EMR, imaging notes, appointment record, treatment history</p>
-            </article>
-            <article class="info-card" data-reveal>
-              <p class="card-label">Report Summary</p>
-              <h3 data-demo-field="reportTitle">Periapical review</h3>
-              <p data-demo-field="reportSummary">Possible recurrent inflammation around tooth 36. Sensitivity reported on chewing.</p>
-            </article>
+
+          <div class="doctor-platform-shell" data-reveal>
+            <aside class="workspace-card platform-sidebar">
+              <div class="workspace-card-head">
+                <div>
+                  <p class="card-label">Today Queue</p>
+                  <h3>Clinic flow</h3>
+                </div>
+                <span class="mini-pill live">Live day</span>
+              </div>
+
+              <div class="queue-stack">
+                <article class="queue-card active">
+                  <div class="queue-topline">
+                    <strong data-demo-field="patientName">Lina Chen / follow-up visit</strong>
+                    <span class="mini-pill warn" data-demo-field="contextStatus">chart ready for review</span>
+                  </div>
+                  <p data-demo-field="patientMeta">Seen 3 times before. Root canal history on tooth 36.</p>
+                  <div class="queue-tags">
+                    <span class="composer-tag" data-demo-field="reportTitle">Periapical review</span>
+                    <span class="composer-tag">Doctor next</span>
+                  </div>
+                </article>
+
+                <article class="queue-card">
+                  <div class="queue-topline">
+                    <strong>Wendy Zhao / hygiene revisit</strong>
+                    <span class="mini-pill">draft pending</span>
+                  </div>
+                  <p>Post-cleaning sensitivity note is waiting for final doctor wording.</p>
+                </article>
+
+                <article class="queue-card">
+                  <div class="queue-topline">
+                    <strong>Ryan Xu / new consult</strong>
+                    <span class="mini-pill">intake ready</span>
+                  </div>
+                  <p>Medical history form and uploaded imaging are ready for AI review.</p>
+                </article>
+              </div>
+
+              <div class="platform-subsection">
+                <p class="card-label">Patient Snapshot</p>
+                <ul class="brief-list compact-list" data-demo-list="patientContextList">
+                  <li>Chief complaint: chewing discomfort on lower left side.</li>
+                  <li>History: prior root canal and crown placement on tooth 36.</li>
+                  <li>Watch item: confirm whether periapical inflammation has progressed.</li>
+                </ul>
+              </div>
+            </aside>
+
+            <div class="platform-main">
+              <article class="workspace-card platform-stage-card">
+                <div class="workspace-card-head">
+                  <div>
+                    <p class="card-label">Current Visit</p>
+                    <h3>The agent turns patient context into an editable draft.</h3>
+                  </div>
+                  <div class="dashboard-top-actions">
+                    <span class="status-badge live" data-demo-field="threadStatus">doctor agent active</span>
+                    <span class="mini-pill" data-demo-field="approvalSecondaryStatus">Pending doctor review</span>
+                  </div>
+                </div>
+
+                <div class="platform-status-grid">
+                  <article class="status-tile">
+                    <span>Connected sources</span>
+                    <strong data-demo-field="connectedSystems">EMR, imaging notes, appointment record, treatment history</strong>
+                    <p>The agent pulls only the record set needed for this visit.</p>
+                  </article>
+                  <article class="status-tile">
+                    <span>Report summary</span>
+                    <strong data-demo-field="reportTitle">Periapical review</strong>
+                    <p data-demo-field="reportSummary">Possible recurrent inflammation around tooth 36. Sensitivity reported on chewing.</p>
+                  </article>
+                  <article class="status-tile accent">
+                    <span>Draft state</span>
+                    <strong data-demo-field="draftTitle">Medical record draft not started</strong>
+                    <p data-demo-field="draftSummary">Load the patient chart first, then ask the doctor agent to draft the note.</p>
+                  </article>
+                </div>
+              </article>
+
+              <article class="chat-thread-card workspace-card" id="chat">
+                <div class="workspace-card-head">
+                  <div>
+                    <p class="card-label">Doctor Chat + Agent</p>
+                    <h3 data-demo-field="threadTitle"># dr-li / patient-2026-04-22-1030</h3>
+                  </div>
+                  <div class="dashboard-top-actions">
+                    <span class="mini-pill live">Doctor Agent</span>
+                    <span class="mini-pill">Record Agent</span>
+                    <span class="mini-pill">Follow-up Agent</span>
+                  </div>
+                </div>
+                <div class="chat-thread">
+                  <div class="chat-bubble human">
+                    <div class="chat-meta"><strong data-demo-field="chatActorOne">Dr. Li</strong></div>
+                    <p data-demo-field="chatLineOne">Summarize this patient's history and today's imaging note before I see her.</p>
+                  </div>
+                  <div class="chat-bubble agent">
+                    <div class="chat-meta"><strong data-demo-field="chatActorTwo">Doctor Agent</strong></div>
+                    <p data-demo-field="chatLineTwo">I have reviewed the chart, prior treatment, and imaging note. Tooth 36 is still the main concern.</p>
+                  </div>
+                  <div class="chat-bubble agent">
+                    <div class="chat-meta"><strong data-demo-field="chatActorThree">Doctor Agent</strong></div>
+                    <p data-demo-field="chatLineThree">I can now draft the medical record with chief complaint, findings, and plan in the clinic template.</p>
+                  </div>
+                  <div class="chat-bubble decision">
+                    <div class="chat-meta"><strong data-demo-field="chatActorFour">Doctor Review</strong></div>
+                    <p data-demo-field="chatLineFour">The note will wait for doctor confirmation before writeback.</p>
+                  </div>
+                </div>
+                <div class="chat-composer">
+                  <div class="composer-line">
+                    <span class="composer-tag">@Doctor Agent</span>
+                    <span class="composer-tag">@Record Agent</span>
+                    <span class="composer-tag">@Follow-up Agent</span>
+                  </div>
+                  <div class="composer-input">
+                    <span>Ask for a chart summary, note draft, wording change, or follow-up instruction.</span>
+                    <strong>Enter</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <aside class="platform-aside">
+              <article class="assignment-card workspace-card">
+                <p class="card-label">Doctor Sign-off</p>
+                <h3 data-demo-field="approvalSecondaryStatus">Pending doctor review</h3>
+                <p data-demo-field="knowledgeSecondary">Draft note is waiting for final confirmation.</p>
+                <ul class="agent-list compact-list" data-demo-list="chatOutcomeList">
+                  <li>The chat can summarize the patient report.</li>
+                  <li>The chat can produce a clinic-format medical record draft.</li>
+                  <li>Only confirmed content writes back to the patient record.</li>
+                </ul>
+              </article>
+
+              <article class="workspace-card">
+                <p class="card-label">Draft Structure</p>
+                <h3>What will be written back</h3>
+                <ul class="brief-list compact-list" data-demo-list="draftChecklistList">
+                  <li>Chief complaint</li>
+                  <li>Exam findings</li>
+                  <li>Assessment and plan</li>
+                </ul>
+              </article>
+
+              <article class="workspace-card">
+                <p class="card-label">Next Handoffs</p>
+                <h3>What happens after sign-off</h3>
+                <div class="handoff-stack">
+                  <div>
+                    <strong>Front desk</strong>
+                    <p>Gets revisit timing and patient communication tasks.</p>
+                  </div>
+                  <div>
+                    <strong>Assistant</strong>
+                    <p>Gets chairside prep and treatment follow-up steps.</p>
+                  </div>
+                  <div>
+                    <strong>Clinic system</strong>
+                    <p>Receives the final confirmed note, never the unapproved draft.</p>
+                  </div>
+                </div>
+              </article>
+            </aside>
           </div>
         </section>
 
         <section class="section-block">
-          <div class="card-grid halves">
-            <article class="workspace-card wide-panel" data-reveal>
-              <p class="card-label">Patient Snapshot</p>
-              <h3>What the AI already understands</h3>
-              <ul class="brief-list" data-demo-list="patientContextList">
-                <li>Chief complaint: chewing discomfort on lower left side.</li>
-                <li>History: prior root canal and crown placement on tooth 36.</li>
-                <li>Watch item: confirm whether periapical inflammation has progressed.</li>
-              </ul>
+          <div class="card-grid thirds">
+            <article class="info-card" data-reveal>
+              <p class="card-label">What the doctor feels</p>
+              <h3>Less chart flipping</h3>
+              <p>The report, prior treatment, and note template are already in the same thread.</p>
             </article>
-            <article class="workspace-card wide-panel" data-reveal id="draft">
-              <p class="card-label">Draft Record</p>
-              <h3 data-demo-field="draftTitle">Medical record draft not started</h3>
-              <p data-demo-field="draftSummary">Load the patient chart first, then ask the doctor agent to draft the note.</p>
-              <ul class="brief-list" data-demo-list="draftChecklistList">
-                <li>Chief complaint</li>
-                <li>Exam findings</li>
-                <li>Assessment and plan</li>
-              </ul>
+            <article class="info-card" data-reveal>
+              <p class="card-label">What the clinic gets</p>
+              <h3>Faster record completion</h3>
+              <p>Doctors spend less time writing from scratch and more time confirming accurate output.</p>
             </article>
-          </div>
-        </section>
-
-        <section class="section-block" id="chat">
-          <div class="section-heading">
-            <p class="eyebrow">Doctor Chat + Agent</p>
-            <h2>Let the doctor finish the work inside one conversation.</h2>
-            <p>The doctor can ask for a report summary, chart review, draft note, and next-step plan without switching modules.</p>
-          </div>
-          <div class="chat-workspace" data-reveal>
-            <div class="chat-thread-card">
-              <div class="workspace-card-head">
-                <div>
-                  <p class="card-label">Doctor Thread</p>
-                  <h3 data-demo-field="threadTitle"># dr-li / patient-2026-04-22-1030</h3>
-                </div>
-                <span class="status-badge live" data-demo-field="threadStatus">doctor agent active</span>
-              </div>
-              <div class="chat-thread">
-                <div class="chat-bubble human">
-                  <div class="chat-meta"><strong data-demo-field="chatActorOne">Dr. Li</strong></div>
-                  <p data-demo-field="chatLineOne">Summarize this patient's history and today's imaging note before I see her.</p>
-                </div>
-                <div class="chat-bubble agent">
-                  <div class="chat-meta"><strong data-demo-field="chatActorTwo">Doctor Agent</strong></div>
-                  <p data-demo-field="chatLineTwo">I have reviewed the chart, prior treatment, and imaging note. Tooth 36 is still the main concern.</p>
-                </div>
-                <div class="chat-bubble agent">
-                  <div class="chat-meta"><strong data-demo-field="chatActorThree">Doctor Agent</strong></div>
-                  <p data-demo-field="chatLineThree">I can now draft the medical record with chief complaint, findings, and plan in the clinic template.</p>
-                </div>
-                <div class="chat-bubble decision">
-                  <div class="chat-meta"><strong data-demo-field="chatActorFour">Doctor Review</strong></div>
-                  <p data-demo-field="chatLineFour">The note will wait for doctor confirmation before writeback.</p>
-                </div>
-              </div>
-              <div class="chat-composer">
-                <div class="composer-line">
-                  <span class="composer-tag">@Doctor Agent</span>
-                  <span class="composer-tag">@Record Agent</span>
-                  <span class="composer-tag">@Follow-up Agent</span>
-                </div>
-                <div class="composer-input">
-                  <span>Ask the agent to summarize the report, draft the note, or prepare follow-up instructions.</span>
-                  <strong>Enter</strong>
-                </div>
-              </div>
-            </div>
-            <aside class="assignment-card">
-              <p class="card-label">Draft Status</p>
-              <h3 data-demo-field="approvalSecondaryStatus">Pending doctor review</h3>
-              <p data-demo-field="knowledgeSecondary">Draft note is waiting for final confirmation.</p>
-              <ul class="agent-list compact-list" data-demo-list="chatOutcomeList">
-                <li>The chat can summarize the patient report.</li>
-                <li>The chat can produce a clinic-format medical record draft.</li>
-                <li>Only confirmed content writes back to the patient record.</li>
-              </ul>
-            </aside>
+            <article class="info-card" data-reveal>
+              <p class="card-label">What makes it safe</p>
+              <h3>Human sign-off before writeback</h3>
+              <p>The pilot stays useful without pretending the AI should make the final medical decision.</p>
+            </article>
           </div>
         </section>
       </main>
