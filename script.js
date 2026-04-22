@@ -1,4 +1,4 @@
-const revealTargets = document.querySelectorAll("[data-reveal]");
+﻿const revealTargets = document.querySelectorAll("[data-reveal]");
 
 if ("IntersectionObserver" in window && revealTargets.length > 0) {
   const observer = new IntersectionObserver(
@@ -253,7 +253,44 @@ const zhTextMap = {
   "On track this week": "本周使用正常",
   "Default routing is balanced for cost and quality.": "默认路由在成本和质量之间做平衡。",
   "High-risk actions must go through approval before execution.": "高风险动作必须先审批再执行。",
-  "Owners only step in on budget, client-facing, or risk-heavy moves.": "老板只在预算、面向客户或高风险动作上介入。"
+  "Owners only step in on budget, client-facing, or risk-heavy moves.": "老板只在预算、面向客户或高风险动作上介入。",
+  "This page manages permissions, integration scope, routing strategy, budget pressure, and audit posture.": "这一页管理权限、接入范围、路由策略、预算压力和审计状态。",
+  "Owner view focuses on results, budget, approvals, and which actions still need a human decision.": "老板视角重点看结果、预算、审批，以及哪些动作仍然需要人工决定。",
+  "Operator view focuses on task visibility, knowledge maintenance, and keeping the approval lane moving.": "运营视角重点看任务可见性、知识维护，以及让审批流持续推进。",
+  "Admin view manages permissions, integration scopes, model routing, and budget controls.": "管理员视角负责权限、接入范围、模型路由和预算控制。",
+  "Operator: sees tasks, edits knowledge, and manages approvals": "运营：查看任务、编辑知识并管理审批",
+  "Owner: approves high-risk actions": "老板：批准高风险动作",
+  "Sales: sees client summary and follow-up items": "销售：查看客户摘要和后续跟进项",
+  "Admin: manages integrations and policy controls": "管理员：管理接入和治理策略",
+  "Operators can review agent output and knowledge drafts.": "运营可以审核 Agent 输出和知识草稿。",
+  "Knowledge Agent can read SOP and FAQ content.": "知识 Agent 可以读取 SOP 和 FAQ 内容。",
+  "Operators cannot change the global budget policy.": "运营不能修改全局预算策略。",
+  "Reviews and recommendations prefer hybrid route": "复盘和建议默认走混合路由",
+  "FAQ drafting and cleanup prefer smaller models": "FAQ 起草和清理优先使用小模型",
+  "Complex explanations can escalate to stronger models": "复杂说明可以升级到更强模型",
+  "Alert if review load spikes": "当审核负载升高时提醒",
+  "Approval lane is healthy and one draft is waiting review.": "审批队列当前正常，仍有一份草稿等待审核。",
+  "Operators can edit knowledge, but publishing still requires approval.": "运营可以编辑知识，但发布仍然需要审批。",
+  "Task and knowledge changes are logged in the governance timeline.": "任务和知识变更都会记录在治理时间线里。",
+  "Admin: manages integrations, models, budgets, and audits": "管理员：管理接入、模型、预算和审计",
+  "Owner: sees outcomes and approvals": "老板：查看结果和审批",
+  "Operator: runs tasks and maintains knowledge": "运营：推进任务并维护知识",
+  "Sales: only sees client progression data": "销售：只查看客户推进数据",
+  "Growth Agent only reads growth and ad sources.": "增长 Agent 只读取增长和广告来源。",
+  "Sales Agent reads CRM and communication summaries.": "销售 Agent 读取 CRM 和沟通摘要。",
+  "Knowledge Agent reads SOP and FAQ documents only.": "知识 Agent 只读取 SOP 和 FAQ 文档。",
+  "Summaries and classification use smaller models": "摘要和分类任务使用小模型",
+  "Business reviews use hybrid routing": "业务复盘使用混合路由",
+  "High-value reasoning or approvals use stronger models": "高价值推理和审批使用更强模型",
+  "Admin alert before overrun": "超支前向管理员提醒",
+  "Admins can change agent scopes and integration grants any time.": "管理员可以随时调整 Agent 范围和接入授权。",
+  "Model routing adapts to task complexity and budget pressure.": "模型路由会根据任务复杂度和预算压力自动调整。",
+  "Every risky action leaves a visible audit trail.": "每个高风险动作都会留下可见的审计记录。",
+  "Cost Saver route is active": "节省成本路由已启用",
+  "More cleanup tasks now prefer smaller models": "更多清理类任务现在优先使用小模型",
+  "Only high-value approvals and reasoning keep stronger models": "只有高价值审批和推理继续使用强模型",
+  "Used: 89%": "已使用：89%",
+  "Admin alert triggered": "已触发管理员提醒",
 }
 
 const pageMetaZhMap = {
@@ -2719,4 +2756,5 @@ renderClientState();
 renderTaskBoard();
 renderKnowledgeState();
 renderSettingsState();
+
 
