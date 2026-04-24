@@ -24,26 +24,20 @@ const DEMO_LOCALE_KEY = "synapse-demo-locale";
 const JOURNEY_ORDER = ["connect", "understand", "dispatch", "approve"];
 const DEMO_PAGE_ORDER = [
   "index",
+  "product-architecture",
   "dashboard",
-  "demo",
   "app",
+  "agents",
   "data-intake",
-  "knowledge-feed",
-  "client-intelligence",
-  "task-center",
-  "approval-center",
   "settings",
 ];
 const PAGE_STAGE_MAP = {
   index: "connect",
+  "product-architecture": "understand",
   dashboard: "dispatch",
-  demo: "connect",
   app: "dispatch",
+  agents: "understand",
   "data-intake": "connect",
-  "client-intelligence": "understand",
-  "knowledge-feed": "understand",
-  "task-center": "dispatch",
-  "approval-center": "approve",
   settings: "approve",
 };
 
@@ -51,7 +45,12 @@ const SUPPORTED_LOCALES = ["en", "zh"];
 
 const zhTextMap = {
   "Showcase": "展示",
+  "Architecture": "架构",
+  "Page Architecture": "页面架构",
   "Dashboard": "看板",
+  "Chat": "对话",
+  "Agents": "Agents",
+  "Data": "数据",
   "Workspace": "工作台",
   "Demo Flow": "演示流程",
   "Data Intake": "数据接入",
@@ -65,6 +64,9 @@ const zhTextMap = {
   "Dental Pilot Dashboard": "牙科试点看板",
   "Doctor Workspace": "医生工作台",
   "Open Dashboard": "打开看板",
+  "Open Chat": "打开对话",
+  "Open Agents": "打开 Agents",
+  "See Architecture": "查看架构",
   "Open Doctor Workspace": "打开医生工作台",
   "Open Workspace": "打开工作台",
   "Open Pilot Dashboard": "打开试点看板",
@@ -146,6 +148,9 @@ const zhTextMap = {
   "Best next step:": "最佳下一步：",
   "Pilot Guide": "试点说明",
   "Pilot Dashboard Guide": "试点看板说明",
+  "Dashboard Guide": "看板说明",
+  "Chat Guide": "对话说明",
+  "Agent Guide": "Agent 说明",
   "Workspace Guide": "工作台说明",
   "Patient Guide": "病人说明",
   "Knowledge Guide": "知识说明",
@@ -487,121 +492,88 @@ const stageMeta = {
 
 const pageLabelMeta = {
   index: { label: "Showcase", href: "index.html" },
+  "product-architecture": {
+    label: "Architecture",
+    href: "product-architecture.html",
+  },
   dashboard: { label: "Dashboard", href: "dashboard.html" },
-  demo: { label: "Demo Flow", href: "demo.html" },
-  app: { label: "Workspace", href: "app.html" },
-  "data-intake": { label: "Data Intake", href: "data-intake.html" },
-  "knowledge-feed": { label: "Knowledge", href: "knowledge-feed.html" },
-  "client-intelligence": { label: "Patient", href: "client-intelligence.html" },
-  "task-center": { label: "Tasks", href: "task-center.html" },
-  "approval-center": { label: "Approvals", href: "approval-center.html" },
+  app: { label: "Chat", href: "app.html" },
+  agents: { label: "Agents", href: "agents.html" },
+  "data-intake": { label: "Data", href: "data-intake.html" },
   settings: { label: "Settings", href: "settings.html" },
 };
 
 const pageGuideMeta = {
   index: {
-    eyebrow: "Pilot Guide",
-    title: "Use this page to frame the week-one pilot story.",
-    body: "This page should now position Synapse as a near-term pilot, not a concept. Start from Dashboard if the client wants to see outcomes first, or Demo Flow if they want the full product story.",
+    eyebrow: "Platform Guide",
+    title: "Use this page to frame the four-page product story.",
+    body: "This page should position Synapse as a simple small-business AI platform. Lead with Dashboard, then show Chat, Agents, and Data as one connected loop.",
     clicks: [
-      "Open Dashboard first when the client asks what they will actually see in the pilot.",
-      "Use Demo Flow when they want to understand how data becomes execution.",
-      "Use Workspace, Approvals, and Settings to show the pilot is operationally real.",
+      "Open Dashboard first when the audience asks what the system looks like day to day.",
+      "Open Chat when they ask how users actually work with the AI.",
+      "Open Agents and Data to show the platform can be configured by role instead of acting like one generic bot.",
+    ],
+    next: { label: "Open Architecture", href: "product-architecture.html" },
+  },
+  "product-architecture": {
+    eyebrow: "Architecture Guide",
+    title: "Use this page to explain how the product surfaces fit together.",
+    body: "This is the cleanest way to turn the product idea into a page map. Use it when the audience asks what belongs in V1, what comes later, and how the user actually moves through the system.",
+    clicks: [
+      "Use the main flow band to explain the core loop from Data to Agents to Chat to Dashboard.",
+      "Use the page cards to define the role of each primary surface without going too deep into implementation.",
+      "Use the recommended journey to show the order that makes the product easiest to demo and easiest to build.",
     ],
     next: { label: "Open Dashboard", href: "dashboard.html" },
   },
   dashboard: {
-    eyebrow: "Pilot Dashboard Guide",
-    title: "Lead with the clinic dashboard for the pilot.",
-    body: "This page works best when the clinic wants to know what the owner, operator, or lead doctor sees before the first patient is called in. It summarizes chart pressure, report review load, active agents, and what the pilot should do next.",
+    eyebrow: "Dashboard Guide",
+    title: "Lead with the operating view, not the AI story.",
+    body: "This page works best when the audience wants to know what the team sees before opening any deeper module. It should feel like a real work surface, not a concept slide.",
     clicks: [
-      "Use Refresh board to show the pilot starts from live patient and report data.",
-      "Use Prepare doctor work to show the pilot can summarize charts before chair time.",
-      "Use Escalate doctor review to show nothing writes back without sign-off.",
+      "Point to the KPI cards first so the audience sees connected sources, outputs, and waiting tasks.",
+      "Use Agent Status to show that different role assistants are already working in parallel.",
+      "Use To Review to prove the platform still leaves clear human checkpoints.",
     ],
-    next: { label: "Open Workspace", href: "app.html" },
-  },
-  demo: {
-    eyebrow: "Narration Guide",
-    title: "This is the best page to control the story.",
-    body: "Use the stage buttons to move the audience from data, to context, to agent work, to approvals. The featured case highlight tells you which case to talk through right now.",
-    clicks: [
-      "Use Start Demo to reset the story to the first stage.",
-      "Use Next when you want the page to drive the cadence for you.",
-      "Open the linked product page once the audience asks how that stage works in detail.",
-    ],
-    next: { label: "Open Workspace", href: "app.html" },
+    next: { label: "Open Chat", href: "app.html" },
   },
   app: {
-    eyebrow: "Workspace Guide",
-    title: "Show that the doctor can finish the work inside one workspace.",
-    body: "This page works best after the dashboard. It proves the doctor can ask the AI to read the patient chart, summarize the report, draft the note, and prepare follow-up actions without leaving one thread.",
+    eyebrow: "Chat Guide",
+    title: "Show how one thread turns context into output.",
+    body: "This page should make the product feel usable immediately. The point is not that users can chat, but that chat becomes structured, saveable business work.",
     clicks: [
-      "Switch between Follow-up and Implant consult to show two common dental workflows.",
-      "Run Load patient chart, then Draft note, then Doctor sign-off.",
-      "Scroll to the doctor chat to show how the note gets completed inside one conversation.",
+      "Start with the agent list on the left to show the user can switch roles.",
+      "Use the center conversation to show how an agent works against uploaded business context.",
+      "Use the right rail to explain that outputs can be saved, edited, or converted into tasks.",
     ],
-    next: { label: "Open Task Center", href: "task-center.html" },
+    next: { label: "Open Agents", href: "agents.html" },
+  },
+  agents: {
+    eyebrow: "Agent Guide",
+    title: "Prove each role has its own data, rules, and outputs.",
+    body: "This is the page that makes Synapse feel like a platform. It should show that a Sales Agent, Assistant Agent, and Support Agent are not the same assistant with a different label.",
+    clicks: [
+      "Use the top cards to show the platform starts from role templates.",
+      "Use the middle section to explain which tabs make an agent configurable.",
+      "Use the Sales Agent detail block to show what good scope, outputs, and restrictions look like.",
+    ],
+    next: { label: "Open Data", href: "data-intake.html" },
   },
   "data-intake": {
     eyebrow: "Intake Guide",
-    title: "Lead with how the system learns the clinic.",
-    body: "This page helps answer the first trust question: what exactly does Synapse read before it drafts anything for the doctor? Use it when the audience asks about EMR sync, report ingestion, image notes, or template coverage.",
+    title: "Show how the platform gets useful without heavy setup.",
+    body: "This page should answer the first trust question: what exactly is coming into the system, and which agent can use it? Keep the story simple and practical.",
     clicks: [
-      "Click Upload files to show historical reports and templates entering the system.",
-      "Click CRM or Gmail to explain the broader feed model even if the clinic starts with uploads first.",
-      "Use this page before Patient Intelligence if the audience needs proof of chart depth.",
-    ],
-    next: { label: "Open Patient Intelligence", href: "client-intelligence.html" },
-  },
-  "knowledge-feed": {
-    eyebrow: "Knowledge Guide",
-    title: "Show how teams feed rules and memory into the system.",
-    body: "Use this page when the audience asks how the product gets smarter over time. The key point is that teams are not training a base model directly; they are feeding approved rules, drafts, and memory back into the operating layer.",
-    clicks: [
-      "Create draft to show the system can produce a new rule candidate.",
-      "Publish to show approvals can promote drafts into the live knowledge base.",
-      "Save to memory to explain how verified patterns become reusable company memory.",
-    ],
-    next: { label: "Open Settings", href: "settings.html" },
-  },
-  "client-intelligence": {
-    eyebrow: "Patient Guide",
-    title: "Prove the product understands the patient before drafting the note.",
-    body: "This page is the bridge between raw reports and doctor action. It should answer why the AI is drafting a particular medical record, not just what it is doing.",
-    clicks: [
-      "Switch scenarios to show both a routine follow-up and a more complex consult.",
-      "Refresh context first, then Dispatch agents so the audience sees the note flow clearly.",
-      "Point out that complaint, history, report focus, and draft direction are visible before action.",
-    ],
-    next: { label: "Open Task Center", href: "task-center.html" },
-  },
-  "task-center": {
-    eyebrow: "Task Guide",
-    title: "Show that chat turns into managed execution.",
-    body: "This page makes the product feel operational. It proves that agent work is not lost in chat bubbles and that people can still track, steer, and complete work.",
-    clicks: [
-      "Create agent task to show the board is not static.",
-      "Move task forward to show work leaving the queue and entering live execution.",
-      "Complete one task to prove results sync back into the system.",
-    ],
-    next: { label: "Open Approval Center", href: "approval-center.html" },
-  },
-  "approval-center": {
-    eyebrow: "Approval Guide",
-    title: "Close the story with control, not just automation.",
-    body: "This page is where trust gets won. It proves that risky actions stay reviewable, auditable, and reversible instead of becoming a black box.",
-    clicks: [
-      "Approve an ad action to show speed with oversight.",
-      "Request revision to prove humans can still correct the system before execution.",
-      "Review or approve the FAQ draft to show publish flow and auditability.",
+      "Use the upload area to show that files are still the fastest first step for many small teams.",
+      "Use the source map to show how the same file can be visible to one role and hidden from another.",
+      "Use the health section to prove the data layer is observable and not a black box.",
     ],
     next: { label: "Open Settings", href: "settings.html" },
   },
   settings: {
     eyebrow: "Governance Guide",
-    title: "End with scope, budget, and policy control.",
-    body: "This is the best final page because it answers the adoption questions: who can see what, how models are routed, and how spend stays visible.",
+    title: "End with access, routing, and budget control.",
+    body: "This should be the final proof page. It answers the adoption questions that small teams and buyers always ask: who can see what, how models are routed, and how cost stays visible.",
     clicks: [
       "Switch roles to show the product is role-aware, not one-size-fits-all.",
       "Shift routing to explain cost and quality tradeoffs.",
@@ -614,62 +586,44 @@ const pageGuideMeta = {
 const pageJourneyMeta = {
   index: {
     stage: "Showcase",
-    summary: "Frame the pilot scope, delivery path, and what the client will see first.",
+    summary: "Frame the platform story before opening the page map.",
     previous: { label: "Stay on Showcase", href: "index.html" },
+    next: { label: "Open Architecture", href: "product-architecture.html" },
+  },
+  "product-architecture": {
+    stage: "Architecture",
+    summary: "Define the core pages, supporting surfaces, and recommended user path.",
+    previous: { label: "Back to Showcase", href: "index.html" },
     next: { label: "Open Dashboard", href: "dashboard.html" },
   },
   dashboard: {
-    stage: "Pilot Dashboard",
-    summary: "Start with the executive board to show what the week-one pilot feels like in practice.",
+    stage: "Dashboard",
+    summary: "Show the operating center before opening any working surface.",
     previous: { label: "Back to Showcase", href: "index.html" },
-    next: { label: "Open Workspace", href: "app.html" },
-  },
-  demo: {
-    stage: "Story",
-    summary: "Move from connected data to client context, agent dispatch, and approvals.",
-    previous: { label: "Back to Showcase", href: "index.html" },
-    next: { label: "Open Workspace", href: "app.html" },
+    next: { label: "Open Chat", href: "app.html" },
   },
   app: {
-    stage: "Workspace",
-    summary: "Prove the doctor can read the chart, chat with AI, and finish the note in one place.",
-    previous: { label: "Back to Demo Flow", href: "demo.html" },
-    next: { label: "Open Data Intake", href: "data-intake.html" },
+    stage: "Chat",
+    summary: "Show how a user works with one role-based agent in a practical thread.",
+    previous: { label: "Back to Dashboard", href: "dashboard.html" },
+    next: { label: "Open Agents", href: "agents.html" },
+  },
+  agents: {
+    stage: "Agents",
+    summary: "Show how each role gets its own scope, data, and default outputs.",
+    previous: { label: "Back to Chat", href: "app.html" },
+    next: { label: "Open Data", href: "data-intake.html" },
   },
   "data-intake": {
-    stage: "Intake",
-    summary: "Show how reports, templates, charts, and clinic documents become usable context.",
-    previous: { label: "Back to Workspace", href: "app.html" },
-    next: { label: "Open Patient Intelligence", href: "client-intelligence.html" },
-  },
-  "knowledge-feed": {
-    stage: "Knowledge",
-    summary: "Show how SOPs, rules, approvals, and memory improve future agent work.",
-    previous: { label: "Back to Data Intake", href: "data-intake.html" },
-    next: { label: "Open Settings", href: "settings.html" },
-  },
-  "client-intelligence": {
-    stage: "Understanding",
-    summary: "Bridge raw reports and doctor action with a visible patient reasoning layer.",
-    previous: { label: "Back to Data Intake", href: "data-intake.html" },
-    next: { label: "Open Task Center", href: "task-center.html" },
-  },
-  "task-center": {
-    stage: "Execution",
-    summary: "Show work moving through queue, live execution, approvals, and completion.",
-    previous: { label: "Back to Patient View", href: "client-intelligence.html" },
-    next: { label: "Open Approval Center", href: "approval-center.html" },
-  },
-  "approval-center": {
-    stage: "Control",
-    summary: "Prove that risky actions stay reviewable, traceable, and safe to adopt.",
-    previous: { label: "Back to Tasks", href: "task-center.html" },
+    stage: "Data",
+    summary: "Show how files and connected systems become usable context for each agent.",
+    previous: { label: "Back to Agents", href: "agents.html" },
     next: { label: "Open Settings", href: "settings.html" },
   },
   settings: {
     stage: "Governance",
-    summary: "Close with roles, routing, budget visibility, and policy boundaries.",
-    previous: { label: "Back to Approvals", href: "approval-center.html" },
+    summary: "Close with role boundaries, model routing, and budget visibility.",
+    previous: { label: "Back to Data", href: "data-intake.html" },
     next: { label: "Back to Showcase", href: "index.html" },
   },
 };
@@ -2565,6 +2519,170 @@ function renderSettingsState() {
   });
 }
 
+const shadowNetworkScenarios = {
+  focus: {
+    runTitle: "Shadow Network is coordinating sales, assistant, and support context.",
+    runStatus: "Company context loaded",
+    packetStatus: "Alignment packet ready",
+    contextTitle: "CRM export, meeting notes, support issues, pricing FAQ",
+    contextNote: "The network reads shared company context and routes each piece to the right shadow.",
+    askTitle: "Prioritize work, flag decisions, create team handoff",
+    askNote: "The employee asks once; the network decides which shadows need to contribute.",
+    outputTitle: "Friday focus packet",
+    outputNote: "The result is ready to save, review, or convert into team actions.",
+    activeShadow: "Shadow Network",
+    activeSource: "4 sources linked",
+    activeOutput: "Packet ready",
+    userMessage: "Look across CRM, meeting notes, and support issues. What should the team focus on before Friday?",
+    networkMessageOne: "I pulled Sales, Assistant, and Support shadows into this request. The company context points to three priorities and two unresolved review items.",
+    networkMessageTwo: "I prepared a Friday focus brief, owner decisions, team tasks, and a follow-up draft for the highest-value account.",
+    composerHint: "Ask for a focus brief, an email draft, a ranked list, or a team handoff.",
+    sources: [
+      "`crm-week-18.csv` was used to score lead health and last touch recency.",
+      "`founder-meeting-notes.docx` was used to extract commitments and blockers.",
+      "`support-issues.csv` was used to flag customer-facing friction.",
+    ],
+    actions: [
+      ["Save focus brief", "Store the Friday priority packet so the whole team can align around it."],
+      ["Create team tasks", "Turn the top five recommendations into a tracked action list."],
+      ["Review decisions", "Send two owner-level decisions into the review queue."],
+    ],
+    assetType: "Alignment Packet",
+    assetTitle: "Friday focus brief + tasks",
+    assetNote: "The network returned one brief, three decisions, five tasks, and two review items.",
+  },
+  sales: {
+    runTitle: "Sales Shadow is recovering stalled opportunities with company context.",
+    runStatus: "Sales context active",
+    packetStatus: "Follow-up draft ready",
+    contextTitle: "CRM export, last-touch notes, pricing FAQ, product sheet",
+    contextNote: "Sales Shadow can reference sales context without touching support-only or payroll data.",
+    askTitle: "Rank leads, draft follow-up, explain stalled deals",
+    askNote: "The system converts scattered sales context into a clear next-action plan.",
+    outputTitle: "Pipeline recovery pack",
+    outputNote: "The output includes lead priority, stalled-deal explanation, and a ready-to-edit follow-up.",
+    activeShadow: "Sales Shadow",
+    activeSource: "CRM linked",
+    activeOutput: "Email draft ready",
+    userMessage: "Rank this week's top leads and tell me which deals need follow-up before Friday.",
+    networkMessageOne: "Sales Shadow reviewed CRM recency, meeting notes, and known objections. Three leads show strong buying intent.",
+    networkMessageTwo: "I created a ranked lead list, one owner follow-up task, and a concise email draft for Acme.",
+    composerHint: "Ask Sales Shadow to rank leads, draft follow-ups, or explain pipeline risk.",
+    sources: [
+      "`crm-week-18.csv` was used to rank lead health.",
+      "`sales-notes.docx` was used to identify objections and next-step cues.",
+      "`pricing-sheet.pdf` was used to avoid unsupported pricing claims.",
+    ],
+    actions: [
+      ["Save lead summary", "Store the ranked lead list in outputs for the rest of the team."],
+      ["Create follow-up tasks", "Assign the top three accounts to the right owner."],
+      ["Edit email", "Open the follow-up draft and prepare it for review."],
+    ],
+    assetType: "Lead Review",
+    assetTitle: "Priority list + email draft",
+    assetNote: "Sales Shadow identified three high-intent leads and prepared one ready-to-edit follow-up draft.",
+  },
+  support: {
+    runTitle: "Support Shadow is finding knowledge drift that affects customers and sales.",
+    runStatus: "Support context active",
+    packetStatus: "FAQ patch ready",
+    contextTitle: "Support tickets, FAQ doc, SOP, newest pricing notes",
+    contextNote: "Support Shadow compares customer questions against the latest company rules and docs.",
+    askTitle: "Find repeat issues, update FAQ, flag customer risk",
+    askNote: "The network turns support noise into reusable knowledge and visible risk signals.",
+    outputTitle: "FAQ drift report",
+    outputNote: "The output includes a mismatch summary, recommended FAQ edits, and review items.",
+    activeShadow: "Support Shadow",
+    activeSource: "Tickets linked",
+    activeOutput: "FAQ draft ready",
+    userMessage: "Check support tickets and tell me what customers keep asking that our FAQ does not answer well.",
+    networkMessageOne: "Support Shadow found two repeated refund questions and one pricing mismatch between FAQ and the newest product doc.",
+    networkMessageTwo: "I drafted a cleaner FAQ block, flagged the risk to Sales Shadow, and prepared it for review.",
+    composerHint: "Ask Support Shadow to find repeat questions, draft replies, or update FAQ blocks.",
+    sources: [
+      "`support-tickets-april.csv` was used to identify repeated questions.",
+      "`support-faq.docx` was compared against current customer language.",
+      "`pricing-update.pdf` was used to catch the outdated FAQ answer.",
+    ],
+    actions: [
+      ["Review FAQ patch", "Open the recommended FAQ update before publishing."],
+      ["Notify Sales Shadow", "Sync the customer objection to sales follow-up context."],
+      ["Save support signal", "Add the repeated issue into the company memory layer."],
+    ],
+    assetType: "Support Drift",
+    assetTitle: "FAQ patch + sales signal",
+    assetNote: "Support Shadow found one outdated article and prepared a customer-safe replacement.",
+  },
+  meeting: {
+    runTitle: "Assistant Shadow is turning team discussion into aligned execution.",
+    runStatus: "Meeting context active",
+    packetStatus: "Task handoff ready",
+    contextTitle: "Meeting notes, calendar, founder decisions, open tasks",
+    contextNote: "Assistant Shadow keeps decisions and follow-ups from being trapped inside meeting notes.",
+    askTitle: "Summarize decisions, assign owners, prepare reminders",
+    askNote: "The network converts discussion into accountable next steps.",
+    outputTitle: "Meeting execution packet",
+    outputNote: "The output includes decisions, owner tasks, reminders, and items needing confirmation.",
+    activeShadow: "Assistant Shadow",
+    activeSource: "Notes linked",
+    activeOutput: "Tasks ready",
+    userMessage: "Turn Monday's founder meeting notes into owner tasks and tell me what still needs a decision.",
+    networkMessageOne: "Assistant Shadow extracted four decisions, five action items, and two unresolved points from the meeting notes.",
+    networkMessageTwo: "I created a clean task handoff and queued two decision items for owner review.",
+    composerHint: "Ask Assistant Shadow to summarize meetings, assign owners, or create reminders.",
+    sources: [
+      "`monday-founder-notes.docx` was used to extract decisions and blockers.",
+      "`team-calendar.ics` was used to suggest realistic due dates.",
+      "`open-tasks.xlsx` was used to avoid duplicate assignments.",
+    ],
+    actions: [
+      ["Create task handoff", "Send five action items to the task queue with suggested owners."],
+      ["Queue decisions", "Place two unresolved decisions into the review queue."],
+      ["Save meeting digest", "Store the summary as a reusable company record."],
+    ],
+    assetType: "Meeting Handoff",
+    assetTitle: "Decisions + task list",
+    assetNote: "Assistant Shadow converted meeting notes into owners, due dates, reminders, and review items.",
+  },
+};
+
+function setShadowField(name, value) {
+  document.querySelectorAll(`[data-shadow-field="${name}"]`).forEach((element) => {
+    element.textContent = value;
+  });
+}
+
+function setShadowList(name, items, renderer) {
+  document.querySelectorAll(`[data-shadow-list="${name}"]`).forEach((list) => {
+    list.innerHTML = "";
+    items.forEach((item) => {
+      list.insertAdjacentHTML("beforeend", renderer(item));
+    });
+  });
+}
+
+function renderShadowNetworkScenario(key = "focus") {
+  const scenario = shadowNetworkScenarios[key] || shadowNetworkScenarios.focus;
+  Object.entries(scenario).forEach(([field, value]) => {
+    if (typeof value === "string") setShadowField(field, value);
+  });
+  setShadowList("sources", scenario.sources, (item) => `<li>${item}</li>`);
+  setShadowList(
+    "actions",
+    scenario.actions,
+    ([title, body]) => `<div><strong>${title}</strong><p>${body}</p></div>`
+  );
+  document.querySelectorAll("[data-shadow-action]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.shadowAction === key);
+  });
+}
+
+document.querySelectorAll("[data-shadow-action]").forEach((button) => {
+  button.addEventListener("click", () => {
+    renderShadowNetworkScenario(button.dataset.shadowAction);
+  });
+});
+
 document.querySelectorAll("[data-settings-role]").forEach((button) => {
   button.addEventListener("click", () => {
     currentSettingsRole = button.dataset.settingsRole;
@@ -2756,5 +2874,6 @@ renderClientState();
 renderTaskBoard();
 renderKnowledgeState();
 renderSettingsState();
+renderShadowNetworkScenario();
 
 

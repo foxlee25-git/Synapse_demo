@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Agents</title>
+    <meta
+      name="description"
+      content="Synapse agent manager for sales, assistant, support, and custom role-based AI helpers."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-body">
+    <div class="site-bg"></div>
+    <div class="page-shell app-page-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="brand-name">Synapse</p>
+            <p class="brand-tag">Shadow Roles</p>
+          </div>
+        </a>
+        <nav class="site-nav">
+          <a href="index.html">Showcase</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="app.html">Chat</a>
+          <a href="agents.html" aria-current="page">Agents</a>
+          <a href="data-intake.html">Data</a>
+          <a href="product-architecture.html">Architecture</a>
+          <a href="settings.html">Settings</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button button-primary" href="data-intake.html">Manage Data</a>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="page-hero">
+          <p class="eyebrow">Shadow Role Manager</p>
+          <h1>Define the company’s second layer of role-based execution.</h1>
+          <p class="lead">
+            This is where the Shadow Network becomes company-specific. Each role shadow gets
+            a job, data boundary, rules, templates, and a clear way to hand work back to people.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="app.html">Open Chat</a>
+            <a class="button button-secondary" href="data-intake.html">Open Data</a>
+            <a class="button button-secondary" href="dashboard.html">Back to Dashboard</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric-chip">
+              <span>Starter Shadows</span>
+              <strong>4 role templates</strong>
+            </div>
+            <div class="metric-chip">
+              <span>Control Surface</span>
+              <strong>Scope, data, rules, handoff</strong>
+            </div>
+            <div class="metric-chip">
+              <span>Design Goal</span>
+              <strong>One role, one clear responsibility</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="agent-template-grid">
+            <article class="info-card template-card" data-reveal>
+              <p class="card-label">Template 01</p>
+              <h3>Sales Shadow</h3>
+              <p>Reads CRM, email history, follow-up notes, and product docs to rank leads and draft follow-ups.</p>
+              <div class="template-tags">
+                <span>CRM</span>
+                <span>Email</span>
+                <span>Follow-up</span>
+              </div>
+            </article>
+            <article class="info-card template-card" data-reveal>
+              <p class="card-label">Template 02</p>
+              <h3>Assistant Shadow</h3>
+              <p>Reads calendar, notes, and inbox summaries to organize meetings, reminders, and task lists.</p>
+              <div class="template-tags">
+                <span>Calendar</span>
+                <span>Notes</span>
+                <span>Tasks</span>
+              </div>
+            </article>
+            <article class="info-card template-card" data-reveal>
+              <p class="card-label">Template 03</p>
+              <h3>Support Shadow</h3>
+              <p>Reads FAQ, SOP, and ticket history to answer common questions and improve the knowledge base.</p>
+              <div class="template-tags">
+                <span>FAQ</span>
+                <span>SOP</span>
+                <span>Tickets</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="workspace-grid">
+            <article class="workspace-card">
+              <p class="card-label">Shadow Directory</p>
+              <h3>Current role-based shadows</h3>
+              <ul class="agent-list">
+                <li>Sales Shadow -> CRM, email, pricing docs, follow-up notes</li>
+                <li>Assistant Shadow -> calendar, notes, meeting logs, internal tasks</li>
+                <li>Support Shadow -> FAQ, SOP, support tickets, policy docs</li>
+                <li>Ops Shadow -> weekly reports, campaign sheets, workflow checklists</li>
+              </ul>
+            </article>
+
+            <article class="workspace-card">
+              <p class="card-label">Configuration Tabs</p>
+              <h3>What each agent needs</h3>
+              <ul class="brief-list">
+                <li>`Profile` for name, purpose, and role summary.</li>
+                <li>`Data Access` for allowed files, tools, and folders.</li>
+                <li>`Instructions` for how the role should think and write.</li>
+                <li>`Templates` for common outputs like briefs, emails, or summaries.</li>
+                <li>`History` for recent runs, edits, and saved outputs.</li>
+              </ul>
+            </article>
+
+            <article class="workspace-card timeline-stream">
+              <div class="workspace-card-head">
+                <div>
+                  <p class="card-label">Shadow Detail</p>
+                  <h3>Sales Shadow example</h3>
+                </div>
+                <span class="mini-pill live">Configured</span>
+              </div>
+              <div class="agent-detail-topline">
+                <span>Shadow role</span>
+                <span>High-intent lead follow-up</span>
+                <span>Founder-ready weekly brief</span>
+              </div>
+              <div class="handoff-stack">
+                <div>
+                  <strong>Goal</strong>
+                  <p>Summarize high-intent leads, draft concise follow-ups, and produce a weekly sales brief.</p>
+                </div>
+                <div>
+                  <strong>Data access</strong>
+                  <p>Can read CRM exports, last-touch notes, product FAQ, and pricing docs. Cannot read payroll or support inbox data.</p>
+                </div>
+                <div>
+                  <strong>Default outputs</strong>
+                  <p>Lead summary, ranked list, follow-up email, stalled-deal explanation, and founder weekly brief.</p>
+                </div>
+                <div>
+                  <strong>Restrictions</strong>
+                  <p>No pricing promises, no direct send, and no changes to the master CRM without review.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
