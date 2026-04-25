@@ -1,253 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Agent Platform</title>
+    <title>Synapse Prototype</title>
     <meta
       name="description"
-      content="Synapse is a small business AI platform with dashboard, chat, agents, and data management."
+      content="Synapse Layer: Shadow OS prototype for agent-native company coordination."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <meta http-equiv="refresh" content="0; url=prototype-complete.html#dashboard" />
+    <link rel="canonical" href="prototype-complete.html#dashboard" />
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        color: #07133f;
+        font-family: Inter, "Noto Sans SC", Arial, sans-serif;
+        background: linear-gradient(180deg, #fbfcff 0%, #eef3fb 100%);
+      }
+
+      a {
+        color: #2357ff;
+        font-weight: 800;
+      }
+    </style>
   </head>
-  <body class="app-body">
-    <div class="site-bg"></div>
-    <div class="page-shell app-page-shell">
-      <header class="site-header">
-        <a class="brand-lockup" href="index.html">
-          <div class="brand-mark">S</div>
-          <div>
-            <p class="brand-name">Synapse</p>
-            <p class="brand-tag">Shadow Network</p>
-          </div>
-        </a>
-        <nav class="site-nav">
-          <a href="index.html" aria-current="page">Showcase</a>
-          <a href="dashboard.html">Dashboard</a>
-          <a href="app.html">Chat</a>
-          <a href="agents.html">Agents</a>
-          <a href="data-intake.html">Data</a>
-          <a href="product-architecture.html">Architecture</a>
-          <a href="settings.html">Settings</a>
-        </nav>
-        <div class="header-actions">
-          <a class="button button-primary" href="dashboard.html">Open Dashboard</a>
-        </div>
-      </header>
-
-      <main class="app-main">
-        <section class="app-hero">
-          <div class="app-hero-copy">
-            <p class="eyebrow">Company Shadow Network</p>
-            <h1>Every employee talks to one network. The company stays aligned behind it.</h1>
-            <p class="lead">
-              Synapse gives each team a shared operating layer. Employees ask once,
-              the Shadow Network uses company-wide context, coordinates the right
-              role shadows, and returns work as summaries, drafts, tasks, or decisions.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="dashboard.html">Open Dashboard</a>
-              <a class="button button-secondary" href="app.html">Open Chat</a>
-              <a class="button button-secondary" href="agents.html">Open Agents</a>
-            </div>
-            <div class="hero-metrics">
-              <div class="metric-chip">
-                <span>Primary Surface</span>
-                <strong>One employee entry point</strong>
-              </div>
-              <div class="metric-chip">
-                <span>Network Behind</span>
-                <strong>Sales / Assistant / Support shadows</strong>
-              </div>
-              <div class="metric-chip">
-                <span>System Goal</span>
-                <strong>Lower coordination cost</strong>
-              </div>
-            </div>
-          </div>
-          <div class="app-hero-stack">
-            <article class="app-peek-card highlight-card" data-reveal>
-              <p class="card-label">Company State</p>
-              <h3>Alignment Dashboard</h3>
-              <p>See what the network knows, what it produced, what needs review, and where execution is drifting.</p>
-            </article>
-            <article class="app-peek-card" data-reveal>
-              <p class="card-label">Employee Entry</p>
-              <h3>Shadow Network Chat</h3>
-              <p>Employees ask in one place while the network routes context to the right shadows in the background.</p>
-            </article>
-            <article class="app-peek-card" data-reveal>
-              <p class="card-label">Back Office</p>
-              <h3>Role Shadows + Context</h3>
-              <p>Each role shadow receives the right company context, rules, and output patterns.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="network-command-center" data-reveal>
-            <aside class="network-rail">
-              <p class="card-label">Shadow Network</p>
-              <h3>Live company context</h3>
-              <div class="context-meter">
-                <span>Context Coverage</span>
-                <strong>82%</strong>
-                <i style="--meter:82%"></i>
-              </div>
-              <div class="context-source-list">
-                <span>CRM and customer notes</span>
-                <span>Meeting logs and tasks</span>
-                <span>SOP, FAQ, pricing docs</span>
-                <span>Founder decisions</span>
-              </div>
-            </aside>
-
-            <div class="network-main">
-              <div class="network-thread-head">
-                <div>
-                  <p class="card-label">Employee Request</p>
-                  <h3>"What should the team focus on before Friday?"</h3>
-                </div>
-                <span class="status-badge live">Network routing</span>
-              </div>
-              <div class="network-route-grid">
-                <div class="network-node active">
-                  <span>Sales Shadow</span>
-                  <strong>Ranks stalled opportunities</strong>
-                  <p>Uses CRM, last-touch notes, pricing FAQ.</p>
-                </div>
-                <div class="network-node">
-                  <span>Assistant Shadow</span>
-                  <strong>Turns meetings into action list</strong>
-                  <p>Uses founder notes, calendar, decisions.</p>
-                </div>
-                <div class="network-node">
-                  <span>Support Shadow</span>
-                  <strong>Flags FAQ drift</strong>
-                  <p>Uses ticket history, SOP, product docs.</p>
-                </div>
-              </div>
-            </div>
-
-            <aside class="network-rail">
-              <p class="card-label">Returned Output</p>
-              <h3>Alignment packet</h3>
-              <ul class="network-output-list">
-                <li>Friday focus brief</li>
-                <li>3 owner-level decisions</li>
-                <li>5 team tasks</li>
-                <li>2 items needing review</li>
-              </ul>
-            </aside>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="platform-story-band" data-reveal>
-            <div>
-              <p class="eyebrow">Shadow Network</p>
-              <h2>People work in front. The network keeps the company aligned behind them.</h2>
-            </div>
-            <div class="story-flow">
-              <span>Employee asks</span>
-              <i></i>
-              <span>Network understands</span>
-              <i></i>
-              <span>Shadows coordinate</span>
-              <i></i>
-              <span>Company aligns</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="demo-journey-grid">
-            <article class="journey-card" data-reveal>
-              <p class="card-label">Product Logic</p>
-              <h3>One simple loop for V1</h3>
-              <ul class="brief-list">
-                <li>Upload docs, sheets, CRM exports, emails, or SOP files into the data layer.</li>
-                <li>Bind the right sources to a Sales, Assistant, Support, or custom agent.</li>
-                <li>Use chat to ask for summaries, drafts, action items, or weekly reports.</li>
-              </ul>
-            </article>
-            <article class="journey-card" data-reveal>
-              <p class="card-label">Best First Demo</p>
-              <h3>Show four pages only</h3>
-              <ul class="brief-list">
-                <li>Start with Dashboard to prove there is a control center.</li>
-                <li>Open Chat to show the work actually gets done through one thread.</li>
-                <li>Open Agents to prove each role has its own data and rules.</li>
-              </ul>
-            </article>
-            <article class="journey-card" data-reveal>
-              <p class="card-label">Why It Fits SMB</p>
-              <h3>Useful first, complex later</h3>
-              <p class="journey-note">
-                The first version does not need deep orchestration. It only needs to let a
-                small business upload context, ask good questions, and save useful outputs.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="card-grid thirds">
-            <article class="info-card spotlight-card" data-reveal>
-              <p class="card-label">Why This Feels Different</p>
-              <h3>Not one generic bot</h3>
-              <p>The same workspace can host different role-based shadows with different data access, responsibilities, and output styles.</p>
-            </article>
-            <article class="info-card spotlight-card" data-reveal>
-              <p class="card-label">Why SMB Can Adopt It</p>
-              <h3>Useful before it gets complex</h3>
-              <p>Teams can start with uploads and a few templates first, then add more systems and deeper automation later.</p>
-            </article>
-            <article class="info-card spotlight-card" data-reveal>
-              <p class="card-label">What It Lowers</p>
-              <h3>Coordination cost</h3>
-              <p>The platform is designed to reduce repeated summarizing, manual handoffs, and the cost of getting everyone aligned.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <div class="feature-page-grid">
-            <a class="page-link-card" href="dashboard.html" data-reveal>
-              <p class="card-label">01</p>
-              <h3>Dashboard</h3>
-              <p>Track active agents, recent outputs, tasks waiting review, and this week's top signals.</p>
-            </a>
-            <a class="page-link-card" href="app.html" data-reveal>
-              <p class="card-label">02</p>
-              <h3>Chat</h3>
-              <p>Switch between agents, ask questions against business data, and save outputs into the workspace.</p>
-            </a>
-            <a class="page-link-card" href="agents.html" data-reveal>
-              <p class="card-label">03</p>
-              <h3>Agents</h3>
-              <p>Configure role-based assistants with different scopes, templates, and task styles.</p>
-            </a>
-            <a class="page-link-card" href="data-intake.html" data-reveal>
-              <p class="card-label">04</p>
-              <h3>Data</h3>
-              <p>Upload files, connect tools, and control which agent can use which source.</p>
-            </a>
-            <a class="page-link-card" href="product-architecture.html" data-reveal>
-              <p class="card-label">05</p>
-              <h3>Page Architecture</h3>
-              <p>See the product page map, the MVP core loop, and how the Shadow Network surfaces connect.</p>
-            </a>
-          </div>
-        </section>
-      </main>
-    </div>
-    <script src="script.js"></script>
+  <body>
+    <p>Opening Synapse prototype... <a href="prototype-complete.html#dashboard">Open manually</a></p>
   </body>
 </html>
