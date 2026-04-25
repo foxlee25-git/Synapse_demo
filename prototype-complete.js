@@ -95,6 +95,33 @@ const roleFocus = {
   employee: new Set(["ava", "noah", "mia", "liam", "alex", "emma"]),
 };
 
+const accessCopy = {
+  ceo: ["Full detail access", "This role can inspect cross-company risks, owners, systems and routed actions."],
+  cto: ["Engineering scoped access", "Engineering context is expanded. Revenue, legal and people signals are summarized unless they affect delivery risk."],
+  pm: ["Delivery scoped access", "Launch dependencies, owners, customer impact and next actions are expanded. Sensitive functional details stay summarized."],
+  employee: ["Presence-only access", "This role sees whether others are online, busy or blocked, but sensitive work details and source traces are hidden."],
+};
+
+const actionByTeam = {
+  Platform: "Create owner task and notify PM",
+  Infra: "Open incident follow-up",
+  Quality: "Request QA signoff",
+  Delivery: "Escalate launch dependency",
+  Product: "Send design review reminder",
+  Knowledge: "Assign docs owner",
+  Customer: "Route support summary",
+  Revenue: "Draft account risk update",
+  Operations: "Publish SOP change",
+  GRC: "Queue policy review",
+  Finance: "Attach budget model",
+  People: "Flag load hotspot",
+  Analytics: "Refresh coverage metrics",
+  Leadership: "Review decision packet",
+};
+
+let currentRole = "ceo";
+let selectedAgentId = "emma";
+
 function setText(selector, text) {
   const element = document.querySelector(selector);
   if (element) element.textContent = text;
@@ -116,6 +143,48 @@ function getNodeBody(employee, roleKey, isFocused) {
   return `<p>${employee.team} context available</p>`;
 }
 
+function canSeeDetail(employee, roleKey) {
+  return roleKey === "ceo" || (roleFocus[roleKey] && roleFocus[roleKey].has(employee.id));
+}
+
+function renderSelectedAgent(employee, roleKey) {
+  const fullDetail = canSeeDetail(employee, roleKey);
+  const employeeView = roleKey === "employee";
+  const [accessTitle, accessBody] = accessCopy[roleKey] || accessCopy.ceo;
+  const summary = employeeView
+    ? `${statusLabel(employee.status)}. Work details are hidden by policy.`
+    : fullDetail
+      ? employee.detail
+      : `${employee.team} context is summarized for this role.`;
+  const trace = employeeView
+    ? "Trace hidden. Synapse only exposes presence and direct work dependency state."
+    : fullDetail
+      ? `Trace: ${employee.tags.join(", ")} sources, work ledger, context graph and approval policy.`
+      : "Trace partially hidden. Ask owner or request elevated context.";
+  const meta = employeeView
+    ? [employee.role, employee.team, statusLabel(employee.status)]
+    : fullDetail
+      ? [employee.role, employee.team, statusLabel(employee.status), ...employee.tags]
+      : [employee.role, employee.team, "Limited detail"];
+
+  setText("#selected-agent-name", employee.name);
+  setText("#selected-agent-summary", summary);
+  setText("#access-model-title", accessTitle);
+  setText("#access-model-copy", accessBody);
+  setText("#selected-agent-action", employeeView ? "No cross-agent action available" : actionByTeam[employee.team] || "Review routed action");
+  setText("#selected-agent-trace", trace);
+  document.querySelector("#selected-agent-meta").innerHTML = meta.map((item) => `<span>${item}</span>`).join("");
+}
+
+function selectAgent(agentId) {
+  selectedAgentId = agentId;
+  const selected = employees.find((employee) => employee.id === selectedAgentId) || employees[0];
+  document.querySelectorAll(".employee-node").forEach((node) => {
+    node.classList.toggle("is-selected", node.dataset.agentId === selectedAgentId);
+  });
+  renderSelectedAgent(selected, currentRole);
+}
+
 function renderEmployeeNetwork(roleKey) {
   const network = document.querySelector("#employee-network");
   if (!network) return;
@@ -127,7 +196,8 @@ function renderEmployeeNetwork(roleKey) {
       const to = employees.find((employee) => employee.id === toId);
       const strong = focused.has(fromId) && focused.has(toId);
       const limited = roleKey === "employee" && !strong;
-      return `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" class="${strong ? "is-strong" : ""} ${limited ? "is-limited" : ""}" />`;
+      const selected = fromId === selectedAgentId || toId === selectedAgentId;
+      return `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" class="${strong ? "is-strong" : ""} ${limited ? "is-limited" : ""} ${selected ? "is-selected-line" : ""}" />`;
     })
     .join("");
 
@@ -136,7 +206,7 @@ function renderEmployeeNetwork(roleKey) {
       const isFocused = focused.has(employee.id);
       const lowDetail = roleKey === "employee";
       return `
-        <article class="employee-node ${isFocused ? "" : "is-muted"} ${lowDetail ? "is-low-detail" : ""}" style="left:${employee.x}%; top:${employee.y}%">
+        <article class="employee-node ${employee.id === selectedAgentId ? "is-selected" : ""} ${isFocused ? "" : "is-muted"} ${lowDetail ? "is-low-detail" : ""}" data-agent-id="${employee.id}" tabindex="0" role="button" aria-label="Inspect ${employee.name}" style="left:${employee.x}%; top:${employee.y}%">
           <div class="node-top">
             <div>
               <strong>${employee.name}</strong>
@@ -155,10 +225,12 @@ function renderEmployeeNetwork(roleKey) {
     <div class="synapse-node"><strong>Synapse</strong><span>Shadow OS</span></div>
     ${nodeMarkup}
   `;
+  selectAgent(selectedAgentId);
 }
 
 function renderRole(roleKey) {
   const role = roles[roleKey] || roles.ceo;
+  currentRole = roleKey;
   setText("#role-label", role.label);
   setText("#role-title", role.title);
   setText("#role-description", role.description);
@@ -201,6 +273,19 @@ document.querySelectorAll("[data-screen]").forEach((button) => {
 
 document.querySelectorAll("[data-role]").forEach((button) => {
   button.addEventListener("click", () => renderRole(button.dataset.role));
+});
+
+document.querySelector("#employee-network").addEventListener("click", (event) => {
+  const node = event.target.closest("[data-agent-id]");
+  if (node) selectAgent(node.dataset.agentId);
+});
+
+document.querySelector("#employee-network").addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  const node = event.target.closest("[data-agent-id]");
+  if (!node) return;
+  event.preventDefault();
+  selectAgent(node.dataset.agentId);
 });
 
 document.querySelector("[data-run-demo]").addEventListener("click", () => {
