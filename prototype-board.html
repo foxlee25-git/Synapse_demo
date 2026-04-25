@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Complete Prototype Board</title>
+    <meta
+      name="description"
+      content="A complete Synapse Layer: Shadow OS prototype board for pitch and product walkthrough."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="prototype-board.css" />
+  </head>
+  <body>
+    <main class="board">
+      <header class="board-hero">
+        <div class="brand-row">
+          <img
+            src="outputs/synapse-shadow-os-deck/scratch/assets/synapse-logo-trim-black.png"
+            alt="Synapse"
+          />
+          <span>Layer: Shadow OS</span>
+        </div>
+        <div>
+          <p class="eyebrow">Complete Prototype Map</p>
+          <h1>Agent-native Company OS</h1>
+          <p class="lead">
+            Synapse is built for real-time organizational coordination. It connects employee Agents, SaaS tools, project context and company state without replacing the tools teams already use.
+          </p>
+        </div>
+        <aside class="hero-metrics">
+          <div><span>Company State</span><strong>Live</strong></div>
+          <div><span>Agents</span><strong>12 active</strong></div>
+          <div><span>Actions</span><strong>42 queued</strong></div>
+        </aside>
+      </header>
+
+      <section class="zone topology-zone">
+        <div class="zone-head">
+          <p class="eyebrow">01 / Product Concept</p>
+          <h2>One coordination layer across every employee Agent and every SaaS.</h2>
+        </div>
+
+        <div class="topology">
+          <div class="agent-column">
+            <article><b>Developer</b><span>Dev Agent</span><small>PR, GitHub, incidents</small></article>
+            <article><b>Product</b><span>PM Agent</span><small>Roadmap, specs, launch</small></article>
+            <article><b>Sales</b><span>Sales Agent</span><small>CRM, deals, follow-up</small></article>
+            <article><b>Operations</b><span>Ops Agent</span><small>SOP, finance, vendors</small></article>
+            <article><b>Leadership</b><span>Exec Agent</span><small>Priorities, approvals</small></article>
+          </div>
+
+          <div class="core-diagram company-agent-network" aria-label="Live company agent network">
+            <svg class="network-lines" viewBox="0 0 620 620" aria-hidden="true">
+              <line x1="310" y1="310" x2="310" y2="78" />
+              <line x1="310" y1="310" x2="430" y2="108" />
+              <line x1="310" y1="310" x2="520" y2="190" />
+              <line x1="310" y1="310" x2="545" y2="310" />
+              <line x1="310" y1="310" x2="510" y2="430" />
+              <line x1="310" y1="310" x2="405" y2="520" />
+              <line x1="310" y1="310" x2="310" y2="548" />
+              <line x1="310" y1="310" x2="210" y2="520" />
+              <line x1="310" y1="310" x2="110" y2="430" />
+              <line x1="310" y1="310" x2="80" y2="310" />
+              <line x1="310" y1="310" x2="105" y2="190" />
+              <line x1="310" y1="310" x2="190" y2="108" />
+              <line class="peer-link active-link" x1="310" y1="78" x2="520" y2="190" />
+              <line class="peer-link" x1="520" y1="190" x2="510" y2="430" />
+              <line class="peer-link active-link" x1="405" y1="520" x2="110" y2="430" />
+              <line class="peer-link" x1="80" y1="310" x2="190" y2="108" />
+              <line class="peer-link" x1="430" y1="108" x2="545" y2="310" />
+            </svg>
+
+            <div class="network-core">
+              <div class="core-icon">S</div>
+              <h3>Synapse</h3>
+              <p>Shadow OS</p>
+              <span>15 agents online</span>
+            </div>
+
+            <button class="agent-node live" data-agent-node data-state="active" style="--x:50%; --y:8%">Ava<br /><small>PM</small></button>
+            <button class="agent-node" data-agent-node style="--x:69%; --y:13%">Noah<br /><small>Dev</small></button>
+            <button class="agent-node updated" data-agent-node data-state="updated" style="--x:84%; --y:28%">Mia<br /><small>Sales</small></button>
+            <button class="agent-node" data-agent-node style="--x:88%; --y:50%">Ethan<br /><small>Ops</small></button>
+            <button class="agent-node" data-agent-node style="--x:82%; --y:70%">Luna<br /><small>CS</small></button>
+            <button class="agent-node live" data-agent-node data-state="active" style="--x:65%; --y:84%">Kai<br /><small>Dev</small></button>
+            <button class="agent-node" data-agent-node style="--x:50%; --y:89%">Ivy<br /><small>QA</small></button>
+            <button class="agent-node" data-agent-node style="--x:34%; --y:84%">Leo<br /><small>Docs</small></button>
+            <button class="agent-node updated" data-agent-node data-state="updated" style="--x:18%; --y:70%">Zoe<br /><small>RevOps</small></button>
+            <button class="agent-node" data-agent-node style="--x:12%; --y:50%">Owen<br /><small>Support</small></button>
+            <button class="agent-node" data-agent-node style="--x:17%; --y:28%">Nina<br /><small>Design</small></button>
+            <button class="agent-node" data-agent-node style="--x:31%; --y:13%">Max<br /><small>Infra</small></button>
+            <button class="agent-node small-node" data-agent-node style="--x:59%; --y:28%">Sam<br /><small>Legal</small></button>
+            <button class="agent-node small-node updated" data-agent-node data-state="updated" style="--x:41%; --y:68%">Ray<br /><small>Finance</small></button>
+            <button class="agent-node small-node" data-agent-node style="--x:38%; --y:37%">Jin<br /><small>Data</small></button>
+
+            <aside class="network-inspector">
+              <div>
+                <p>New status</p>
+                <strong id="network-status-title">Mia updated Acme deal risk</strong>
+                <span id="network-status-meta">Sales Agent -> CRM -> CEO View</span>
+              </div>
+              <ul id="network-event-list">
+                <li><b>10:48</b> Billing API blocker linked to Q3 Launch</li>
+                <li><b>10:45</b> Acme renewal risk turned green after owner reply</li>
+                <li><b>10:42</b> Support FAQ patch queued for approval</li>
+              </ul>
+            </aside>
+
+            <div class="network-legend">
+              <span><i class="legend-dot green"></i>New / updated</span>
+              <span><i class="legend-dot blue"></i>Online Agent</span>
+              <span><i class="legend-line"></i>Context dependency</span>
+            </div>
+          </div>
+
+          <div class="tool-column">
+            <article><b>Slack</b><span>Notify and align</span></article>
+            <article><b>Linear / Jira</b><span>Create and update tasks</span></article>
+            <article><b>GitHub</b><span>Review engineering state</span></article>
+            <article><b>Docs / Notion</b><span>Read and write context</span></article>
+            <article><b>CRM</b><span>Update customer state</span></article>
+          </div>
+        </div>
+
+        <div class="concept-strip">
+          <div><strong>组织级实时状态感知</strong><span>Sense company state from every working surface</span></div>
+          <div><strong>Agent 协作协议层</strong><span>Normalize signals from MCP, Skills, APIs and plugins</span></div>
+          <div><strong>企业工作流编排</strong><span>Coordinate people, Agents and SaaS execution</span></div>
+        </div>
+      </section>
+
+      <section class="zone workflow-zone">
+        <div class="zone-head compact">
+          <p class="eyebrow">02 / Coordination Loop</p>
+          <h2>From employee work to company-wide action.</h2>
+        </div>
+        <div class="workflow">
+          <article><b>1</b><h3>员工工作</h3><p>员工继续在自己熟悉的 Agent 和工具里推进工作。</p></article>
+          <article><b>2</b><h3>自动同步</h3><p>Agent 自动同步进展、上下文、产物、阻塞和下一步。</p></article>
+          <article><b>3</b><h3>组织感知</h3><p>Synapse 将碎片信号汇聚为公司级 Context Graph。</p></article>
+          <article><b>4</b><h3>风险识别</h3><p>识别阻塞、依赖、紧急事项、延迟风险和审批点。</p></article>
+          <article><b>5</b><h3>协作执行</h3><p>自动发 Slack、建任务、写 CRM、草拟邮件或请求审批。</p></article>
+          <article><b>6</b><h3>全局更新</h3><p>不同角色仪表盘看到最新公司状态和优先级。</p></article>
+        </div>
+      </section>
+
+      <section class="zone architecture-zone">
+        <div class="zone-head compact">
+          <p class="eyebrow">03 / System Architecture</p>
+          <h2>Five-layer architecture with a Sense, Understand, Coordinate, Act loop.</h2>
+        </div>
+        <div class="architecture">
+          <div class="layers">
+            <div class="layer"><span>1</span><strong>Employee Agents</strong><i>Dev Agent</i><i>PM Agent</i><i>Sales Agent</i><i>Ops Agent</i><i>Any Agent / MCP</i></div>
+            <div class="layer"><span>2</span><strong>Agent Gateway</strong><i>MCP Server</i><i>Skill Router</i><i>Identity</i><i>Permission Policy</i><i>Context Access</i></div>
+            <div class="layer active"><span>3</span><strong>Synapse Core</strong><i>Work Event Ledger</i><i>Context Graph</i><i>Project State Engine</i><i>Risk Engine</i><i>Workflow Orchestrator</i></div>
+            <div class="layer"><span>4</span><strong>Action Layer</strong><i>Slack</i><i>Email</i><i>GitHub</i><i>Jira / Linear</i><i>CRM</i></div>
+            <div class="layer"><span>5</span><strong>Role Dashboards</strong><i>CEO</i><i>CTO</i><i>PM</i><i>Employee</i><i>Customer Success</i></div>
+          </div>
+          <aside class="loop">
+            <span>Sense</span>
+            <span>Understand</span>
+            <span>Coordinate</span>
+            <span>Act</span>
+          </aside>
+        </div>
+      </section>
+
+      <section class="zone dashboard-zone">
+        <div class="zone-head compact">
+          <p class="eyebrow">04 / Role-based Global Dashboard</p>
+          <h2>Shared company context, different role views.</h2>
+        </div>
+
+        <div class="dashboards">
+          <article class="dashboard-card ceo-card">
+            <div class="screen-head"><strong>CEO View</strong><span>Company overview</span></div>
+            <div class="mini-kpis"><b>$12.4M</b><b>18 risks</b><b>7 decisions</b><b>99.94%</b></div>
+            <div class="screen-grid">
+              <div class="progress-list">
+                <p><span>AI Agent Platform</span><i style="--w:78%"></i></p>
+                <p><span>International Expansion</span><i style="--w:45%"></i></p>
+                <p><span>Enterprise Motion</span><i style="--w:62%"></i></p>
+              </div>
+              <ul>
+                <li>Enterprise deal slippage</li>
+                <li>Security compliance gap</li>
+                <li>Budget approval needed</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dashboard-card">
+            <div class="screen-head"><strong>CTO View</strong><span>Engineering overview</span></div>
+            <div class="mini-kpis"><b>24 deploys</b><b>2.1% CFR</b><b>38m MTTR</b></div>
+            <ul class="queue">
+              <li>API rate limit with Slack</li>
+              <li>Auth service flakiness</li>
+              <li>Infra quota increase</li>
+            </ul>
+          </article>
+
+          <article class="dashboard-card">
+            <div class="screen-head"><strong>PM View</strong><span>Delivery overview</span></div>
+            <div class="dependency-map">
+              <span>SSO Service</span><span>Agent Platform</span><span>Billing API</span><span>Workflow Engine</span>
+            </div>
+            <ul class="queue">
+              <li>Marketplace API spec overdue</li>
+              <li>Billing API waiting on platform</li>
+            </ul>
+          </article>
+
+          <article class="dashboard-card">
+            <div class="screen-head"><strong>Employee View</strong><span>My work overview</span></div>
+            <ul class="task-list">
+              <li><b>Review PR #4821</b><span>High</span></li>
+              <li><b>Fix workflow timeout</b><span>High</span></li>
+              <li><b>Write integration tests</b><span>Medium</span></li>
+              <li><b>Prepare release notes</b><span>Low</span></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="zone execution-zone">
+        <div class="zone-head compact">
+          <p class="eyebrow">05 / Execution Surfaces</p>
+          <h2>Synapse does not replace tools. It coordinates them.</h2>
+        </div>
+        <div class="execution-grid">
+          <article><strong>Risk Center</strong><p>依赖、延期、阻塞、合规与客户风险统一识别。</p></article>
+          <article><strong>Decision Queue</strong><p>高价值动作进入审批队列，保留责任人与依据。</p></article>
+          <article><strong>Workflow Orchestrator</strong><p>自动创建任务、消息、草稿和系统写回。</p></article>
+          <article><strong>Enterprise Memory</strong><p>把已确认的决策、流程和结果沉淀为公司记忆。</p></article>
+        </div>
+      </section>
+    </main>
+    <script src="prototype-board.js"></script>
+  </body>
+</html>

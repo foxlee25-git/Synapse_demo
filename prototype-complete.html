@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Complete Prototype</title>
+    <meta
+      name="description"
+      content="Complete interactive Synapse Layer: Shadow OS prototype."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="prototype-complete.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <a class="brand" href="prototype-complete.html" aria-label="Synapse complete prototype">
+          <img
+            src="outputs/synapse-shadow-os-deck/scratch/assets/synapse-logo-trim-black.png"
+            alt="Synapse"
+          />
+          <span>Layer: Shadow OS</span>
+        </a>
+
+        <nav class="side-nav" aria-label="Prototype screens">
+          <button class="nav-item is-active" data-screen="overview">Overview</button>
+          <button class="nav-item" data-screen="dashboard">Role Dashboard</button>
+          <button class="nav-item" data-screen="workflow">How It Works</button>
+          <button class="nav-item" data-screen="architecture">Architecture</button>
+          <button class="nav-item" data-screen="execution">Execution</button>
+        </nav>
+
+        <div class="sidebar-card">
+          <p>Live Company State</p>
+          <strong>Synced 38s ago</strong>
+          <span>15 Agents active</span>
+        </div>
+
+        <a class="board-link" href="prototype-board.html">Open Full Board</a>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Agent-native Company OS</p>
+            <h1 id="screen-title">Complete Synapse Prototype</h1>
+          </div>
+          <div class="top-actions">
+            <button class="ghost-button" data-run-demo>Run demo sync</button>
+            <span class="status-pill" id="sync-status">Ready</span>
+          </div>
+        </header>
+
+        <section class="screen is-active" data-screen-panel="overview">
+          <div class="product-upgrade">
+            <a href="prototype-product.html">Open productized prototype</a>
+          </div>
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">Overview</p>
+              <h2>Synapse coordinates every employee Agent without replacing their tools.</h2>
+              <p>
+                员工继续使用 Slack、Jira、Notion、GitHub、CRM 和自己的 Agent。Synapse 在背后统一同步工作进度、上下文、产物、阻塞与下一步，形成公司级实时状态网络。
+              </p>
+              <div class="claim-grid">
+                <article><strong>组织状态感知</strong><span>实时汇聚工作信号</span></article>
+                <article><strong>Agent 协作协议</strong><span>MCP / Skill / API / Plugin</span></article>
+                <article><strong>企业工作流编排</strong><span>自动协调人、Agent 与 SaaS</span></article>
+              </div>
+            </div>
+
+            <div class="network-map">
+              <div class="agent-stack left">
+                <span>Dev Agent</span>
+                <span>PM Agent</span>
+                <span>Sales Agent</span>
+                <span>Ops Agent</span>
+              </div>
+              <div class="core">
+                <i>S</i>
+                <strong>Synapse</strong>
+                <small>Shadow OS</small>
+              </div>
+              <div class="agent-stack right">
+                <span>Slack</span>
+                <span>Linear / Jira</span>
+                <span>GitHub</span>
+                <span>CRM</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" data-screen-panel="dashboard">
+          <div class="role-switcher" aria-label="Role switcher">
+            <button class="role-button is-active" data-role="ceo">CEO</button>
+            <button class="role-button" data-role="cto">CTO</button>
+            <button class="role-button" data-role="pm">PM</button>
+            <button class="role-button" data-role="employee">Employee</button>
+          </div>
+
+          <div class="dashboard-shell">
+            <div class="dashboard-head">
+              <div>
+                <p class="eyebrow" id="role-label">CEO View</p>
+                <h2 id="role-title">Global Company Dashboard</h2>
+                <p id="role-description">领导层看到公司全局状态、风险、优先级和待决策事项。</p>
+              </div>
+              <span class="status-pill">Live shared context</span>
+            </div>
+
+            <div class="kpi-grid" id="kpi-grid"></div>
+
+            <article class="panel network-panel">
+              <div class="panel-head">
+                <div>
+                  <strong>15 Employee Agent Network</strong>
+                  <p id="network-visibility-note">Executive visibility: full cross-company context, risks and routed actions.</p>
+                </div>
+                <span class="status-pill" id="network-access-level">Full detail</span>
+              </div>
+              <div class="employee-network" id="employee-network" aria-label="Role based employee agent network"></div>
+              <div class="visibility-legend">
+                <span><i class="online"></i>Online</span>
+                <span><i class="busy"></i>Busy</span>
+                <span><i class="blocked"></i>Blocked</span>
+                <span><i class="limited"></i>Limited detail</span>
+              </div>
+            </article>
+
+            <div class="dashboard-grid">
+              <article class="panel large">
+                <div class="panel-head">
+                  <strong id="priority-title">Strategic priorities</strong>
+                  <span>On track</span>
+                </div>
+                <div class="priority-list" id="priority-list"></div>
+              </article>
+              <article class="panel">
+                <div class="panel-head"><strong>Risk signals</strong><span>Synced</span></div>
+                <ul class="simple-list" id="risk-list"></ul>
+              </article>
+              <article class="panel">
+                <div class="panel-head"><strong>Decisions</strong><span>Queued</span></div>
+                <ul class="simple-list" id="decision-list"></ul>
+              </article>
+              <article class="panel stream">
+                <div class="panel-head"><strong>Agent activity</strong><span>Now</span></div>
+                <div id="activity-list"></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" data-screen-panel="workflow">
+          <div class="section-head">
+            <p class="eyebrow">How It Works</p>
+            <h2>From employee work to company-wide action.</h2>
+          </div>
+          <div class="workflow-grid">
+            <article><b>1</b><strong>工作进行中</strong><p>员工和自己的 Agent 在原工具里推进工作。</p></article>
+            <article><b>2</b><strong>自动同步</strong><p>进展、阻塞、产物、上下文与下一步同步到 Synapse。</p></article>
+            <article><b>3</b><strong>组织感知</strong><p>Synapse 将碎片信号融合为公司级 Context Graph。</p></article>
+            <article><b>4</b><strong>风险识别</strong><p>识别依赖、延期、紧急事项与审批需求。</p></article>
+            <article><b>5</b><strong>协作执行</strong><p>自动发消息、建任务、写回系统、请求审批。</p></article>
+            <article><b>6</b><strong>全局更新</strong><p>仪表盘和相关成员看到最新状态。</p></article>
+          </div>
+        </section>
+
+        <section class="screen" data-screen-panel="architecture">
+          <div class="section-head">
+            <p class="eyebrow">System Architecture</p>
+            <h2>Five layers plus a Sense, Understand, Coordinate, Act loop.</h2>
+          </div>
+          <div class="architecture">
+            <div class="layers">
+              <div class="layer"><span>1</span><strong>Employee Agents</strong><i>Dev Agent</i><i>PM Agent</i><i>Sales Agent</i><i>Ops Agent</i></div>
+              <div class="layer"><span>2</span><strong>Agent Gateway</strong><i>MCP Server</i><i>Skill Router</i><i>Identity</i><i>Context Access</i></div>
+              <div class="layer active"><span>3</span><strong>Synapse Core</strong><i>Event Ledger</i><i>Context Graph</i><i>Risk Engine</i><i>Orchestrator</i></div>
+              <div class="layer"><span>4</span><strong>Action Layer</strong><i>Slack</i><i>Email</i><i>GitHub</i><i>CRM</i></div>
+              <div class="layer"><span>5</span><strong>Role Dashboards</strong><i>CEO</i><i>CTO</i><i>PM</i><i>Employee</i></div>
+            </div>
+            <aside class="loop">
+              <span>Sense</span>
+              <span>Understand</span>
+              <span>Coordinate</span>
+              <span>Act</span>
+            </aside>
+          </div>
+        </section>
+
+        <section class="screen" data-screen-panel="execution">
+          <div class="section-head">
+            <p class="eyebrow">Execution Surfaces</p>
+            <h2>Synapse does not replace tools. It coordinates them.</h2>
+          </div>
+          <div class="execution-grid">
+            <article><strong>Risk Center</strong><p>统一识别阻塞、依赖、延期、合规与客户风险。</p><button data-action-button>Escalate risk</button></article>
+            <article><strong>Decision Queue</strong><p>高价值动作进入审批队列，保留责任人与依据。</p><button data-action-button>Queue approval</button></article>
+            <article><strong>Workflow Orchestrator</strong><p>自动创建任务、消息、草稿和系统写回。</p><button data-action-button>Create task</button></article>
+            <article><strong>Enterprise Memory</strong><p>把已确认的决策、流程和结果沉淀为公司记忆。</p><button data-action-button>Save memory</button></article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="prototype-complete.js"></script>
+  </body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synapse Product Prototype</title>
+    <meta
+      name="description"
+      content="Productized Synapse Layer: Shadow OS prototype for agent-native company coordination."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="prototype-product.css" />
+  </head>
+  <body>
+    <div class="product-app">
+      <aside class="app-rail">
+        <a class="brand" href="prototype-product.html" aria-label="Synapse">
+          <img
+            src="outputs/synapse-shadow-os-deck/scratch/assets/synapse-logo-trim-black.png"
+            alt="Synapse"
+          />
+          <span>Layer: Shadow OS</span>
+        </a>
+
+        <nav class="rail-nav" aria-label="Product prototype navigation">
+          <button class="rail-link is-active" data-view="command">Command Center</button>
+          <button class="rail-link" data-view="graph">Work Graph</button>
+          <button class="rail-link" data-view="agents">Agent Registry</button>
+          <button class="rail-link" data-view="automation">Automation Queue</button>
+          <button class="rail-link" data-view="integrations">Integrations</button>
+          <button class="rail-link" data-view="memory">Enterprise Memory</button>
+          <button class="rail-link" data-view="governance">Governance</button>
+        </nav>
+
+        <section class="rail-status">
+          <p>Company State</p>
+          <strong id="rail-state">Healthy</strong>
+          <span>Last sync: <b id="rail-sync">38s ago</b></span>
+        </section>
+
+        <section class="rail-lens" aria-label="Role network lens">
+          <p>Role Lens</p>
+          <button data-network-role="dev">Developer</button>
+          <button data-network-role="pm">PM</button>
+          <button data-network-role="sales">Sales</button>
+          <button data-network-role="ops">Ops</button>
+          <button data-network-role="ceo">Exec</button>
+        </section>
+
+        <a class="secondary-link" href="prototype-board.html">Open board view</a>
+      </aside>
+
+      <main class="workspace">
+        <header class="workspace-topbar">
+          <div>
+            <p class="eyebrow" id="view-eyebrow">Live Operating Layer</p>
+            <h1 id="view-title">Command Center</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-button" data-simulate-sync>Simulate sync</button>
+            <button class="primary-button" data-open-action="approve">Review actions</button>
+          </div>
+        </header>
+
+        <section class="view is-active" data-view-panel="command">
+          <div class="command-layout">
+            <section class="hero-panel">
+              <div class="hero-copy">
+                <p class="eyebrow">Agent-native Company OS</p>
+                <h2>Shared company operating state</h2>
+                <p>
+                  员工继续在自己的 Agent 和 SaaS 中工作。Synapse 自动汇聚进度、上下文、产物、阻塞与下一步，并把它们编排成可执行的公司级协作流。
+                </p>
+              </div>
+              <div class="state-orbit">
+                <div class="orbit-ring ring-one"></div>
+                <div class="orbit-ring ring-two"></div>
+                <div class="orbit-card dev" data-network-node data-visible-to="dev pm cto">Dev Agent<br /><span>PR blocked</span></div>
+                <div class="orbit-card sales" data-network-node data-visible-to="sales pm ceo">Sales Agent<br /><span>Deal risk</span></div>
+                <div class="orbit-card pm" data-network-node data-visible-to="dev pm sales ops ceo cto">PM Agent<br /><span>Launch drift</span></div>
+                <div class="orbit-card ops" data-network-node data-visible-to="ops pm ceo">Ops Agent<br /><span>SOP update</span></div>
+                <div class="orbit-card qa" data-network-node data-visible-to="dev pm cto">QA Owner<br /><span>Test queue</span></div>
+                <div class="orbit-card support" data-network-node data-visible-to="sales ops pm ceo">Support<br /><span>FAQ drift</span></div>
+                <div class="orbit-core">
+                  <i>S</i>
+                  <strong>Synapse</strong>
+                  <span>Shadow OS</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="metric-grid">
+              <article><span>Active Agents</span><strong id="metric-agents">12</strong><p>4 role groups online</p></article>
+              <article><span>Open Risks</span><strong id="metric-risks">18</strong><p>3 need exec review</p></article>
+              <article><span>Queued Actions</span><strong id="metric-actions">42</strong><p>Slack, Linear, CRM, Docs</p></article>
+              <article><span>Context Coverage</span><strong>86%</strong><p>18 sources connected</p></article>
+            </section>
+
+            <section class="command-grid">
+              <article class="panel wide-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="eyebrow">Role Views</p>
+                    <h3>Shared context, role-specific attention</h3>
+                  </div>
+                  <div class="segmented" aria-label="Role switcher">
+                    <button class="is-active" data-role="ceo">CEO</button>
+                    <button data-role="cto">CTO</button>
+                    <button data-role="pm">PM</button>
+                    <button data-role="employee">Employee</button>
+                  </div>
+                </div>
+                <div class="role-dashboard">
+                  <div>
+                    <h4 id="role-title">CEO View</h4>
+                    <p id="role-copy">公司级风险、战略优先级、资源压力和待决策事项。</p>
+                  </div>
+                  <div class="role-kpis" id="role-kpis"></div>
+                  <div class="priority-list" id="role-priorities"></div>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-head">
+                  <h3>Risk Feed</h3>
+                  <span class="badge danger">3 high</span>
+                </div>
+                <ul class="feed-list" id="risk-feed"></ul>
+              </article>
+
+              <article class="panel">
+                <div class="panel-head">
+                  <h3>Decision Queue</h3>
+                  <span class="badge">7 queued</span>
+                </div>
+                <ul class="feed-list" id="decision-feed"></ul>
+              </article>
+
+              <article class="panel timeline-panel">
+                <div class="panel-head">
+                  <h3>Live Activity</h3>
+                  <span class="badge">Now</span>
+                </div>
+                <div class="activity-list">
+                  <div><span>10:42</span><p>PM Agent synced marketplace launch dependency from Linear.</p></div>
+                  <div><span>10:45</span><p>Synapse linked GitHub PR delay to Billing API blocker.</p></div>
+                  <div><span>10:48</span><p>Decision packet prepared for Platform owner.</p></div>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-head">
+                  <h3>Context Sources</h3>
+                  <span class="badge">18 active</span>
+                </div>
+                <div class="source-grid">
+                  <div><strong>CRM</strong><span>HubSpot pipeline</span><i>Read + scoped write</i></div>
+                  <div><strong>Engineering</strong><span>GitHub, Linear</span><i>Read + task write</i></div>
+                  <div><strong>Knowledge</strong><span>Docs, SOP, FAQ</span><i>Read + draft</i></div>
+                  <div><strong>Comms</strong><span>Slack, Email</span><i>Notify + draft</i></div>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-head">
+                  <h3>Team Load</h3>
+                  <span class="badge danger">2 hot spots</span>
+                </div>
+                <div class="load-list">
+                  <p><span>Platform</span><i style="--w:86%"></i><b>High</b></p>
+                  <p><span>Sales Ops</span><i style="--w:72%"></i><b>Medium</b></p>
+                  <p><span>Support</span><i style="--w:48%"></i><b>Normal</b></p>
+                </div>
+              </article>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="graph">
+          <div class="section-head">
+            <p class="eyebrow">Work Graph</p>
+            <h2>Connected work state</h2>
+            <p>Projects, blockers, people, Agents and systems are represented as a queryable company state graph.</p>
+          </div>
+          <div class="lens-bar">
+            <div>
+              <p class="eyebrow">Role Lens</p>
+              <h3 id="network-lens-title">Developer network</h3>
+              <span id="network-lens-copy">Only engineering-adjacent people, systems, blockers and next actions are visible.</span>
+            </div>
+            <div class="segmented" aria-label="Role network lens">
+              <button class="is-active" data-network-role="dev">Developer</button>
+              <button data-network-role="pm">PM</button>
+              <button data-network-role="sales">Sales</button>
+              <button data-network-role="ops">Ops</button>
+              <button data-network-role="ceo">Exec</button>
+            </div>
+          </div>
+          <div class="graph-layout">
+            <article class="graph-canvas">
+              <svg class="graph-lines" viewBox="0 0 920 620" aria-hidden="true">
+                <line x1="460" y1="305" x2="170" y2="150" data-network-line data-visible-to="dev pm cto" />
+                <line x1="460" y1="305" x2="700" y2="140" data-network-line data-visible-to="dev pm cto" />
+                <line x1="460" y1="305" x2="230" y2="455" data-network-line data-visible-to="dev pm cto" />
+                <line x1="460" y1="305" x2="715" y2="455" data-network-line data-visible-to="dev pm cto" />
+                <line x1="460" y1="305" x2="455" y2="545" data-network-line data-visible-to="dev pm sales ops ceo cto" />
+                <line x1="460" y1="305" x2="165" y2="300" data-network-line data-visible-to="sales pm ceo" />
+                <line x1="460" y1="305" x2="735" y2="300" data-network-line data-visible-to="sales ops pm ceo" />
+                <line x1="460" y1="305" x2="455" y2="85" data-network-line data-visible-to="ops pm ceo" />
+              </svg>
+              <div class="graph-node project" data-network-node data-visible-to="dev pm sales ops ceo cto">Q3 Launch<br /><span>Shared state</span></div>
+              <div class="graph-node owner" data-network-node data-visible-to="dev pm cto">Platform Owner<br /><span>Direct dependency</span></div>
+              <div class="graph-node blocker" data-network-node data-visible-to="dev pm cto">Billing API blocked<br /><span>Waiting review</span></div>
+              <div class="graph-node agent" data-network-node data-visible-to="dev pm cto">Dev Agent<br /><span>PR #4821</span></div>
+              <div class="graph-node qa-node" data-network-node data-visible-to="dev pm cto">QA Lead<br /><span>Regression queue</span></div>
+              <div class="graph-node system" data-network-node data-visible-to="dev pm cto">GitHub<br /><span>Code review</span></div>
+              <div class="graph-node action" data-network-node data-visible-to="dev pm sales ops ceo cto">Next action<br /><span>Routed by Synapse</span></div>
+              <div class="graph-node customer" data-network-node data-visible-to="sales pm ceo">Acme Renewal<br /><span>Deal risk</span></div>
+              <div class="graph-node support-node" data-network-node data-visible-to="sales ops pm ceo">Support Desk<br /><span>FAQ drift</span></div>
+              <div class="graph-node ops-node" data-network-node data-visible-to="ops pm ceo">Ops Agent<br /><span>SOP update</span></div>
+            </article>
+            <aside class="panel inspector">
+              <p class="eyebrow">Selected Signal</p>
+              <h3>Billing API dependency blocks marketplace launch</h3>
+              <p>Synapse detected this from Linear, GitHub PR status and PM Agent launch notes.</p>
+              <div class="detail-stack">
+                <div><span>Owner</span><strong>Platform Core</strong></div>
+                <div><span>Impact</span><strong>Marketplace v1</strong></div>
+                <div><span>Recommended action</span><strong>Create owner task + notify PM</strong></div>
+              </div>
+            </aside>
+          </div>
+          <div class="detail-grid graph-detail-grid">
+            <article class="panel">
+              <div class="panel-head"><h3>Graph Filters</h3><span class="badge">Saved view</span></div>
+              <div class="filter-row">
+                <button class="filter-chip is-active">Launch risks</button>
+                <button class="filter-chip">Customer impact</button>
+                <button class="filter-chip">Waiting on me</button>
+                <button class="filter-chip">This week</button>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-head"><h3>Source Trace</h3><span class="badge">3 sources</span></div>
+              <ul class="feed-list compact">
+                <li>Linear issue API-482, status blocked</li>
+                <li>GitHub PR #1842, review delayed 2 days</li>
+                <li>PM Agent note, marketplace launch path</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="agents">
+          <div class="section-head">
+            <p class="eyebrow">Agent Registry</p>
+            <h2>Agent coordination registry</h2>
+            <p>Every employee keeps their Agent. Synapse manages coordination scope, data boundaries and handoffs.</p>
+          </div>
+          <div class="toolbar">
+            <div class="search-box">Search agents, owners, scopes</div>
+            <button class="filter-chip is-active">All roles</button>
+            <button class="filter-chip">Needs review</button>
+            <button class="filter-chip">Write access</button>
+            <button class="primary-button">Add agent</button>
+          </div>
+          <div class="agent-grid" id="agent-grid"></div>
+        </section>
+
+        <section class="view" data-view-panel="automation">
+          <div class="section-head">
+            <p class="eyebrow">Automation Queue</p>
+            <h2>Reviewed cross-tool actions</h2>
+            <p>Suggested actions are reviewed, routed and executed across existing SaaS systems.</p>
+          </div>
+          <div class="automation-summary">
+            <article><span>Suggested</span><strong>8</strong><p>Agent-created recommendations</p></article>
+            <article><span>Needs Review</span><strong>5</strong><p>Human approval required</p></article>
+            <article><span>Running</span><strong>11</strong><p>Cross-tool actions active</p></article>
+            <article><span>Completed</span><strong>28</strong><p>Synced back to company state</p></article>
+          </div>
+          <div class="queue-board" id="queue-board"></div>
+        </section>
+
+        <section class="view" data-view-panel="integrations">
+          <div class="section-head">
+            <p class="eyebrow">Integrations</p>
+            <h2>Controlled SaaS read and writeback</h2>
+            <p>Synapse sits above SaaS, reads context and writes back only through governed actions.</p>
+          </div>
+          <div class="toolbar">
+            <div class="search-box">Filter by tool, access, owner</div>
+            <button class="filter-chip is-active">Connected</button>
+            <button class="filter-chip">Read access</button>
+            <button class="filter-chip">Writeback enabled</button>
+            <button class="filter-chip">Policy gaps</button>
+          </div>
+          <div class="integration-grid" id="integration-grid"></div>
+        </section>
+
+        <section class="view" data-view-panel="memory">
+          <div class="section-head">
+            <p class="eyebrow">Enterprise Memory</p>
+            <h2>Verified company memory</h2>
+            <p>Decisions, playbooks, resolved blockers and approved workflows become reusable context.</p>
+          </div>
+          <div class="memory-layout">
+            <article class="panel memory-main">
+              <div class="panel-head"><h3>Verified memory graph</h3><span class="badge">128 records</span></div>
+              <div class="memory-list" id="memory-list"></div>
+            </article>
+            <aside class="panel">
+              <p class="eyebrow">Memory Policy</p>
+              <h3>Only approved outputs become durable context.</h3>
+              <ul class="feed-list">
+                <li>Human-reviewed decisions</li>
+                <li>Approved operating procedures</li>
+                <li>Completed workflows with outcome</li>
+                <li>Rejected actions with reason</li>
+              </ul>
+            </aside>
+          </div>
+          <div class="detail-grid">
+            <article class="panel">
+              <div class="panel-head"><h3>Memory Freshness</h3><span class="badge">Healthy</span></div>
+              <div class="health-bars">
+                <p><span>Policies</span><i style="--w:92%"></i></p>
+                <p><span>Playbooks</span><i style="--w:78%"></i></p>
+                <p><span>Decision records</span><i style="--w:84%"></i></p>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-head"><h3>Review Queue</h3><span class="badge danger">4 stale</span></div>
+              <ul class="feed-list compact">
+                <li>Support refund macro needs pricing review</li>
+                <li>Enterprise discount policy expires Friday</li>
+                <li>Launch escalation path needs new platform owner</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="governance">
+          <div class="section-head">
+            <p class="eyebrow">Governance</p>
+            <h2>Enterprise controls</h2>
+            <p>Permissions, audit logs and approval policies keep the coordination layer enterprise-ready.</p>
+          </div>
+          <div class="governance-grid">
+            <article class="panel"><h3>Identity & Scope</h3><p>Role-based visibility, Agent scope, data boundaries and customer context access.</p></article>
+            <article class="panel"><h3>Approval Rules</h3><p>External communication, budget changes, CRM writeback and high-risk actions require review.</p></article>
+            <article class="panel"><h3>Audit Log</h3><p>Every sensed event, recommendation, approval and SaaS writeback is traceable.</p></article>
+            <article class="panel"><h3>Model Routing</h3><p>Task complexity, cost pressure and governance rules determine which model route is used.</p></article>
+          </div>
+          <article class="panel policy-table">
+            <div class="panel-head"><h3>Policy Matrix</h3><span class="badge">Enterprise controls</span></div>
+            <div class="table-grid">
+              <b>Action type</b><b>Default policy</b><b>Approver</b><b>Audit</b>
+              <span>External email</span><span>Review required</span><span>Owner / Sales Ops</span><span>Full trace</span>
+              <span>CRM writeback</span><span>Scoped by role</span><span>RevOps</span><span>Before / after</span>
+              <span>Budget change</span><span>Approval required</span><span>Exec</span><span>Immutable</span>
+              <span>Doc update</span><span>Draft then publish</span><span>Functional owner</span><span>Versioned</span>
+            </div>
+          </article>
+          <article class="panel policy-table">
+            <div class="panel-head"><h3>Recent Audit Events</h3><span class="badge">Last 24h</span></div>
+            <div class="audit-list">
+              <div><span>11:04</span><strong>Sales Agent requested CRM writeback</strong><p>Approved by RevOps, account risk field updated.</p></div>
+              <div><span>10:48</span><strong>Synapse created platform owner decision packet</strong><p>Source trace includes Linear API-482 and GitHub PR #1842.</p></div>
+              <div><span>09:31</span><strong>Support FAQ patch queued</strong><p>Publishing blocked until pricing owner review.</p></div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="prototype-product.js"></script>
+  </body>
+</html>
