@@ -181,7 +181,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.35rem, 2vw, 2.15rem);
+  font-size: clamp(1.3rem, 1.65vw, 1.85rem);
   line-height: 1.16;
 }
 
@@ -201,25 +201,6 @@ h2 {
 
 .screen.is-active {
   display: block;
-}
-
-.product-upgrade {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 14px;
-}
-
-.product-upgrade a {
-  display: inline-flex;
-  min-height: 42px;
-  align-items: center;
-  justify-content: center;
-  padding: 0 14px;
-  border-radius: 8px;
-  color: #fff;
-  background: linear-gradient(135deg, var(--blue), var(--violet));
-  font-weight: 900;
-  box-shadow: 0 14px 28px rgba(35, 87, 255, 0.22);
 }
 
 .hero-grid {
@@ -259,6 +240,91 @@ h2 {
   display: block;
   margin-top: 8px;
   color: var(--muted);
+}
+
+.setup-grid,
+.integration-grid,
+.action-board,
+.governance-layout {
+  display: grid;
+  gap: 12px;
+}
+
+.setup-grid {
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 14px;
+}
+
+.setup-card {
+  min-height: 190px;
+}
+
+.setup-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  font-weight: 900;
+}
+
+.setup-card strong,
+.connector-card strong,
+.action-item strong,
+.policy-card strong {
+  display: block;
+  margin-top: 14px;
+  font-size: 1.05rem;
+}
+
+.setup-card p,
+.connector-card p,
+.action-item p,
+.policy-card p {
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+.setup-card.active {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(35, 87, 255, 0.12), transparent 36%),
+    #fff;
+}
+
+.integration-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.connector-card {
+  min-height: 150px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(24, 47, 112, 0.08);
+}
+
+.connector-card span {
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: var(--blue);
+  background: rgba(35, 87, 255, 0.08);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.connector-card.connected {
+  border-color: rgba(27, 191, 143, 0.35);
+}
+
+.connector-card.pending {
+  border-color: rgba(255, 159, 26, 0.34);
 }
 
 .network-map {
@@ -706,6 +772,59 @@ h2 {
   gap: 12px;
 }
 
+.action-board {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.action-column {
+  min-height: 520px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 12px 32px rgba(24, 47, 112, 0.08);
+}
+
+.action-column h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.action-item {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.action-item strong {
+  margin-top: 0;
+}
+
+.action-item div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.action-item span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.action-item b {
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--blue);
+  background: rgba(35, 87, 255, 0.08);
+  font-size: 0.74rem;
+}
+
 .panel {
   padding: 18px;
   box-shadow: 0 12px 32px rgba(24, 47, 112, 0.08);
@@ -865,6 +984,67 @@ h2 {
   padding: 0 14px;
 }
 
+.governance-layout {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.policy-card,
+.audit-panel {
+  min-height: 520px;
+}
+
+.policy-card > strong {
+  margin-top: 0;
+  color: var(--blue);
+  font-size: 1.2rem;
+}
+
+.policy-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.policy-row span {
+  color: var(--muted);
+  font-weight: 850;
+}
+
+.audit-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.audit-list div {
+  display: grid;
+  grid-template-columns: 62px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.audit-list span,
+.audit-list b {
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.audit-list p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 @media (max-width: 1180px) {
   .app,
   .hero-grid,
@@ -872,6 +1052,10 @@ h2 {
   .architecture,
   .workflow-grid,
   .execution-grid,
+  .setup-grid,
+  .integration-grid,
+  .action-board,
+  .governance-layout,
   .claim-grid,
   .kpi-grid {
     grid-template-columns: 1fr;

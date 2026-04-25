@@ -1,9 +1,11 @@
 const screenTitles = {
-  overview: "Complete Synapse Prototype",
-  dashboard: "Role-based Global Dashboard",
+  overview: "Synapse Prototype",
+  setup: "Setup & Permissions",
+  dashboard: "Role-based Company Dashboard",
+  actions: "Governed Action Queue",
   workflow: "How Synapse Works",
   architecture: "System Architecture",
-  execution: "Execution Surfaces",
+  governance: "Governance & Audit",
 };
 
 const roles = {
@@ -119,6 +121,33 @@ const actionByTeam = {
   Leadership: "Review decision packet",
 };
 
+const actionColumns = [
+  ["Suggested", [
+    ["Create Billing API owner task", "Source: GitHub PR #4821 + Linear API-482", "Platform Core", "High"],
+    ["Draft Acme renewal risk update", "Source: CRM stage drift + Sales Agent notes", "Sales Ops", "Medium"],
+  ]],
+  ["Needs Approval", [
+    ["Approve EU data residency packet", "Source: Legal Agent + Docs decision record", "Grace Miller", "High"],
+    ["Publish pricing FAQ patch", "Source: Support tickets + Docs diff", "Zoe Brooks", "Medium"],
+  ]],
+  ["Running", [
+    ["Notify PM about launch risk", "Writing Slack message and Linear comment", "Liam Stone", "Low"],
+    ["Attach AI infra budget model", "Finance Agent preparing context bundle", "Ben Carter", "Medium"],
+  ]],
+  ["Done", [
+    ["Weekly status packet archived", "Saved to Enterprise Memory", "Emma Davis", "Low"],
+    ["Regression queue synced", "QA state written back to release board", "Mia Patel", "Low"],
+  ]],
+];
+
+const auditEvents = [
+  ["10:42", "Linear issue API-482 marked blocked by Dev Agent.", "Source trace retained"],
+  ["10:44", "GitHub PR #4821 linked to Marketplace launch dependency.", "Context Graph"],
+  ["10:46", "Employee view policy hid source details from non-owners.", "Permission policy"],
+  ["10:48", "PM Agent received launch risk notification draft.", "Approval queued"],
+  ["10:51", "Decision packet stored in Enterprise Memory.", "Audit complete"],
+];
+
 let currentRole = "ceo";
 let selectedAgentId = "emma";
 
@@ -134,9 +163,7 @@ function statusLabel(status) {
 }
 
 function getNodeBody(employee, roleKey, isFocused) {
-  if (roleKey === "employee") {
-    return `<p>${statusLabel(employee.status)}</p>`;
-  }
+  if (roleKey === "employee") return `<p>${statusLabel(employee.status)}</p>`;
   if (roleKey === "ceo" || isFocused) {
     return `<p>${employee.detail}</p><div class="node-meta">${employee.tags.map((tag) => `<span>${tag}</span>`).join("")}</div>`;
   }
@@ -257,6 +284,33 @@ function renderRole(roleKey) {
   renderEmployeeNetwork(roleKey);
 }
 
+function renderActionBoard() {
+  const board = document.querySelector("#action-board");
+  if (!board) return;
+  board.innerHTML = actionColumns
+    .map(([title, cards]) => `
+      <section class="action-column">
+        <h3>${title}</h3>
+        ${cards.map(([name, source, owner, risk]) => `
+          <article class="action-item">
+            <strong>${name}</strong>
+            <p>${source}</p>
+            <div><span>${owner}</span><b>${risk}</b></div>
+          </article>
+        `).join("")}
+      </section>
+    `)
+    .join("");
+}
+
+function renderAuditTrail() {
+  const list = document.querySelector("#audit-list");
+  if (!list) return;
+  list.innerHTML = auditEvents
+    .map(([time, body, label]) => `<div><span>${time}</span><p>${body}</p><b>${label}</b></div>`)
+    .join("");
+}
+
 function showScreen(screenKey) {
   document.querySelectorAll("[data-screen-panel]").forEach((panel) => {
     panel.classList.toggle("is-active", panel.dataset.screenPanel === screenKey);
@@ -298,15 +352,10 @@ document.querySelector("[data-run-demo]").addEventListener("click", () => {
   }, 450);
 });
 
-document.querySelectorAll("[data-action-button]").forEach((button) => {
-  button.addEventListener("click", () => {
-    const status = document.querySelector("#sync-status");
-    status.textContent = button.textContent;
-  });
-});
-
 const initialRole = new URLSearchParams(window.location.search).get("role");
 renderRole(roles[initialRole] ? initialRole : "ceo");
+renderActionBoard();
+renderAuditTrail();
 
 window.addEventListener("hashchange", () => {
   const hashScreen = window.location.hash.replace("#", "");

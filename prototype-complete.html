@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Complete Prototype</title>
+    <title>Synapse Prototype</title>
     <meta
       name="description"
-      content="Complete interactive Synapse Layer: Shadow OS prototype."
+      content="Interactive Synapse Layer: Shadow OS prototype for agent-native company coordination."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,7 +19,7 @@
   <body>
     <div class="app">
       <aside class="sidebar">
-        <a class="brand" href="prototype-complete.html" aria-label="Synapse complete prototype">
+        <a class="brand" href="prototype-complete.html" aria-label="Synapse prototype">
           <img
             src="outputs/synapse-shadow-os-deck/scratch/assets/synapse-logo-trim-black.png"
             alt="Synapse"
@@ -29,10 +29,12 @@
 
         <nav class="side-nav" aria-label="Prototype screens">
           <button class="nav-item is-active" data-screen="overview">Overview</button>
+          <button class="nav-item" data-screen="setup">Setup</button>
           <button class="nav-item" data-screen="dashboard">Role Dashboard</button>
+          <button class="nav-item" data-screen="actions">Action Queue</button>
           <button class="nav-item" data-screen="workflow">How It Works</button>
           <button class="nav-item" data-screen="architecture">Architecture</button>
-          <button class="nav-item" data-screen="execution">Execution</button>
+          <button class="nav-item" data-screen="governance">Governance</button>
         </nav>
 
         <div class="sidebar-card">
@@ -41,14 +43,14 @@
           <span>15 Agents active</span>
         </div>
 
-        <a class="board-link" href="prototype-board.html">Open Full Board</a>
+        <a class="board-link" href="prototype-board.html">Open Board</a>
       </aside>
 
       <main class="main">
         <header class="topbar">
           <div>
             <p class="eyebrow">Agent-native Company OS</p>
-            <h1 id="screen-title">Complete Synapse Prototype</h1>
+            <h1 id="screen-title">Synapse Prototype</h1>
           </div>
           <div class="top-actions">
             <button class="ghost-button" data-run-demo>Run demo sync</button>
@@ -57,20 +59,17 @@
         </header>
 
         <section class="screen is-active" data-screen-panel="overview">
-          <div class="product-upgrade">
-            <a href="prototype-product.html">Open productized prototype</a>
-          </div>
           <div class="hero-grid">
             <div class="hero-copy">
-              <p class="eyebrow">Overview</p>
-              <h2>Synapse coordinates every employee Agent without replacing their tools.</h2>
+              <p class="eyebrow">Product Workspace</p>
+              <h2>Company operating state for teams already working with Agents.</h2>
               <p>
-                员工继续使用 Slack、Jira、Notion、GitHub、CRM 和自己的 Agent。Synapse 在背后统一同步工作进度、上下文、产物、阻塞与下一步，形成公司级实时状态网络。
+                员工继续使用 Slack、Jira、Docs、GitHub、CRM 和自己的 Agent。Synapse 在背后同步进度、上下文、阻塞、产物与下一步，并把它们变成可审计、可执行的公司级状态网络。
               </p>
               <div class="claim-grid">
-                <article><strong>组织状态感知</strong><span>实时汇聚工作信号</span></article>
-                <article><strong>Agent 协作协议</strong><span>MCP / Skill / API / Plugin</span></article>
-                <article><strong>企业工作流编排</strong><span>自动协调人、Agent 与 SaaS</span></article>
+                <article><strong>Role-aware visibility</strong><span>同一张网络，不同权限看到不同信息密度</span></article>
+                <article><strong>Action lifecycle</strong><span>建议、审批、执行、写回、归档形成闭环</span></article>
+                <article><strong>Audit by default</strong><span>每个判断保留来源、策略、责任人与时间线</span></article>
               </div>
             </div>
 
@@ -96,6 +95,28 @@
           </div>
         </section>
 
+        <section class="screen" data-screen-panel="setup">
+          <div class="section-head">
+            <p class="eyebrow">First-run Setup</p>
+            <h2>Connect Agents, tools and permission boundaries before the dashboard opens.</h2>
+            <p>正式产品的第一步不是聊天，而是建立组织状态网络：谁的 Agent 接入、能读哪些系统、能写回哪里、哪些动作必须审批。</p>
+          </div>
+          <div class="setup-grid">
+            <article class="panel setup-card active"><span>1</span><strong>Choose workspace role</strong><p>CEO、CTO、PM、Employee 进入不同默认视图，权限策略自动绑定。</p></article>
+            <article class="panel setup-card active"><span>2</span><strong>Connect employee Agents</strong><p>MCP / Skill / API 接入 15 个员工 Agent，同步 presence、任务、阻塞和产物。</p></article>
+            <article class="panel setup-card"><span>3</span><strong>Authorize SaaS sources</strong><p>Slack、GitHub、Linear、Docs、CRM 以只读优先接入，写回动作走审批。</p></article>
+            <article class="panel setup-card"><span>4</span><strong>Apply governance policy</strong><p>按角色、团队、项目、敏感度定义可见字段和自动化边界。</p></article>
+          </div>
+          <div class="integration-grid">
+            <article class="connector-card connected"><strong>Slack</strong><span>Read + notify</span><p>Team channels, owner pings, escalation messages.</p></article>
+            <article class="connector-card connected"><strong>GitHub</strong><span>Read + scoped write</span><p>PR status, review queues, deployment events.</p></article>
+            <article class="connector-card connected"><strong>Linear / Jira</strong><span>Read + task write</span><p>Issues, dependencies, milestones and owners.</p></article>
+            <article class="connector-card pending"><strong>Docs</strong><span>Read + draft</span><p>Specs, decision records, SOP and launch notes.</p></article>
+            <article class="connector-card connected"><strong>CRM</strong><span>Read + approved write</span><p>Account risk, renewal state and follow-up tasks.</p></article>
+            <article class="connector-card pending"><strong>Email</strong><span>Draft only</span><p>Client replies queued for human approval.</p></article>
+          </div>
+        </section>
+
         <section class="screen" data-screen-panel="dashboard">
           <div class="role-switcher" aria-label="Role switcher">
             <button class="role-button is-active" data-role="ceo">CEO</button>
@@ -109,7 +130,7 @@
               <div>
                 <p class="eyebrow" id="role-label">CEO View</p>
                 <h2 id="role-title">Global Company Dashboard</h2>
-                <p id="role-description">领导层看到公司全局状态、风险、优先级和待决策事项。</p>
+                <p id="role-description">领导层看到公司全局状态、风险、优先级、资源压力和待决策事项。</p>
               </div>
               <span class="status-pill">Live shared context</span>
             </div>
@@ -175,6 +196,15 @@
           </div>
         </section>
 
+        <section class="screen" data-screen-panel="actions">
+          <div class="section-head">
+            <p class="eyebrow">Action Queue</p>
+            <h2>Every recommendation moves through a governed execution lifecycle.</h2>
+            <p>Synapse 不只发现风险，还把跨工具动作变成可审批、可追踪、可回滚的队列。</p>
+          </div>
+          <div class="action-board" id="action-board"></div>
+        </section>
+
         <section class="screen" data-screen-panel="workflow">
           <div class="section-head">
             <p class="eyebrow">How It Works</p>
@@ -212,16 +242,25 @@
           </div>
         </section>
 
-        <section class="screen" data-screen-panel="execution">
+        <section class="screen" data-screen-panel="governance">
           <div class="section-head">
-            <p class="eyebrow">Execution Surfaces</p>
-            <h2>Synapse does not replace tools. It coordinates them.</h2>
+            <p class="eyebrow">Governance</p>
+            <h2>Permissions, audit and source trace make the coordination layer enterprise-ready.</h2>
+            <p>正式版本必须解释每个状态从哪里来、谁能看、谁批准、写回了哪个系统。</p>
           </div>
-          <div class="execution-grid">
-            <article><strong>Risk Center</strong><p>统一识别阻塞、依赖、延期、合规与客户风险。</p><button data-action-button>Escalate risk</button></article>
-            <article><strong>Decision Queue</strong><p>高价值动作进入审批队列，保留责任人与依据。</p><button data-action-button>Queue approval</button></article>
-            <article><strong>Workflow Orchestrator</strong><p>自动创建任务、消息、草稿和系统写回。</p><button data-action-button>Create task</button></article>
-            <article><strong>Enterprise Memory</strong><p>把已确认的决策、流程和结果沉淀为公司记忆。</p><button data-action-button>Save memory</button></article>
+          <div class="governance-layout">
+            <article class="panel policy-card">
+              <strong>Visibility Policy</strong>
+              <p>Employee sees presence only. PM sees delivery context. CTO sees engineering detail. CEO sees cross-company risk and decisions.</p>
+              <div class="policy-row"><span>Presence</span><b>All roles</b></div>
+              <div class="policy-row"><span>Work detail</span><b>Scoped roles</b></div>
+              <div class="policy-row"><span>Source trace</span><b>Manager+</b></div>
+              <div class="policy-row"><span>Writeback</span><b>Approval required</b></div>
+            </article>
+            <article class="panel audit-panel">
+              <div class="panel-head"><strong>Audit Trail</strong><span>Live</span></div>
+              <div class="audit-list" id="audit-list"></div>
+            </article>
           </div>
         </section>
       </main>
