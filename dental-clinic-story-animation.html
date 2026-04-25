@@ -71,7 +71,7 @@
       h1 {
         max-width: 1040px;
         margin: 0;
-        font-size: clamp(2rem, 2.7vw, 3.05rem);
+        font-size: clamp(1.8rem, 2.25vw, 2.6rem);
         line-height: 1.06;
       }
 
@@ -79,7 +79,7 @@
         max-width: 960px;
         margin: 13px 0 0;
         color: var(--muted);
-        font-size: 1.02rem;
+        font-size: 0.96rem;
         line-height: 1.65;
       }
 
@@ -91,6 +91,81 @@
         background: #fff;
         color: var(--muted);
         font-weight: 900;
+      }
+
+      .presenter-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 14px 18px;
+        align-items: center;
+        margin-bottom: 16px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(35, 87, 255, 0.06), rgba(36, 191, 211, 0.04)),
+          #fff;
+        box-shadow: 0 14px 38px rgba(24, 47, 112, 0.08);
+      }
+
+      .presenter-panel h2 {
+        margin: 0;
+        font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+        line-height: 1.2;
+      }
+
+      .presenter-panel p:last-child {
+        max-width: 920px;
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      .presenter-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .presenter-controls button,
+      .step-nav button {
+        min-height: 38px;
+        border: 1px solid rgba(35, 87, 255, 0.18);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--ink);
+        font: inherit;
+        font-size: 0.82rem;
+        font-weight: 900;
+        cursor: pointer;
+        transition: 0.18s ease;
+      }
+
+      .presenter-controls button {
+        padding: 0 13px;
+      }
+
+      .presenter-controls button:hover,
+      .step-nav button:hover,
+      .step-nav button.is-active {
+        border-color: rgba(35, 87, 255, 0.45);
+        background: linear-gradient(135deg, rgba(35, 87, 255, 0.1), rgba(36, 191, 211, 0.08));
+        box-shadow: 0 10px 24px rgba(24, 47, 112, 0.1);
+      }
+
+      .presenter-controls button:first-child {
+        color: #fff;
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--blue), var(--violet));
+      }
+
+      .step-nav {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 8px;
       }
 
       .canvas {
@@ -151,6 +226,7 @@
       .system-card,
       .case-card,
       .result-card,
+      .approval-card,
       .synapse-core,
       .step-pill {
         position: absolute;
@@ -240,7 +316,8 @@
       .avatar-card strong,
       .system-card strong,
       .case-card strong,
-      .result-card strong {
+      .result-card strong,
+      .approval-card strong {
         display: block;
         font-size: 1rem;
       }
@@ -248,7 +325,8 @@
       .avatar-card span,
       .system-card span,
       .case-card span,
-      .result-card span {
+      .result-card span,
+      .approval-card span {
         display: block;
         margin-top: 5px;
         color: var(--muted);
@@ -298,6 +376,20 @@
       }
 
       .result-card strong { color: var(--green); }
+
+      .approval-card {
+        left: 50%;
+        bottom: 148px;
+        width: 290px;
+        padding: 15px;
+        transform: translateX(-50%);
+        opacity: 0.74;
+        animation: approvalPulse var(--cycle) linear infinite;
+      }
+
+      .approval-card strong {
+        color: var(--amber);
+      }
 
       .synapse-core {
         left: 50%;
@@ -433,6 +525,167 @@
         line-height: 1.4;
       }
 
+      .story-step.is-active {
+        opacity: 1;
+        border-color: rgba(35, 87, 255, 0.4);
+        box-shadow: 0 0 0 4px rgba(35, 87, 255, 0.07), 0 16px 40px rgba(24, 47, 112, 0.12);
+      }
+
+      .roi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .roi-grid article,
+      .before-after article {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 12px 30px rgba(24, 47, 112, 0.07);
+      }
+
+      .roi-grid article {
+        padding: 15px;
+      }
+
+      .roi-grid span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 850;
+      }
+
+      .roi-grid strong {
+        display: block;
+        margin-top: 7px;
+        font-size: 1.45rem;
+        line-height: 1;
+      }
+
+      .roi-grid em {
+        display: block;
+        margin-top: 7px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-style: normal;
+        font-weight: 900;
+      }
+
+      .before-after {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .before-after article {
+        padding: 16px;
+      }
+
+      .before-after h3 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .before-after ul {
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 9px;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.4;
+      }
+
+      .before-after li {
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        gap: 8px;
+        align-items: start;
+      }
+
+      .before-after li::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        margin-top: 5px;
+        border-radius: 999px;
+        background: var(--red);
+      }
+
+      .before-after article:last-child li::before {
+        background: var(--green);
+      }
+
+      .stage.manual-mode .avatar-card,
+      .stage.manual-mode .system-card,
+      .stage.manual-mode .case-card,
+      .stage.manual-mode .result-card,
+      .stage.manual-mode .approval-card,
+      .stage.manual-mode .synapse-core,
+      .stage.manual-mode .story-step,
+      .stage.manual-mode .step-pill,
+      .stage.manual-mode .packet {
+        animation: none !important;
+      }
+
+      .stage.manual-mode .avatar-card,
+      .stage.manual-mode .system-card {
+        opacity: 0.45;
+      }
+
+      .stage.manual-mode .packet,
+      .stage.manual-mode .step-pill {
+        display: none;
+      }
+
+      .stage.manual-mode .case-card,
+      .stage.manual-mode .approval-card,
+      .stage.manual-mode .result-card {
+        opacity: 0.62;
+      }
+
+      .stage.manual-mode .synapse-core {
+        filter: saturate(1);
+      }
+
+      .stage.manual-mode[data-step="1"] .patient-node,
+      .stage.manual-mode[data-step="1"] .case-card,
+      .stage.manual-mode[data-step="2"] .appointment-system,
+      .stage.manual-mode[data-step="2"] .sms-system,
+      .stage.manual-mode[data-step="2"] .emr-system,
+      .stage.manual-mode[data-step="2"] .billing-system,
+      .stage.manual-mode[data-step="3"] .synapse-core,
+      .stage.manual-mode[data-step="3"] .case-card,
+      .stage.manual-mode[data-step="4"] .frontdesk-node,
+      .stage.manual-mode[data-step="4"] .billing-node,
+      .stage.manual-mode[data-step="4"] .dentist-node,
+      .stage.manual-mode[data-step="4"] .followup-node,
+      .stage.manual-mode[data-step="4"] .manager-node,
+      .stage.manual-mode[data-step="5"] .approval-card,
+      .stage.manual-mode[data-step="5"] .synapse-core,
+      .stage.manual-mode[data-step="6"] .result-card,
+      .stage.manual-mode[data-step="6"] .manager-node {
+        opacity: 1;
+        border-color: rgba(35, 87, 255, 0.42);
+        box-shadow: 0 0 0 4px rgba(35, 87, 255, 0.08), 0 18px 46px rgba(24, 47, 112, 0.15);
+      }
+
+      .stage.is-paused .avatar-card,
+      .stage.is-paused .system-card,
+      .stage.is-paused .case-card,
+      .stage.is-paused .result-card,
+      .stage.is-paused .approval-card,
+      .stage.is-paused .synapse-core,
+      .stage.is-paused .story-step,
+      .stage.is-paused .step-pill,
+      .stage.is-paused .packet {
+        animation-play-state: paused !important;
+      }
+
       @keyframes rolePulse {
         0%, 8%, 100% { opacity: 0.58; transform: scale(1); }
         11%, 20% { opacity: 1; transform: scale(1.035); box-shadow: 0 0 0 4px rgba(35, 87, 255, 0.08), 0 18px 44px rgba(24, 47, 112, 0.15); }
@@ -456,6 +709,11 @@
       @keyframes resultPulse {
         0%, 72%, 100% { opacity: 0.72; transform: translateX(-50%) scale(1); }
         78%, 94% { opacity: 1; transform: translateX(-50%) scale(1.035); border-color: rgba(27, 191, 143, 0.4); }
+      }
+
+      @keyframes approvalPulse {
+        0%, 55%, 100% { opacity: 0.74; transform: translateX(-50%) scale(1); }
+        60%, 72% { opacity: 1; transform: translateX(-50%) scale(1.035); border-color: rgba(255, 159, 26, 0.46); }
       }
 
       @keyframes stepLabel {
@@ -525,6 +783,25 @@
       }
 
       @media (max-width: 1180px) {
+        .top,
+        .presenter-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .top {
+          display: grid;
+        }
+
+        .presenter-controls {
+          justify-content: flex-start;
+        }
+
+        .step-nav,
+        .roi-grid,
+        .before-after {
+          grid-template-columns: 1fr;
+        }
+
         .canvas {
           min-height: auto;
           display: grid;
@@ -536,6 +813,7 @@
         .system-card,
         .case-card,
         .result-card,
+        .approval-card,
         .synapse-core {
           position: relative;
           left: auto;
@@ -563,7 +841,7 @@
     </style>
   </head>
   <body>
-    <main class="stage">
+    <main class="stage" data-step="1">
       <header class="top">
         <div>
           <p class="eyebrow">Full Workflow Animation · Dental Clinic</p>
@@ -574,6 +852,29 @@
         </div>
         <div class="badge">Synapse · Clinic Coordination Layer</div>
       </header>
+
+      <section class="presenter-panel" aria-label="Presenter controls">
+        <div>
+          <p class="eyebrow">Presenter Mode</p>
+          <h2 id="presenter-title">Step 1 - Patient risk appears</h2>
+          <p id="presenter-copy">
+            A high-value root canal appointment is at risk because confirmation, insurance and care notes are scattered across tools.
+          </p>
+        </div>
+        <div class="presenter-controls">
+          <button type="button" data-presenter="toggle">Pause</button>
+          <button type="button" data-presenter="next">Next step</button>
+          <button type="button" data-presenter="restart">Restart</button>
+        </div>
+        <nav class="step-nav" aria-label="Workflow step navigation">
+          <button type="button" class="is-active" data-step-jump="1">1 Patient</button>
+          <button type="button" data-step-jump="2">2 Signals</button>
+          <button type="button" data-step-jump="3">3 Detect</button>
+          <button type="button" data-step-jump="4">4 Route</button>
+          <button type="button" data-step-jump="5">5 Approve</button>
+          <button type="button" data-step-jump="6">6 Updated</button>
+        </nav>
+      </section>
 
       <section class="canvas" aria-label="Animated workflow with avatars">
         <svg viewBox="0 0 1000 850" preserveAspectRatio="none" aria-hidden="true">
@@ -641,6 +942,11 @@
         <div class="step-pill step-approve">4 · Human approval</div>
         <div class="step-pill step-execute">5 · Execute + audit</div>
 
+        <article class="approval-card">
+          <strong>Human approval gate</strong>
+          <span>Patient-facing SMS and system writebacks stay reviewable before Synapse executes.</span>
+        </article>
+
         <article class="result-card">
           <strong>Final coordinated action bundle</strong>
           <span>Front desk call · insurance verification · dentist care note · patient follow-up · waitlist backup · audit trail</span>
@@ -664,6 +970,145 @@
         <article class="story-step"><b>5</b><strong>Approved actions</strong><span>Sensitive messages and writebacks remain human-reviewed.</span></article>
         <article class="story-step"><b>6</b><strong>Clinic updated</strong><span>Actions are executed, logged and reflected in the clinic state.</span></article>
       </section>
+
+      <section class="roi-grid" aria-label="Operational impact estimates">
+        <article><span>Manual coordination time</span><strong>20-40%</strong><em>less admin follow-up</em></article>
+        <article><span>Missed confirmations</span><strong>15-30%</strong><em>fewer dropped tasks</em></article>
+        <article><span>Revenue leakage</span><strong>5-12%</strong><em>better chair utilization</em></article>
+        <article><span>Manager visibility</span><strong>Real time</strong><em>no end-of-day status chase</em></article>
+      </section>
+
+      <section class="before-after" aria-label="Before and after workflow">
+        <article>
+          <h3>Before Synapse</h3>
+          <ul>
+            <li>Front desk, billing and dentist operate from separate SaaS screens.</li>
+            <li>Patient risk is discovered late, often after chair time is already exposed.</li>
+            <li>Managers ask people for status because the clinic state is not unified.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>After Synapse</h3>
+          <ul>
+            <li>Signals turn into one shared operating state with role-specific views.</li>
+            <li>Every Agent receives only the task, context and approval boundary it needs.</li>
+            <li>Execution, audit trail and outcome update automatically across the clinic.</li>
+          </ul>
+        </article>
+      </section>
     </main>
+
+    <script>
+      const stage = document.querySelector(".stage");
+      const title = document.querySelector("#presenter-title");
+      const copy = document.querySelector("#presenter-copy");
+      const toggle = document.querySelector('[data-presenter="toggle"]');
+      const animated = document.querySelectorAll(
+        ".avatar-card, .system-card, .case-card, .result-card, .approval-card, .synapse-core, .story-step, .step-pill, .packet"
+      );
+
+      const steps = [
+        {
+          title: "Step 1 - Patient risk appears",
+          copy: "A high-value root canal appointment is at risk because confirmation, insurance and care notes are scattered across tools."
+        },
+        {
+          title: "Step 2 - Signals sync into Synapse",
+          copy: "Appointment status, SMS response, EMR notes and insurance fields become one machine-readable clinic state."
+        },
+        {
+          title: "Step 3 - Synapse detects the operating risk",
+          copy: "The OS identifies the no-show and revenue risk before the team loses chair time or discovers the issue too late."
+        },
+        {
+          title: "Step 4 - Role-specific tasks are routed",
+          copy: "Each employee Agent receives only the relevant task, context and dependency instead of a noisy all-hands alert."
+        },
+        {
+          title: "Step 5 - Human approval protects sensitive actions",
+          copy: "Patient-facing messages and system writebacks remain reviewable, so automation stays inside clinic policy."
+        },
+        {
+          title: "Step 6 - The clinic operating state updates",
+          copy: "Executed work, pending exceptions and the audit trail flow back into one shared state for managers and Agents."
+        }
+      ];
+
+      let currentStep = 1;
+      let autoTimer = null;
+
+      function renderStep(step) {
+        currentStep = step;
+        stage.dataset.step = String(step);
+        title.textContent = steps[step - 1].title;
+        copy.textContent = steps[step - 1].copy;
+        document.querySelectorAll("[data-step-jump]").forEach((button) => {
+          button.classList.toggle("is-active", Number(button.dataset.stepJump) === step);
+        });
+        document.querySelectorAll(".story-step").forEach((item, index) => {
+          item.classList.toggle("is-active", index + 1 === step);
+        });
+      }
+
+      function stopAuto() {
+        if (autoTimer) {
+          window.clearInterval(autoTimer);
+          autoTimer = null;
+        }
+      }
+
+      function startAuto() {
+        stopAuto();
+        stage.classList.remove("manual-mode", "is-paused");
+        toggle.textContent = "Pause";
+        autoTimer = window.setInterval(() => {
+          renderStep(currentStep === 6 ? 1 : currentStep + 1);
+        }, 3000);
+      }
+
+      function showManualStep(step) {
+        stopAuto();
+        stage.classList.add("manual-mode", "is-paused");
+        toggle.textContent = "Play";
+        renderStep(step);
+      }
+
+      function restartAnimations() {
+        animated.forEach((item) => {
+          item.style.animation = "none";
+          void item.offsetWidth;
+          item.style.animation = "";
+        });
+      }
+
+      toggle.addEventListener("click", () => {
+        const paused = stage.classList.toggle("is-paused");
+        if (paused) {
+          stopAuto();
+          toggle.textContent = "Play";
+        } else {
+          stage.classList.remove("manual-mode");
+          toggle.textContent = "Pause";
+          startAuto();
+        }
+      });
+
+      document.querySelector('[data-presenter="next"]').addEventListener("click", () => {
+        showManualStep(currentStep === 6 ? 1 : currentStep + 1);
+      });
+
+      document.querySelector('[data-presenter="restart"]').addEventListener("click", () => {
+        renderStep(1);
+        restartAnimations();
+        startAuto();
+      });
+
+      document.querySelectorAll("[data-step-jump]").forEach((button) => {
+        button.addEventListener("click", () => showManualStep(Number(button.dataset.stepJump)));
+      });
+
+      renderStep(1);
+      startAuto();
+    </script>
   </body>
 </html>
