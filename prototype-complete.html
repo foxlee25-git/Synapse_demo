@@ -29,6 +29,7 @@
 
         <nav class="side-nav" aria-label="Prototype screens">
           <button class="nav-item is-active" data-screen="overview">Overview</button>
+          <button class="nav-item" data-screen="demo">Investor Demo</button>
           <button class="nav-item" data-screen="setup">Setup</button>
           <button class="nav-item" data-screen="dashboard">Role Dashboard</button>
           <button class="nav-item" data-screen="actions">Action Queue</button>
@@ -59,6 +60,13 @@
         </header>
 
         <section class="screen is-active" data-screen-panel="overview">
+          <div class="demo-brief">
+            <div>
+              <p class="eyebrow">Investor narrative</p>
+              <strong>AI adoption is becoming employee-by-employee. Coordination is the missing company layer.</strong>
+            </div>
+            <button class="ghost-button" data-demo-jump="demo">Open demo script</button>
+          </div>
           <div class="hero-grid">
             <div class="hero-copy">
               <p class="eyebrow">Product Workspace</p>
@@ -92,6 +100,55 @@
                 <span>CRM</span>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section class="screen" data-screen-panel="demo">
+          <div class="section-head compact-head">
+            <p class="eyebrow">Investor Demo</p>
+            <h2>Six-minute story: from fragmented Agent work to governed company execution.</h2>
+            <p>Use this path when presenting live. It keeps the demo focused on the market shift, product wedge, trust layer and execution value.</p>
+          </div>
+          <div class="demo-layout">
+            <article class="panel demo-script">
+              <div class="demo-line">
+                <span>00:00</span>
+                <div><strong>Positioning</strong><p>Synapse is the Shadow OS for agent-native companies: one coordination layer across employee Agents, SaaS, project context and organizational state.</p></div>
+              </div>
+              <div class="demo-line">
+                <span>00:30</span>
+                <div><strong>Scenario</strong><p>Marketplace Launch is slipping. Signals are scattered across GitHub, Linear, PM notes, support tickets and CRM renewal risk.</p></div>
+              </div>
+              <div class="demo-line">
+                <span>01:30</span>
+                <div><strong>Role-aware network</strong><p>Open the dashboard. Show the same 15-Agent company network through CEO, CTO, PM and Employee lenses.</p></div>
+              </div>
+              <div class="demo-line">
+                <span>03:00</span>
+                <div><strong>Trust layer</strong><p>Switch to Employee. Show all nodes remain visible, but work details and source traces are hidden by policy.</p></div>
+              </div>
+              <div class="demo-line">
+                <span>04:00</span>
+                <div><strong>Execution</strong><p>Open Action Queue. Recommendations become governed cross-tool actions, not another status report.</p></div>
+              </div>
+              <div class="demo-line">
+                <span>05:15</span>
+                <div><strong>Enterprise readiness</strong><p>Open Governance. Every recommendation has permission policy, approval state, source trace and audit history.</p></div>
+              </div>
+            </article>
+
+            <aside class="demo-control-panel">
+              <button data-demo-jump="dashboard:ceo">1. Show CEO network</button>
+              <button data-demo-jump="dashboard:employee">2. Switch to Employee permissions</button>
+              <button data-demo-jump="dashboard:pm">3. Show PM delivery detail</button>
+              <button data-demo-jump="actions">4. Open Action Queue</button>
+              <button data-demo-jump="governance">5. Open Governance</button>
+            </aside>
+          </div>
+          <div class="talk-track-grid">
+            <article><strong>What to repeat</strong><p>Employees keep their Agents and tools. Synapse builds the shared company operating state.</p></article>
+            <article><strong>What to prove</strong><p>The same network changes information density by role and permission, without hiding organizational presence.</p></article>
+            <article><strong>What to avoid</strong><p>Do not pitch it as another project management app. The output is governed execution.</p></article>
           </div>
         </section>
 

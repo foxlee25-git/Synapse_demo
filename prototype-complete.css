@@ -210,6 +210,27 @@ h2 {
   align-items: stretch;
 }
 
+.demo-brief {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(35, 87, 255, 0.12), transparent 28%),
+    #fff;
+  box-shadow: 0 12px 32px rgba(24, 47, 112, 0.08);
+}
+
+.demo-brief strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.02rem;
+}
+
 .hero-copy {
   display: grid;
   align-content: center;
@@ -245,9 +266,99 @@ h2 {
 .setup-grid,
 .integration-grid,
 .action-board,
-.governance-layout {
+.governance-layout,
+.demo-layout,
+.talk-track-grid {
   display: grid;
   gap: 12px;
+}
+
+.compact-head {
+  max-width: 980px;
+}
+
+.demo-layout {
+  grid-template-columns: minmax(0, 1fr) 310px;
+  align-items: start;
+}
+
+.demo-script {
+  display: grid;
+  gap: 12px;
+}
+
+.demo-line {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.demo-line span {
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.demo-line strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.demo-line p {
+  margin-top: 6px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.demo-control-panel {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 12px 32px rgba(24, 47, 112, 0.08);
+}
+
+.demo-control-panel button {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 900;
+  text-align: left;
+}
+
+.demo-control-panel button:hover {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+}
+
+.talk-track-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 12px;
+}
+
+.talk-track-grid article {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(24, 47, 112, 0.08);
+}
+
+.talk-track-grid p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.92rem;
 }
 
 .setup-grid {
@@ -1056,6 +1167,8 @@ h2 {
   .integration-grid,
   .action-board,
   .governance-layout,
+  .demo-layout,
+  .talk-track-grid,
   .claim-grid,
   .kpi-grid {
     grid-template-columns: 1fr;

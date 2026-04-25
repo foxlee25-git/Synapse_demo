@@ -1,5 +1,6 @@
 const screenTitles = {
   overview: "Synapse Prototype",
+  demo: "Investor Demo Script",
   setup: "Setup & Permissions",
   dashboard: "Role-based Company Dashboard",
   actions: "Governed Action Queue",
@@ -323,6 +324,15 @@ function showScreen(screenKey) {
 
 document.querySelectorAll("[data-screen]").forEach((button) => {
   button.addEventListener("click", () => showScreen(button.dataset.screen));
+});
+
+document.querySelectorAll("[data-demo-jump]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const [screen, role] = button.dataset.demoJump.split(":");
+    if (role && roles[role]) renderRole(role);
+    showScreen(screen);
+    window.location.hash = screen;
+  });
 });
 
 document.querySelectorAll("[data-role]").forEach((button) => {
