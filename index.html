@@ -3,31 +3,1113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synapse Prototype</title>
+    <title>Synapse - Layer: Shadow OS</title>
     <meta
       name="description"
-      content="Synapse Layer: Shadow OS prototype for agent-native company coordination."
+      content="Synapse is an Agent-native Company OS that turns distributed Agent work into a shared, auditable operating state."
     />
-    <meta http-equiv="refresh" content="0; url=prototype-complete.html#dashboard" />
-    <link rel="canonical" href="prototype-complete.html#dashboard" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --ink: #07133f;
+        --muted: #62708f;
+        --soft: #f5f8ff;
+        --line: rgba(54, 78, 140, 0.16);
+        --blue: #2357ff;
+        --violet: #6e4bff;
+        --cyan: #22bed4;
+        --green: #18bd8e;
+        --amber: #ffad2f;
+        --red: #ff5d6d;
+        --shadow: 0 28px 80px rgba(24, 47, 112, 0.16);
+        --network-x: 69%;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
       body {
-        min-height: 100vh;
         margin: 0;
-        display: grid;
-        place-items: center;
-        color: #07133f;
-        font-family: Inter, "Noto Sans SC", Arial, sans-serif;
-        background: linear-gradient(180deg, #fbfcff 0%, #eef3fb 100%);
+        color: var(--ink);
+        font-family: "Inter", "Noto Sans SC", Arial, sans-serif;
+        overflow-x: hidden;
+        background:
+          linear-gradient(rgba(48, 78, 145, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(48, 78, 145, 0.055) 1px, transparent 1px),
+          linear-gradient(180deg, #fbfcff 0%, #eef3fb 52%, #f8fbff 100%);
+        background-size: 44px 44px, 44px 44px, auto;
       }
 
       a {
-        color: #2357ff;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(18px);
+        background: rgba(250, 252, 255, 0.82);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-inner {
+        height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .brand img {
+        width: 124px;
+        height: auto;
+        display: block;
+      }
+
+      .brand span {
+        padding-left: 12px;
+        border-left: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #3b4768;
+        font-size: 0.84rem;
         font-weight: 800;
+      }
+
+      .nav-links a {
+        padding: 10px 12px;
+        border-radius: 8px;
+      }
+
+      .nav-links a:hover {
+        background: rgba(35, 87, 255, 0.08);
+        color: var(--blue);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid rgba(35, 87, 255, 0.18);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 0.86rem;
+        font-weight: 900;
+        box-shadow: 0 10px 26px rgba(24, 47, 112, 0.08);
+        transition: 0.18s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        border-color: rgba(35, 87, 255, 0.38);
+        box-shadow: 0 16px 36px rgba(24, 47, 112, 0.12);
+      }
+
+      .button.primary {
+        color: #fff;
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--blue), var(--violet));
+      }
+
+      .hero {
+        position: relative;
+        min-height: calc(86svh - 20px);
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 52% 42%, rgba(35, 87, 255, 0.18), transparent 33%),
+          radial-gradient(circle at 78% 28%, rgba(34, 190, 212, 0.14), transparent 24%),
+          radial-gradient(circle at 18% 70%, rgba(110, 75, 255, 0.12), transparent 24%);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 160px;
+        background: linear-gradient(180deg, transparent, rgba(248, 251, 255, 0.96));
+        pointer-events: none;
+      }
+
+      .hero-layout {
+        position: relative;
+        z-index: 2;
+        min-height: calc(86svh - 94px);
+        display: grid;
+        align-content: center;
+        padding: 52px 0 92px;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--blue);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3.2rem, 6.3vw, 6.2rem);
+        line-height: 0.9;
+        letter-spacing: 0;
+      }
+
+      .hero-copy h1 span {
+        display: block;
+        color: transparent;
+        background: linear-gradient(135deg, var(--blue), var(--violet), var(--cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .hero-lead {
+        max-width: 650px;
+        margin: 26px 0 0;
+        color: #3f4b6d;
+        font-size: clamp(1rem, 1.35vw, 1.24rem);
+        line-height: 1.72;
+        overflow-wrap: anywhere;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .proof-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        max-width: 760px;
+        margin-top: 34px;
+      }
+
+      .proof-row article {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 12px 32px rgba(24, 47, 112, 0.08);
+      }
+
+      .proof-row strong {
+        display: block;
+        font-size: 1.1rem;
+      }
+
+      .proof-row span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        line-height: 1.42;
+      }
+
+      .network-scene {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 41%, rgba(0, 0, 0, 0.28) 50%, #000 59%, #000 100%);
+        mask-image: linear-gradient(90deg, transparent 0%, transparent 41%, rgba(0, 0, 0, 0.28) 50%, #000 59%, #000 100%);
+      }
+
+      .orbit {
+        position: absolute;
+        left: var(--network-x);
+        top: 47%;
+        width: min(760px, 55vw);
+        aspect-ratio: 1;
+        transform: translate(-50%, -50%);
+        border: 1px dashed rgba(35, 87, 255, 0.18);
+        border-radius: 999px;
+      }
+
+      .orbit::before,
+      .orbit::after {
+        content: "";
+        position: absolute;
+        inset: 13%;
+        border: 1px solid rgba(35, 87, 255, 0.1);
+        border-radius: inherit;
+      }
+
+      .orbit::after {
+        inset: 28%;
+        border-style: dashed;
+      }
+
+      .core {
+        position: absolute;
+        left: var(--network-x);
+        top: 47%;
+        width: clamp(170px, 17vw, 240px);
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        color: #fff;
+        background:
+          radial-gradient(circle at 34% 23%, rgba(255, 255, 255, 0.36), transparent 24%),
+          linear-gradient(135deg, #1648ff, #5e39ef 62%, #0bb8d4);
+        box-shadow: 0 36px 110px rgba(35, 87, 255, 0.42);
+      }
+
+      .core strong {
+        display: block;
+        font-size: 1.34rem;
+      }
+
+      .core span {
+        display: block;
+        margin-top: 6px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.72rem;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .node {
+        position: absolute;
+        left: calc(var(--network-x) + var(--x));
+        top: calc(47% + var(--y));
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: var(--green);
+        box-shadow: 0 0 0 8px rgba(24, 189, 142, 0.12);
+        opacity: 0.86;
+        animation: nodePulse 3.8s ease-in-out infinite;
+        animation-delay: var(--delay);
+      }
+
+      .node::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: var(--line-w);
+        height: 1px;
+        background: linear-gradient(90deg, rgba(35, 87, 255, 0.02), rgba(35, 87, 255, 0.26));
+        transform-origin: 0 50%;
+        transform: rotate(var(--angle));
+      }
+
+      .node[data-hot="true"] {
+        background: var(--amber);
+        box-shadow: 0 0 0 8px rgba(255, 173, 47, 0.14);
+      }
+
+      .node[data-alert="true"] {
+        background: var(--red);
+        box-shadow: 0 0 0 8px rgba(255, 93, 109, 0.14);
+      }
+
+      .floating-panel {
+        position: absolute;
+        right: max(40px, 6vw);
+        bottom: 72px;
+        width: min(360px, 30vw);
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .floating-panel header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .floating-panel h2 {
+        margin: 0;
+        font-size: 1.02rem;
+      }
+
+      .live-dot {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--green);
+        font-size: 0.76rem;
+        font-weight: 900;
+      }
+
+      .live-dot::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--green);
+      }
+
+      .signal-list {
+        display: grid;
+        gap: 9px;
+        margin-top: 14px;
+      }
+
+      .signal {
+        display: grid;
+        grid-template-columns: 10px 1fr auto;
+        gap: 9px;
+        align-items: center;
+        padding: 9px;
+        border: 1px solid rgba(54, 78, 140, 0.1);
+        border-radius: 8px;
+        background: rgba(248, 251, 255, 0.78);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      .signal i {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--green);
+      }
+
+      .signal.warn i {
+        background: var(--amber);
+      }
+
+      .signal.risk i {
+        background: var(--red);
+      }
+
+      .signal span {
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+
+      section {
+        scroll-margin-top: 92px;
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .section-head {
+        max-width: 760px;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(1.65rem, 2.7vw, 2.7rem);
+        line-height: 1.08;
+        overflow-wrap: anywhere;
+      }
+
+      .section-head p {
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .capability {
+        min-height: 250px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 18px 46px rgba(24, 47, 112, 0.08);
+      }
+
+      .icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        color: #fff;
+        background: linear-gradient(135deg, var(--blue), var(--violet));
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+
+      .capability h3,
+      .demo-card h3,
+      .architecture-card h3 {
+        margin: 18px 0 0;
+        font-size: 1.1rem;
+      }
+
+      .capability p,
+      .demo-card p,
+      .architecture-card p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.91rem;
+        line-height: 1.62;
+      }
+
+      .micro-flow {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .micro-flow span {
+        min-height: 42px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(35, 87, 255, 0.14);
+        border-radius: 8px;
+        background: #fff;
+        color: #314063;
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .product-strip {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .product-copy,
+      .mock {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.84);
+        box-shadow: var(--shadow);
+      }
+
+      .product-copy {
+        padding: 28px;
+      }
+
+      .product-copy h2 {
+        margin: 0;
+        font-size: clamp(1.6rem, 2.5vw, 2.45rem);
+        line-height: 1.08;
+      }
+
+      .product-copy p {
+        margin: 16px 0 0;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .check-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .check-list li {
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        gap: 10px;
+        color: #33405f;
+        font-size: 0.92rem;
+        line-height: 1.45;
+        list-style: none;
+      }
+
+      .check-list li::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        margin-top: 5px;
+        border-radius: 999px;
+        background: var(--green);
+        box-shadow: 0 0 0 6px rgba(24, 189, 142, 0.1);
+      }
+
+      .mock {
+        padding: 18px;
+        overflow: hidden;
+      }
+
+      .mock-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mock-top strong {
+        font-size: 0.98rem;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 10px;
+        border: 1px solid rgba(24, 189, 142, 0.22);
+        border-radius: 999px;
+        color: var(--green);
+        background: rgba(24, 189, 142, 0.08);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .mock-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .mock-card {
+        min-height: 118px;
+        padding: 14px;
+        border: 1px solid rgba(54, 78, 140, 0.12);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #fff, #f8fbff);
+      }
+
+      .mock-card strong {
+        display: block;
+        font-size: 0.92rem;
+      }
+
+      .mock-card span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        line-height: 1.45;
+      }
+
+      .metric-line {
+        height: 8px;
+        margin-top: 18px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #e7edfb;
+      }
+
+      .metric-line i {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--blue), var(--cyan));
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .demo-card {
+        display: flex;
+        min-height: 235px;
+        flex-direction: column;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 16px 42px rgba(24, 47, 112, 0.08);
+      }
+
+      .demo-card .tag {
+        align-self: flex-start;
+        padding: 7px 9px;
+        border-radius: 999px;
+        color: var(--blue);
+        background: rgba(35, 87, 255, 0.08);
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+
+      .demo-card a {
+        margin-top: auto;
+        color: var(--blue);
+        font-size: 0.86rem;
+        font-weight: 900;
+      }
+
+      .architecture {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 12px;
+      }
+
+      .architecture-card {
+        position: relative;
+        min-height: 190px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.84);
+        overflow: hidden;
+      }
+
+      .architecture-card::after {
+        content: attr(data-layer);
+        position: absolute;
+        right: 14px;
+        bottom: 10px;
+        color: rgba(35, 87, 255, 0.08);
+        font-size: 3.6rem;
+        font-weight: 900;
+      }
+
+      .cta {
+        padding: 58px 0 76px;
+      }
+
+      .cta-panel {
+        position: relative;
+        overflow: hidden;
+        padding: 34px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          radial-gradient(circle at 82% 20%, rgba(34, 190, 212, 0.18), transparent 28%),
+          linear-gradient(135deg, #07133f, #153fc7 62%, #5229db);
+        color: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .cta-panel h2 {
+        max-width: 650px;
+        margin: 0;
+        font-size: clamp(1.7rem, 2.7vw, 2.7rem);
+        line-height: 1.08;
+      }
+
+      .cta-panel p {
+        max-width: 620px;
+        margin: 16px 0 0;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.7;
+      }
+
+      .cta-panel .hero-actions {
+        margin-top: 24px;
+      }
+
+      .cta-panel .button {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.24);
+      }
+
+      .cta-panel .button.primary {
+        background: #fff;
+        color: var(--blue);
+      }
+
+      footer {
+        padding: 24px 0 34px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        font-size: 0.82rem;
+        font-weight: 750;
+      }
+
+      @keyframes nodePulse {
+        0%, 100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.58;
+        }
+
+        45% {
+          transform: translate(-50%, -50%) scale(1.7);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .nav-inner {
+          height: auto;
+          padding: 14px 0;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+        }
+
+        .hero-layout {
+          min-height: auto;
+          padding: 66px 0 84px;
+        }
+
+        .network-scene {
+          opacity: 0.45;
+        }
+
+        .floating-panel {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          width: 100%;
+          margin-top: 30px;
+        }
+
+        .proof-row,
+        .capability-grid,
+        .product-strip,
+        .demo-grid,
+        .architecture {
+          grid-template-columns: 1fr;
+        }
+
+        .micro-flow {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: calc(100% - 28px);
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-layout {
+          padding: 58px 0 56px;
+        }
+
+        .network-scene {
+          opacity: 0.26;
+          -webkit-mask-image: none;
+          mask-image: none;
+        }
+
+        .floating-panel {
+          display: none;
+        }
+
+        .brand img {
+          width: 108px;
+        }
+
+        .brand span {
+          display: none;
+        }
+
+        .nav-links a:not(.button) {
+          display: none;
+        }
+
+        h1 {
+          font-size: clamp(2.52rem, 13vw, 3.25rem);
+        }
+
+        .hero-copy,
+        .section-head {
+          max-width: 330px;
+        }
+
+        .hero-lead,
+        .section-head p {
+          font-size: 0.95rem;
+          word-break: break-word;
+        }
+
+        .section-head h2 {
+          font-size: 1.5rem;
+        }
+
+        .proof-row,
+        .mock-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
-    <p>Opening Synapse prototype... <a href="prototype-complete.html#dashboard">Open manually</a></p>
+    <nav class="nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="index.html" aria-label="Synapse home">
+          <img
+            src="outputs/synapse-shadow-os-deck/scratch/assets/synapse-logo-trim-black.png"
+            alt="Synapse"
+          />
+          <span>Layer: Shadow OS</span>
+        </a>
+        <div class="nav-links" aria-label="Homepage navigation">
+          <a href="#product">Product</a>
+          <a href="#demo">Demo</a>
+          <a href="#architecture">Architecture</a>
+          <a class="button primary" href="prototype-complete.html#dashboard">Open Prototype</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="network-scene" aria-hidden="true">
+        <div class="orbit"></div>
+        <div class="core"><div><strong>Company State</strong><span>real-time graph</span></div></div>
+        <i class="node" style="--x: -360px; --y: -160px; --line-w: 380px; --angle: 24deg; --delay: 0s"></i>
+        <i class="node" style="--x: -300px; --y: 92px; --line-w: 320px; --angle: -12deg; --delay: .2s" data-hot="true"></i>
+        <i class="node" style="--x: -220px; --y: 284px; --line-w: 300px; --angle: -42deg; --delay: .4s"></i>
+        <i class="node" style="--x: -64px; --y: -330px; --line-w: 280px; --angle: 78deg; --delay: .6s"></i>
+        <i class="node" style="--x: 110px; --y: -300px; --line-w: 270px; --angle: 112deg; --delay: .8s"></i>
+        <i class="node" style="--x: 316px; --y: -205px; --line-w: 330px; --angle: 150deg; --delay: 1s"></i>
+        <i class="node" style="--x: 386px; --y: -12px; --line-w: 340px; --angle: 180deg; --delay: 1.2s" data-alert="true"></i>
+        <i class="node" style="--x: 330px; --y: 198px; --line-w: 330px; --angle: 214deg; --delay: 1.4s"></i>
+        <i class="node" style="--x: 132px; --y: 336px; --line-w: 300px; --angle: 248deg; --delay: 1.6s"></i>
+        <i class="node" style="--x: -118px; --y: 338px; --line-w: 300px; --angle: 292deg; --delay: 1.8s"></i>
+        <i class="node" style="--x: -420px; --y: 12px; --line-w: 380px; --angle: 4deg; --delay: 2s"></i>
+        <i class="node" style="--x: 418px; --y: 96px; --line-w: 390px; --angle: 194deg; --delay: 2.2s"></i>
+        <div class="floating-panel">
+          <header>
+            <h2>Live OS feed</h2>
+            <span class="live-dot">syncing</span>
+          </header>
+          <div class="signal-list">
+            <div class="signal"><i></i><strong>15 employee Agents online</strong><span>now</span></div>
+            <div class="signal warn"><i></i><strong>3 approvals waiting</strong><span>2m</span></div>
+            <div class="signal risk"><i></i><strong>1 customer workflow at risk</strong><span>4m</span></div>
+            <div class="signal"><i></i><strong>8 SaaS systems connected</strong><span>live</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">Agent-native Company OS</p>
+          <h1>Synapse <span>Shadow OS</span></h1>
+          <p class="hero-lead">
+            Synapse 把员工 Agent、SaaS 工具、项目上下文和组织状态连接成一个实时、可审计、可执行的公司操作系统。
+            它不是替代 Jira、Slack、Notion 或 CRM，而是在它们之上协调人、Agent 和工作流。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="prototype-complete.html#demo">Run Investor Demo</a>
+            <a class="button" href="dental-clinic-story-animation.html">View Clinic Workflow</a>
+          </div>
+          <div class="proof-row" aria-label="Product proof points">
+            <article><strong>15 Agents</strong><span>role-aware network with different visibility by permission</span></article>
+            <article><strong>8 Systems</strong><span>Slack, GitHub, Docs, CRM, Calendar and internal tools connected</span></article>
+            <article><strong>1 OS Layer</strong><span>shared operating state, workflow routing and audit trail</span></article>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section shell" id="product">
+        <div class="section-head">
+          <p class="eyebrow">What Synapse does</p>
+          <h2>把分散的 Agent 工作，变成统一的公司实时状态。</h2>
+          <p>
+            传统企业和小企业开始使用 AI 后，真正的问题不是“有没有 Agent”，而是每个 Agent 做了什么、依赖谁、卡在哪里、是否需要人审批。
+          </p>
+        </div>
+
+        <div class="capability-grid">
+          <article class="capability">
+            <div class="icon">S</div>
+            <h3>Real-time State Graph</h3>
+            <p>自动同步进度、上下文、产物、阻塞、下一步，把员工和工具里的碎片状态变成公司级 Context Graph。</p>
+            <div class="micro-flow"><span>Agent</span><span>Skill</span><span>MCP</span><span>SaaS</span><span>State</span></div>
+          </article>
+          <article class="capability">
+            <div class="icon">R</div>
+            <h3>Role-aware Visibility</h3>
+            <p>CEO、CTO、PM、员工看到同一张公司网络的不同信息密度。低权限只看到在线状态，高权限看到依赖、风险和行动链路。</p>
+            <div class="micro-flow"><span>CEO</span><span>CTO</span><span>PM</span><span>Staff</span><span>Audit</span></div>
+          </article>
+          <article class="capability">
+            <div class="icon">A</div>
+            <h3>Action Orchestration</h3>
+            <p>发现风险后自动分配任务、准备消息、请求审批、写回系统，并保留完整审计记录。</p>
+            <div class="micro-flow"><span>Sense</span><span>Detect</span><span>Route</span><span>Approve</span><span>Act</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section shell">
+        <div class="product-strip">
+          <div class="product-copy">
+            <p class="eyebrow">Productized prototype</p>
+            <h2>不是项目管理工具，而是公司级 Agent 协调层。</h2>
+            <p>
+              Synapse 站在现有工具之上，连接每个员工自己的 Agent、每个 SaaS、每个项目上下文。它把“谁知道什么”和“谁下一步该做什么”变成实时系统能力。
+            </p>
+            <ul class="check-list">
+              <li>员工继续使用自己习惯的 Agent 和工具。</li>
+              <li>Agent 通过 MCP、Skill、API 或插件接入公司 OS。</li>
+              <li>公司 OS 统一感知项目、团队、客户、风险和紧急事项。</li>
+              <li>敏感动作进入人工审批，自动化执行保留审计链路。</li>
+            </ul>
+          </div>
+
+          <div class="mock" aria-label="Synapse product preview">
+            <div class="mock-top">
+              <strong>Synapse Operating State</strong>
+              <span class="status-pill">Live sync 38s</span>
+            </div>
+            <div class="mock-grid">
+              <article class="mock-card">
+                <strong>Global Dashboard</strong>
+                <span>Role-based views for executives, operators and individual contributors.</span>
+                <div class="metric-line"><i style="width: 86%"></i></div>
+              </article>
+              <article class="mock-card">
+                <strong>Risk Queue</strong>
+                <span>Blocked tasks, dependencies and customer risks surfaced before they slip.</span>
+                <div class="metric-line"><i style="width: 62%"></i></div>
+              </article>
+              <article class="mock-card">
+                <strong>Agent Network</strong>
+                <span>15 employee Agents connected with permission-aware context visibility.</span>
+                <div class="metric-line"><i style="width: 74%"></i></div>
+              </article>
+              <article class="mock-card">
+                <strong>Workflow Audit</strong>
+                <span>Every recommendation, approval, execution and writeback is traceable.</span>
+                <div class="metric-line"><i style="width: 91%"></i></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell" id="demo">
+        <div class="section-head">
+          <p class="eyebrow">Demo paths</p>
+          <h2>给投资人和客户看的四个入口。</h2>
+          <p>首页不是终点，而是 demo 的导航层。你可以从宏观产品、角色网络、行业场景和动画故事四个角度切入。</p>
+        </div>
+
+        <div class="demo-grid">
+          <article class="demo-card">
+            <span class="tag">Product</span>
+            <h3>Complete Prototype</h3>
+            <p>完整产品原型，包括 Overview、Investor Demo、Role Dashboard、Action Queue、Architecture 和 Governance。</p>
+            <a href="prototype-complete.html#dashboard">Open complete prototype</a>
+          </article>
+          <article class="demo-card">
+            <span class="tag">Network</span>
+            <h3>Agent Board</h3>
+            <p>15 个员工 Agent 组成动态网络，不同角色看到不同信息密度，体现权限和上下文隔离。</p>
+            <a href="prototype-board.html">Open agent board</a>
+          </article>
+          <article class="demo-card">
+            <span class="tag">Vertical</span>
+            <h3>Dental Clinic Use Case</h3>
+            <p>用牙医诊所说明小企业如何用 Synapse 协调预约、客服、医生、账单和患者跟进。</p>
+            <a href="dental-clinic-use-case.html">Open use case</a>
+          </article>
+          <article class="demo-card">
+            <span class="tag">Story</span>
+            <h3>Workflow Animation</h3>
+            <p>带头像和 Presenter Mode 的完整动画，从患者风险到人工审批再到系统写回。</p>
+            <a href="dental-clinic-story-animation.html">Open workflow animation</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section shell" id="architecture">
+        <div class="section-head">
+          <p class="eyebrow">Architecture</p>
+          <h2>五层架构，连接员工 Agent 与企业执行系统。</h2>
+        </div>
+
+        <div class="architecture">
+          <article class="architecture-card" data-layer="01">
+            <h3>Employee Agents</h3>
+            <p>员工继续使用自己的 Agent、Copilot、ChatGPT、IDE Agent 或行业助手。</p>
+          </article>
+          <article class="architecture-card" data-layer="02">
+            <h3>Agent Gateway</h3>
+            <p>通过 MCP、Skill Router、Identity、Permission Policy 和 Context Access 统一接入。</p>
+          </article>
+          <article class="architecture-card" data-layer="03">
+            <h3>Company OS Core</h3>
+            <p>Work Event Ledger、Context Graph、Risk Engine、Project State Engine、Audit Log 和 Enterprise Memory。</p>
+          </article>
+          <article class="architecture-card" data-layer="04">
+            <h3>Action Layer</h3>
+            <p>把判断变成任务、消息、审批、写回和跨系统执行，连接 Slack、Docs、CRM、Calendar 和内部系统。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta shell">
+        <div class="cta-panel">
+          <h2>Start with the demo, then tell the story through one operating risk.</h2>
+          <p>
+            投资人展示建议：先用首页讲清楚“为什么需要公司级 Agent OS”，再进入完整 prototype，最后用牙医诊所动画证明它能落到真实业务。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="prototype-complete.html#demo">Open Investor Demo</a>
+            <a class="button" href="dental-clinic-story-animation.html">Open Story Animation</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">Synapse - Layer: Shadow OS. Agent-native Company OS prototype.</div>
+    </footer>
   </body>
 </html>
