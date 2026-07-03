@@ -470,6 +470,10 @@ body.dark .tab-button.active {
   background: #0f766e;
 }
 
+.badge.sports {
+  background: #dc2626;
+}
+
 .news-card h3 {
   margin: 0 0 10px;
   font-size: clamp(1rem, 1.3vw, 1.18rem);
