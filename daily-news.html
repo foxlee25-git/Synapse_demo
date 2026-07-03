@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fox 私有新闻台 | 每日重要新闻</title>
+    <meta
+      name="description"
+      content="每日重要新闻一页看板，覆盖国际、科技、AI、金融和热门话题。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="daily-news.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="daily-news.js" defer></script>
+  </head>
+  <body class="dark">
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="#top" aria-label="Fox 私有新闻台首页">
+          <span class="brand-mark">FX</span>
+          <span>
+            <strong>Fox 私有新闻台</strong>
+            <small>每日重要情报</small>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="新闻分类">
+          <a href="#top">首页</a>
+          <a href="#briefing">快报</a>
+          <a href="#markets">金融</a>
+          <a href="#timeline">时间线</a>
+        </nav>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="切换深浅色">
+          <i data-lucide="sun"></i>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" id="todayLabel">今日简报</p>
+            <h1>Fox 私有新闻台</h1>
+            <p class="lead">
+              国际、科技、AI、金融、Web3、上市公司和热门话题，压缩成一个护眼深色的私人新闻台。
+            </p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#briefing">
+                <i data-lucide="newspaper"></i>
+                查看今日重点
+              </a>
+              <button class="secondary-button" id="copyDigest" type="button">
+                <i data-lucide="copy"></i>
+                复制简报
+              </button>
+            </div>
+          </div>
+
+          <aside class="headline-panel" aria-label="今日头条">
+            <div class="panel-top">
+              <span>Top Story</span>
+              <strong id="liveClock">--:--</strong>
+            </div>
+            <h2 id="heroHeadline">全球要闻正在加载</h2>
+            <p id="heroSummary"></p>
+            <div class="signal-row">
+              <span><i data-lucide="activity"></i><b id="impactScore">0</b> 影响指数</span>
+              <span><i data-lucide="flame"></i><b id="heatScore">0</b> 热度</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="shell control-strip" aria-label="筛选工具">
+        <div class="search-box">
+          <i data-lucide="search"></i>
+          <input id="newsSearch" type="search" placeholder="搜索关键词、地区、公司或主题" />
+        </div>
+        <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="新闻类别"></div>
+      </section>
+
+      <section class="shell dashboard" id="briefing">
+        <div class="section-heading">
+          <span>Briefing</span>
+          <h2>今日重点</h2>
+        </div>
+        <div class="news-grid" id="newsGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="market-band" id="markets">
+        <div class="shell market-grid">
+          <div>
+            <div class="section-heading compact">
+              <span>Markets</span>
+              <h2>金融快照</h2>
+            </div>
+            <p class="market-note">
+              关注利率、汇率、股指、黄金和数字资产的同步变化，判断新闻背后的资金流向。
+            </p>
+          </div>
+          <div class="market-cards" id="marketCards"></div>
+        </div>
+      </section>
+
+      <section class="shell lower-grid">
+        <aside class="trending-panel">
+          <div class="section-heading compact">
+            <span>Trending</span>
+            <h2>热门排行</h2>
+          </div>
+          <ol class="trend-list" id="trendList"></ol>
+        </aside>
+
+        <section class="timeline-panel" id="timeline">
+          <div class="section-heading compact">
+            <span>Timeline</span>
+            <h2>24 小时线索</h2>
+          </div>
+          <div class="timeline" id="timelineList"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <span>Fox 私有新闻台</span>
+        <span id="footerDate"></span>
+      </div>
+    </footer>
+  </body>
+</html>
