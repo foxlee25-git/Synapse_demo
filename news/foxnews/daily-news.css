@@ -370,6 +370,155 @@ body.dark .tab-button.active {
   grid-auto-rows: minmax(286px, auto);
 }
 
+.briefing-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.28fr) minmax(0, 0.72fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.briefing-layout .news-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.worldcup-sidebar {
+  position: sticky;
+  top: 92px;
+}
+
+.worldcup-card {
+  overflow: hidden;
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(220, 38, 38, 0.14), transparent 44%),
+    var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line), var(--shadow);
+}
+
+.worldcup-head {
+  padding: 20px 18px 14px;
+  color: white;
+  background:
+    linear-gradient(135deg, rgba(127, 29, 29, 0.94), rgba(15, 118, 110, 0.72)),
+    url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=900&q=82");
+  background-size: cover;
+  background-position: center;
+}
+
+.worldcup-head span {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.worldcup-head strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.worldcup-note {
+  margin: 0;
+  padding: 14px 18px 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  font-weight: 750;
+}
+
+.worldcup-block {
+  padding: 16px 18px 18px;
+}
+
+.worldcup-block + .worldcup-block {
+  border-top: 1px solid var(--line);
+}
+
+.worldcup-block h3 {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+}
+
+.worldcup-ranking {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: cup-rank;
+}
+
+.worldcup-ranking li {
+  counter-increment: cup-rank;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.worldcup-ranking li::before {
+  content: counter(cup-rank);
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  color: white;
+  background: #dc2626;
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.worldcup-ranking strong,
+.fixture-row strong {
+  display: block;
+  line-height: 1.25;
+}
+
+.worldcup-ranking small,
+.fixture-row small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.worldcup-ranking em {
+  display: inline-block;
+  margin-top: 7px;
+  color: #fca5a5;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.worldcup-fixtures {
+  display: grid;
+  gap: 8px;
+}
+
+.fixture-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 11px;
+  border-radius: 8px;
+  background: var(--surface-strong);
+}
+
+.fixture-row time {
+  color: #86efac;
+  font-size: 0.78rem;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
 .news-card {
   position: relative;
   min-height: 286px;
@@ -829,11 +978,13 @@ svg {
   .control-strip,
   .market-grid,
   .lower-grid,
-  .detail-layout {
+  .detail-layout,
+  .briefing-layout {
     grid-template-columns: 1fr;
   }
 
-  .detail-side {
+  .detail-side,
+  .worldcup-sidebar {
     position: static;
   }
 
@@ -842,6 +993,7 @@ svg {
   }
 
   .news-grid,
+  .briefing-layout .news-grid,
   .market-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -902,6 +1054,7 @@ svg {
   }
 
   .news-grid,
+  .briefing-layout .news-grid,
   .market-cards {
     grid-template-columns: 1fr;
   }

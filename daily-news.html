@@ -90,7 +90,26 @@
           <span>Briefing</span>
           <h2>今日重点</h2>
         </div>
-        <div class="news-grid" id="newsGrid" aria-live="polite"></div>
+        <div class="briefing-layout">
+          <aside class="worldcup-sidebar" aria-label="世界杯排名和对战时间">
+            <div class="worldcup-card">
+              <div class="worldcup-head">
+                <span>World Cup</span>
+                <strong>世界杯追踪</strong>
+              </div>
+              <p class="worldcup-note">截至 2026-07-04，淘汰赛阶段动态。</p>
+              <div class="worldcup-block">
+                <h3>晋级 / 战力排名</h3>
+                <ol class="worldcup-ranking" id="worldcupRanking"></ol>
+              </div>
+              <div class="worldcup-block">
+                <h3>对战时间</h3>
+                <div class="worldcup-fixtures" id="worldcupFixtures"></div>
+              </div>
+            </div>
+          </aside>
+          <div class="news-grid" id="newsGrid" aria-live="polite"></div>
+        </div>
       </section>
 
       <section class="market-band" id="markets">

@@ -347,7 +347,25 @@ const trends = [
   ["城市消费", "热门", 79],
 ];
 
-window.FOX_NEWS_DATA = { categories, newsItems, markets, trends };
+const worldcupRanking = [
+  { team: "法国", status: "已进八强", note: "1-0 淘汰巴拉圭" },
+  { team: "摩洛哥", status: "已进八强", note: "3-0 淘汰加拿大" },
+  { team: "西班牙", status: "战力榜前列", note: "16 强待赛" },
+  { team: "阿根廷", status: "战力榜前列", note: "16 强待赛" },
+  { team: "巴西", status: "焦点候选", note: "对阵挪威" },
+  { team: "英格兰", status: "高关注", note: "对阵墨西哥" },
+];
+
+const worldcupFixtures = [
+  { date: "7月5日", time: "10:00 PT", match: "巴西 vs 挪威", stage: "16 强" },
+  { date: "7月5日", time: "13:00 PT", match: "墨西哥 vs 英格兰", stage: "16 强" },
+  { date: "7月6日", time: "12:00 PT", match: "美国 vs 比利时", stage: "16 强" },
+  { date: "7月6日", time: "15:00 PT", match: "葡萄牙 vs 西班牙", stage: "16 强" },
+  { date: "7月7日", time: "12:00 PT", match: "阿根廷 vs 埃及", stage: "16 强" },
+  { date: "7月7日", time: "15:00 PT", match: "瑞士 vs 哥伦比亚", stage: "16 强" },
+];
+
+window.FOX_NEWS_DATA = { categories, newsItems, markets, trends, worldcupRanking, worldcupFixtures };
 
 let activeCategory = "all";
 let searchTerm = "";
@@ -488,6 +506,40 @@ function renderTrends() {
     .join("");
 }
 
+function renderWorldCup() {
+  const rankingRoot = document.querySelector("#worldcupRanking");
+  const fixturesRoot = document.querySelector("#worldcupFixtures");
+  if (!rankingRoot || !fixturesRoot) return;
+
+  rankingRoot.innerHTML = worldcupRanking
+    .map(
+      (item) => `
+        <li>
+          <span>
+            <strong>${item.team}</strong>
+            <small>${item.note}</small>
+          </span>
+          <em>${item.status}</em>
+        </li>
+      `
+    )
+    .join("");
+
+  fixturesRoot.innerHTML = worldcupFixtures
+    .map(
+      (item) => `
+        <div class="fixture-row">
+          <div>
+            <strong>${item.match}</strong>
+            <small>${item.stage} · ${item.date}</small>
+          </div>
+          <time>${item.time}</time>
+        </div>
+      `
+    )
+    .join("");
+}
+
 function renderTimeline() {
   document.querySelector("#timelineList").innerHTML = [...newsItems]
     .sort((a, b) => a.time.localeCompare(b.time))
@@ -518,6 +570,7 @@ function render() {
   renderHero();
   renderMarkets();
   renderTrends();
+  renderWorldCup();
   renderTimeline();
   refreshIcons();
 }
