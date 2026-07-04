@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新闻详情 | Fox 私有新闻台</title>
+    <meta name="description" content="Fox 私有新闻台新闻详情页。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="daily-news.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="daily-news.js" defer></script>
+    <script src="daily-news-detail.js" defer></script>
+  </head>
+  <body class="dark">
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="daily-news.html" aria-label="返回 Fox 私有新闻台">
+          <span class="brand-mark">FX</span>
+          <span>
+            <strong>Fox 私有新闻台</strong>
+            <small>新闻详情</small>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="详情页导航">
+          <a href="daily-news.html#briefing">新闻格</a>
+          <a href="daily-news.html#markets">金融</a>
+          <a href="daily-news.html#timeline">时间线</a>
+        </nav>
+        <button class="icon-button" id="detailThemeToggle" type="button" aria-label="切换深浅色">
+          <i data-lucide="sun"></i>
+        </button>
+      </div>
+    </header>
+
+    <main id="detailRoot">
+      <section class="detail-hero" id="detailHero">
+        <div class="shell detail-hero-inner">
+          <a class="back-link" href="daily-news.html#briefing">
+            <i data-lucide="arrow-left"></i>
+            返回新闻台
+          </a>
+          <div class="detail-meta" id="detailMeta"></div>
+          <h1 id="detailTitle">新闻正在加载</h1>
+        </div>
+      </section>
+
+      <section class="shell detail-main">
+        <div class="detail-layout">
+          <article class="detail-article" id="detailArticle"></article>
+          <aside class="detail-side">
+            <div class="section-heading compact">
+              <span>Related</span>
+              <h2>继续关注</h2>
+            </div>
+            <div id="relatedNews"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <span>Fox 私有新闻台</span>
+        <span id="detailFooterDate"></span>
+      </div>
+    </footer>
+  </body>
+</html>
